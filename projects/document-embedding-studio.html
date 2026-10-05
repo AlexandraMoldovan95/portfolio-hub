@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document Embedding Studio — Alexandra Moldovan</title>
+<meta name="description" content="A local-first RAG ingestion pipeline — drop in documents, it chunks and embeds them locally, then you can search or chat with them.">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="../index.html" class="brand">Alexandra Moldovan</a>
+    <div class="header-actions">
+      <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="detail-hero">
+    <div class="wrap">
+      <a href="../index.html#portfolio" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to portfolio</a>
+      <div class="eyebrow">Docker · Python · Next.js</div>
+      <h1>Document Embedding Studio</h1>
+      <p class="detail-pitch">A local-first application for building the ingestion side of a RAG (Retrieval-Augmented Generation) system — the part that lets an AI answer questions using your own documents.</p>
+      <div class="detail-actions">
+        <a href="https://github.com/AlexandraMoldovan95/document-embedding-studio" class="btn btn-accent" target="_blank" rel="noopener">View on GitHub</a>
+      </div>
+
+      <div class="detail-media">
+        <div class="media-placeholder" style="background: var(--surface-2); color: var(--text-muted);">
+          <span>Screenshot coming soon</span>
+        </div>
+      </div>
+
+      <div class="facts-grid">
+        <div class="fact-block">
+          <h3>What</h3>
+          <p>Drop in PDF, DOCX, Markdown, or plain-text files → the app extracts the text, splits it into overlapping chunks, embeds every chunk with a local AI model, and stores vectors in a persistent ChromaDB collection. From there: semantic search, or a BYOK chatbot that answers grounded in what's indexed. A live panel shows CPU/memory for the app's own Docker containers.</p>
+        </div>
+        <div class="fact-block">
+          <h3>My role</h3>
+          <p>Built the ingestion pipeline, then layered on BYOK chat and the live container-monitoring panel; built in pair-programming with an AI assistant (Claude).</p>
+        </div>
+        <div class="fact-block">
+          <h3>Quality</h3>
+          <p>70 tests covering chunking, document loaders, and the full ingest/search/chat/monitor API. Chat and container-monitor tests mock the outbound LLM call and the Docker socket, so the full suite runs offline.</p>
+        </div>
+        <div class="fact-block">
+          <h3>Status</h3>
+          <p>MIT · source on GitHub. No hosted demo — it needs a long-running Python process and direct Docker-socket access that managed hosting platforms don't expose; runs locally via Docker.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Why this exists</h2>
+        <p>
+          Most "RAG demo" projects stop at a single script calling an API. This
+          one is built like a real application: a proper pipeline with
+          validation at every step, a UI to actually use it, and no paid API key
+          required for the core loop — embedding and retrieval run entirely on
+          your own machine, using a local sentence-transformers model. The
+          optional chat layer is explicitly bring-your-own-key, so nothing is
+          sent anywhere unless you choose it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head"><h2>Highlights</h2></div>
+      <ul class="highlight-list">
+        <li><strong>Natural-boundary chunking.</strong> When a character-window chunk would end mid-word, the cut is pulled back to the nearest paragraph break, then sentence ending, then line break, then whitespace — so chunks stay close to the configured size without cutting words in half.</li>
+        <li><strong>Multi-stage Docker builds.</strong> The frontend's Dockerfile builds in a Node stage and ships only the production output in a slim runtime stage, so dev dependencies never reach the final image.</li>
+        <li><strong>Named volumes for real persistence.</strong> Vectors and model weights survive <code>docker compose down</code> via named volumes (<code>chroma-data</code>, <code>hf-cache</code>), since a container's own filesystem is ephemeral by design.</li>
+        <li><strong>Containers found by label, not by name.</strong> The live container-monitor panel locates its own two containers via a <code>studio.monitor</code> label, so it works regardless of the folder or Compose project name.</li>
+        <li><strong>The Docker-socket trade-off is documented, not glossed over.</strong> Giving the backend read access to the Docker socket is a real privilege — anything with socket access can, in principle, control any container on the host. Stated plainly, with the reasoning for why it's acceptable for a local single-user setup.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="prose">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>How it was built</h2>
+        <p>
+          FastAPI backend with a strict separation of concerns — extraction,
+          chunking, embeddings, and vector storage are independent modules
+          composed by a single pipeline function. Embeddings run locally via
+          <code>sentence-transformers</code> (<code>all-MiniLM-L6-v2</code>, 384
+          dimensions, no API key), stored in ChromaDB. The frontend is Next.js
+          (App Router) with strict TypeScript. BYOK chat supports OpenAI,
+          Anthropic, or Gemini — the key is kept only in the browser tab's
+          session storage, never written to disk or logged server-side.
+        </p>
+      </div>
+      <div class="stack-row">
+        <span class="chip">FastAPI / Python</span>
+        <span class="chip">Next.js / TypeScript</span>
+        <span class="chip">ChromaDB</span>
+        <span class="chip">sentence-transformers</span>
+        <span class="chip">Docker Compose</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="next-project">
+        <a href="../index.html#portfolio" class="back-link" style="margin:0;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to all projects</a>
+        <a href="desktop-buddy.html" class="btn btn-ghost">Back to start: Desktop Buddy →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 Alexandra Moldovan.</span>
+    <div class="footer-links">
+      <a href="https://github.com/AlexandraMoldovan95" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/alexandra-moldovan-528152102/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../script.js"></script>
+</body>
+</html>

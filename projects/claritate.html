@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claritate — Alexandra Moldovan</title>
+<meta name="description" content="Urci un CSV cu vânzări și aplicația îl citește, îl curăță și îți arată 6 dashboard-uri, cu întrebări în română.">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="../index.html" class="brand">Alexandra Moldovan</a>
+    <div class="header-actions">
+      <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="detail-hero">
+    <div class="wrap">
+      <a href="../index.html#portfolio" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to portfolio</a>
+      <div class="eyebrow">Dashboard din CSV · AI</div>
+      <h1>Claritate</h1>
+      <p class="detail-pitch">Urci un CSV cu vânzări și aplicația îl citește, îi detectează coloanele, îl curăță și îți arată 6 dashboard-uri cu cifre, grafice și tabele. Poți pune și întrebări în română despre date — modelul AI alege doar <em>ce</em> se calculează, toate cifrele le calculează codul.</p>
+      <div class="detail-actions">
+        <a href="https://claritate.val.run" class="btn btn-accent" target="_blank" rel="noopener">Live demo</a>
+        <a href="https://github.com/AlexandraMoldovan95/claritate" class="btn btn-ghost" target="_blank" rel="noopener">View on GitHub</a>
+      </div>
+
+      <div class="detail-media">
+        <img src="../images/claritate.jpg" alt="Captură din aplicația Claritate">
+      </div>
+
+      <div class="facts-grid">
+        <div class="fact-block">
+          <h3>Ce face</h3>
+          <p>6 dashboard-uri (sumar general, venit livrat, venit pierdut, cea mai bună/slabă lună, top clienți și produse, sănătatea comenzilor), detecție automată a coloanelor, curățare de date vizibilă și explicată, și un strat de întrebări în limbaj natural în română.</p>
+        </div>
+        <div class="fact-block">
+          <h3>Rolul meu</h3>
+          <p>Ideea de produs, UX-ul, regulile de curățare și plasa de siguranță pentru planurile AI; codul a fost scris în pair-programming cu un asistent AI (Claude).</p>
+        </div>
+        <div class="fact-block">
+          <h3>Calitate</h3>
+          <p>10 teste automate, cifre verificate la ban cu rapoarte independente. Audit de accesibilitate (Impeccable): scor inițial 15/20, corectat până la zero probleme de contrast sau ținte prea mici.</p>
+        </div>
+        <div class="fact-block">
+          <h3>Status</h3>
+          <p>Live pe Val Town · MIT · sursă pe GitHub.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>De ce există</h2>
+        <blockquote style="border-left:3px solid var(--accent); padding-left:16px; margin:0 0 20px; color:var(--text-muted); font-style:italic;">
+          Proiect demo de portofoliu — gândit, construit și testat ca un produs live, livrabil unui client real.
+        </blockquote>
+        <p>
+          Majoritatea fișierelor de vânzări din lumea reală nu sunt curate: au
+          rânduri de total intercalate, duplicate, formate numerice amestecate
+          (românesc și englezesc), statusuri scrise diferit de fiecare dată.
+          Claritate pornește de la ideea că un dashboard bun nu ignoră asta — îl
+          arată explicit utilizatorului ce a găsit și ce a corectat, în loc să
+          calculeze tăcut cifre pe un fișier murdar.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head"><h2>Highlights</h2></div>
+      <ul class="highlight-list">
+        <li><strong>Curățarea e vizibilă, nu ascunsă.</strong> Fiecare rând eliminat sau ajustat apare în raportul „Ce am curățat", cu motivul exact — rânduri goale, totaluri intercalate, duplicate identice, ID-uri duplicate cu conținut diferit (păstrate pe amândouă, cu avertisment).</li>
+        <li><strong>Modelul AI nu calculează niciodată cifre.</strong> Primește doar întrebarea și numele coloanelor, întoarce un plan JSON (ce metrică, ce filtre), iar codul validează planul și face singur calculul — cu o plasă de siguranță care corectează planul dacă acesta contrazice explicit întrebarea.</li>
+        <li><strong>Funcționează și fără cheie API.</strong> Dacă modelul gratuit din Val Town nu răspunde, întrebarea trece automat pe un planificator bazat pe reguli, care înțelege mai puține formulări dar nu lasă utilizatorul blocat.</li>
+        <li><strong>„Venit livrat / venit pierdut", nu „profit".</strong> Fișierele nu au costuri, deci aplicația refuză deliberat să inventeze o cifră de profit pe care nu o poate calcula corect.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="prose">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Cum a fost construită</h2>
+        <p>
+          Backend TypeScript pe Val Town (rute, SQLite pentru fișierele urcate,
+          modulele de citire/normalizare/curățare CSV), frontend cu grafice SVG
+          scrise direct în cod. Fluxul de întrebări: întrebare → plan JSON de la
+          model → validare → plasă de siguranță → calcul în cod → propoziție de
+          răspuns. Direcția vizuală ("Corporate Trust") a venit dintr-un sistem de
+          design folosit ca referință, adaptat separat pentru acest proiect.
+        </p>
+      </div>
+      <div class="stack-row">
+        <span class="chip">TypeScript</span>
+        <span class="chip">Val Town</span>
+        <span class="chip">SQLite</span>
+        <span class="chip">SVG charts</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="next-project">
+        <a href="../index.html#portfolio" class="back-link" style="margin:0;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to all projects</a>
+        <a href="document-embedding-studio.html" class="btn btn-ghost">Next: Document Embedding Studio →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 Alexandra Moldovan.</span>
+    <div class="footer-links">
+      <a href="https://github.com/AlexandraMoldovan95" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/alexandra-moldovan-528152102/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../script.js"></script>
+</body>
+</html>

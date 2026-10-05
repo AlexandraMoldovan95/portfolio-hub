@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desktop Buddy — Alexandra Moldovan</title>
+<meta name="description" content="A Windows companion that records only the app you're testing, starts and stops itself, and turns the run into short MP4 clips.">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="../index.html" class="brand">Alexandra Moldovan</a>
+    <div class="header-actions">
+      <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="detail-hero">
+    <div class="wrap">
+      <a href="../index.html#portfolio" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to portfolio</a>
+      <div class="eyebrow">Desktop app · Electron</div>
+      <h1>Desktop Buddy</h1>
+      <p class="detail-pitch">A Windows companion that records only the app you are testing, starts and stops by itself, and turns the run into short MP4 clips.</p>
+      <div class="detail-actions">
+        <a href="https://github.com/AlexandraMoldovan95/desktop-buddy" class="btn btn-accent" target="_blank" rel="noopener">View on GitHub</a>
+      </div>
+
+      <div class="detail-media">
+        <img src="../images/desktop-buddy.png" alt="Desktop Buddy app screenshot — the buddy companion and the live statistics panel">
+      </div>
+
+      <div class="facts-grid">
+        <div class="fact-block">
+          <h3>What</h3>
+          <p>Desktop app (Electron, vanilla JS) with an animated buddy that grows with your focus time. It records one app window by its title, joins relaunches into one file, lets you mark good moments with one click, and cuts clips or a short movie without ffmpeg. Also: a focus timer with statistics, notes with reminders, a clipboard history that never saves secrets, and screenshots you can draw on. Works offline. Playable in the browser.</p>
+        </div>
+        <div class="fact-block">
+          <h3>My role</h3>
+          <p>Product idea, UX and visual design, feature specs, QA (72 test cases, a defect log), and three audit rounds. The code was written in pair-programming with an AI assistant (Claude).</p>
+        </div>
+        <div class="fact-block">
+          <h3>Quality</h3>
+          <p>294 unit tests · ESLint + CI on Windows · 72 manual test cases passed · ~145 audit findings fixed.</p>
+        </div>
+        <div class="fact-block">
+          <h3>Status</h3>
+          <p>v1.16.1 · MIT · source on GitHub. No hosted demo yet — a browser-playable demo and Netlify deploy are planned next.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Why this exists</h2>
+        <p>
+          I needed a way to capture clean recordings while testing an app — without
+          manually starting and stopping a recorder, and without ending up with
+          one giant unusable video per session. The buddy itself (an on-screen
+          companion that reacts to focus time) came out of wanting the tool to be
+          something I'd actually enjoy keeping open all day, not just a background
+          utility.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head"><h2>Highlights</h2></div>
+      <ul class="highlight-list">
+        <li><strong>Window-targeted recording.</strong> Captures a single app window by its title and joins relaunches of the same app into one continuous file, instead of leaving you with a folder of fragments.</li>
+        <li><strong>Clip cutting without ffmpeg.</strong> Flag a good moment during a recording and cut clips or a short highlight movie afterward, using the browser's own media pipeline (MediaRecorder + canvas) rather than shelling out to an external binary.</li>
+        <li><strong>A clipboard history that's deliberately safe.</strong> Keeps recent clipboard entries for convenience, with logic in place to never save anything that looks like a secret.</li>
+        <li><strong>Electron hardened, not just functional.</strong> Sandbox, CSP, IPC channel checks, and encrypted secrets — security review was part of the three audit rounds, not an afterthought.</li>
+        <li><strong>Testable by design.</strong> Core logic lives in pure, framework-free modules specifically so it could be unit tested — 294 tests — rather than only exercised by hand.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="prose">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>How it was built</h2>
+        <p>
+          Electron on top of vanilla JavaScript — no UI framework. The app logic
+          (scheduling, clip-cutting rules, the buddy's state machine) is written as
+          pure, side-effect-free modules so it can be unit tested without spinning
+          up Electron itself; the Electron layer is a thin shell around it. Media
+          capture uses the browser's native <strong>MediaRecorder</strong> and
+          <strong>canvas</strong> APIs rather than a bundled ffmpeg binary, which
+          keeps the install small. Quality was treated as a first-class part of
+          the build: a written test plan, a defect log, and three full audit
+          passes before calling any version done.
+        </p>
+      </div>
+      <div class="stack-row">
+        <span class="chip">Electron</span>
+        <span class="chip">Vanilla JavaScript</span>
+        <span class="chip">MediaRecorder API</span>
+        <span class="chip">ESLint</span>
+        <span class="chip">GitHub Actions (Windows CI)</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="next-project">
+        <a href="../index.html#portfolio" class="back-link" style="margin:0;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to all projects</a>
+        <a href="flashcards.html" class="btn btn-ghost">Next: Flashcards →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 Alexandra Moldovan.</span>
+    <div class="footer-links">
+      <a href="https://github.com/AlexandraMoldovan95" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/alexandra-moldovan-528152102/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../script.js"></script>
+</body>
+</html>

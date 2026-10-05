@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Tracker — Alexandra Moldovan</title>
+<meta name="description" content="A job application tracker with real multi-user data isolation, enforced at the database level via Supabase Row Level Security.">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="../index.html" class="brand">Alexandra Moldovan</a>
+    <div class="header-actions">
+      <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="detail-hero">
+    <div class="wrap">
+      <a href="../index.html#portfolio" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to portfolio</a>
+      <div class="eyebrow">PWA · Supabase</div>
+      <h1>Job Tracker</h1>
+      <p class="detail-pitch">A job application tracker with real authentication and database-level data isolation — plain HTML/CSS/JS and Supabase (Postgres + Auth + Row Level Security), no framework, no build step.</p>
+      <div class="detail-actions">
+        <a href="https://job-tracker-69cc42.netlify.app/" class="btn btn-accent" target="_blank" rel="noopener">Live demo</a>
+        <a href="https://github.com/AlexandraMoldovan95/job-tracker" class="btn btn-ghost" target="_blank" rel="noopener">View on GitHub</a>
+      </div>
+
+      <div class="detail-media">
+        <img src="../images/job-tracker.webp" alt="Job Tracker app screenshot">
+      </div>
+
+      <div class="facts-grid">
+        <div class="fact-block">
+          <h3>What</h3>
+          <p>Auth (email/password), companies, applications with status tracking, a dashboard with response-rate and top-company stats, multi-version resumes exportable to a formatted HTML/PDF file, and an installable PWA with a proper offline fallback.</p>
+        </div>
+        <div class="fact-block">
+          <h3>My role</h3>
+          <p>Product idea, UX, and the security model (RLS policy design); built in pair-programming with an AI assistant (Claude).</p>
+        </div>
+        <div class="fact-block">
+          <h3>Quality</h3>
+          <p>Data isolation was tested, not assumed: a second test account was created specifically to confirm it saw zero of the first account's data.</p>
+        </div>
+        <div class="fact-block">
+          <h3>Status</h3>
+          <p>Live · MIT · source on GitHub.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Why this exists</h2>
+        <p>
+          A job tracker looks like a simple CRUD problem, but it's a good vehicle
+          to demonstrate something that's easy to get wrong: real multi-user data
+          isolation, enforced where it actually matters — the database — not just
+          hidden in the UI. Every row a user creates is tied to their own
+          <code>auth.uid()</code> through Postgres Row Level Security policies, so
+          even a broken or malicious client can't read another user's data.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head"><h2>Highlights</h2></div>
+      <ul class="highlight-list">
+        <li><strong>Row Level Security on every table, scoped to the logged-in user.</strong> Not an app-level filter — enforced by Postgres itself, so a user can only select, insert, update, or delete their own rows.</li>
+        <li><strong>Isolation verified with a second account, not assumed.</strong> A dedicated test account confirmed it saw zero companies and zero applications from the first account.</li>
+        <li><strong>A real HTTP Content-Security-Policy header</strong> via Netlify's <code>_headers</code> file — not just a meta tag, which can't carry <code>frame-ancestors</code> — plus X-Frame-Options and a locked-down Referrer-Policy.</li>
+        <li><strong>A modal UX bug fixed properly.</strong> Modals used to close on any click outside them, so selecting text inside a field (a drag that ends over the backdrop) could silently discard unsaved input. Fixed by removing backdrop-close entirely, with a visual cue when changes are unsaved.</li>
+        <li><strong>An honest PWA.</strong> The service worker makes the app installable with a proper offline fallback screen, but deliberately doesn't cache the app shell — since the app is live-data-dependent anyway, caching it would just produce the classic bug of users stuck on a stale version after a deploy.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="prose">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>How it was built</h2>
+        <p>
+          No framework, no bundler — HTML5/CSS3/vanilla JavaScript talking
+          directly to Supabase (Postgres + Auth + Row Level Security), loaded from
+          a pinned CDN URL with Subresource Integrity. The Supabase key shipped to
+          the client is the publishable key, designed to be public — the real
+          access control is the RLS policies, not key secrecy. The visual
+          direction (vaporwave/outrun — cyan and magenta on near-black, a CRT
+          scanline overlay) was a deliberate choice to make a CRUD app memorable
+          rather than generic.
+        </p>
+      </div>
+      <div class="stack-row">
+        <span class="chip">Supabase (Postgres + Auth + RLS)</span>
+        <span class="chip">Vanilla JavaScript</span>
+        <span class="chip">PWA / Service Worker</span>
+        <span class="chip">Netlify</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="next-project">
+        <a href="../index.html#portfolio" class="back-link" style="margin:0;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to all projects</a>
+        <a href="skyline-weather.html" class="btn btn-ghost">Next: Skyline Weather →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 Alexandra Moldovan.</span>
+    <div class="footer-links">
+      <a href="https://github.com/AlexandraMoldovan95" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/alexandra-moldovan-528152102/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flashcards — Alexandra Moldovan</title>
+<meta name="description" content="A single-file spaced-repetition flashcards app with a real SM-2-style scheduler and optional AI card generation.">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="../index.html" class="brand">Alexandra Moldovan</a>
+    <div class="header-actions">
+      <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="detail-hero">
+    <div class="wrap">
+      <a href="../index.html#portfolio" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to portfolio</a>
+      <div class="eyebrow">Single-file app · Vanilla JS</div>
+      <h1>Flashcards</h1>
+      <p class="detail-pitch">A single-file spaced-repetition flashcards app, built with plain HTML, CSS, and JavaScript — no frameworks, no build step, no backend.</p>
+      <div class="detail-actions">
+        <a href="https://github.com/AlexandraMoldovan95/flashcards" class="btn btn-accent" target="_blank" rel="noopener">View on GitHub</a>
+      </div>
+
+      <div class="detail-media">
+        <img src="../images/flashcards.png" alt="Flashcards app screenshot">
+      </div>
+
+      <div class="facts-grid">
+        <div class="fact-block">
+          <h3>What</h3>
+          <p>A spaced-repetition flashcard app with a simplified SM-2–style scheduler, categories and search, optional images per card, two quiz modes, a coins-and-hints system, stats, and optional AI-assisted card generation (bring your own API key). Everything stays in the browser's local storage — no server, no account.</p>
+        </div>
+        <div class="fact-block">
+          <h3>My role</h3>
+          <p>Product idea, UX, and the scheduling/data-model design; built in pair-programming with an AI assistant (Claude).</p>
+        </div>
+        <div class="fact-block">
+          <h3>Quality</h3>
+          <p>Color system verified against WCAG AA contrast by calculation, not by eye, in both light and dark mode.</p>
+        </div>
+        <div class="fact-block">
+          <h3>Status</h3>
+          <p>Stable, single HTML file · MIT · source on GitHub. Live demo not deployed yet.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Why this exists</h2>
+        <p>
+          Most flashcard apps either lock data behind an account or are
+          over-engineered for what's fundamentally a simple problem: show a
+          question, hide the answer, let the learner grade their own recall, and
+          use that grade to decide when to show the card again. This was an
+          exercise in building that loop well — a real spaced-repetition
+          scheduler, a thoughtful visual design, and a few small ideas
+          (hint-buying with earned coins, AI-assisted card generation) layered on
+          top without compromising the core mechanic.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head"><h2>Highlights</h2></div>
+      <ul class="highlight-list">
+        <li><strong>Deterministic category colors.</strong> Each category's color is derived from a hash of its name at render time — never stored — so the data model never needs a "color" field and two devices always render categories identically.</li>
+        <li><strong>The answer isn't in the DOM until you ask for it.</strong> Clicking "Show Answer" is what writes the answer into the page, rather than just unhiding it with CSS — a deliberate choice so the quiz can't be "cheated" by inspecting the page early.</li>
+        <li><strong>An anti-farming rule in free-practice mode.</strong> "All cards" mode intentionally doesn't touch the spaced-repetition schedule, and a card only earns coins once per calendar day there — otherwise the same card could be regraded in a loop for infinite coins.</li>
+        <li><strong>AI card generation stays optional and reviewed.</strong> Paste text or drop a file, and Claude drafts question/answer pairs — but nothing is added to the deck until each card is reviewed and confirmed.</li>
+        <li><strong>Client-side image compression.</strong> Images attached to cards are resized and compressed before saving, so a handful of photos don't blow through the browser's local storage quota.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="prose">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>How it was built</h2>
+        <p>
+          HTML5, CSS3, and vanilla JavaScript (ES6+) — no framework, no bundler.
+          Building the scheduling algorithm, the data model, and the UI state
+          management by hand was the point of the exercise, not a constraint I
+          hit by accident. LocalStorage is the only persistence layer; the
+          optional AI generation feature calls the Anthropic API directly from
+          the browser, with the user's own key.
+        </p>
+      </div>
+      <div class="stack-row">
+        <span class="chip">HTML5 / CSS3</span>
+        <span class="chip">Vanilla JavaScript</span>
+        <span class="chip">LocalStorage</span>
+        <span class="chip">Anthropic API (BYOK)</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="next-project">
+        <a href="../index.html#portfolio" class="back-link" style="margin:0;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to all projects</a>
+        <a href="job-tracker.html" class="btn btn-ghost">Next: Job Tracker →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 Alexandra Moldovan.</span>
+    <div class="footer-links">
+      <a href="https://github.com/AlexandraMoldovan95" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/alexandra-moldovan-528152102/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../script.js"></script>
+</body>
+</html>

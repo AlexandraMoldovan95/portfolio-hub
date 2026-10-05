@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alexandra Moldovan — Portfolio</title>
+<meta name="description" content="Six self-built projects — product design, QA, and code — by Alexandra Moldovan, transitioning from technical support into QA / software development.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="brand">Alexandra Moldovan</a>
+    <div class="header-actions">
+      <a href="https://www.linkedin.com/in/alexandra-moldovan-528152102/" class="btn btn-ghost" target="_blank" rel="noopener">LinkedIn</a>
+      <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs-bar">
+  <div class="wrap">
+    <div class="tabs" role="tablist" aria-label="Site sections">
+      <button class="tab-btn" role="tab" id="btn-about" data-tab="about" aria-selected="false">About me</button>
+      <button class="tab-btn" role="tab" id="btn-portfolio" data-tab="portfolio" aria-selected="false">Portfolio</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap">
+
+    <section id="panel-about" class="tab-panel" role="tabpanel" aria-labelledby="btn-about" hidden>
+      <div class="tab-hero">
+        <div class="eyebrow">About</div>
+        <div class="identity-row">
+          <img class="avatar" src="images/avatar.jpg" alt="Alexandra Moldovan">
+          <h1 style="margin:0;">Hi, I'm Alexandra (Ada).</h1>
+        </div>
+        <p class="hero-lede">
+          Based in Bucharest, transitioning from technical support into QA and
+          software development — building real projects to prove it, not just claim it.
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-bio">
+          <p>
+            I spent the last few years in technical support — most recently
+            three years at <strong>HP</strong> as an EMEA Level&nbsp;1 Technical
+            Support Engineer, troubleshooting issues for internal teams and
+            partners, escalating across ten different L3/dev teams, and acting
+            as the go-to specialist on my own team's tooling. Alongside that, I
+            worked as a <strong>QA tester at uTest</strong>, getting my first
+            real hands-on exposure to structured test cycles and bug reporting.
+          </p>
+          <p>
+            In 2026 I decided to go all-in on that QA and development direction.
+            I'm studying for <strong>ISTQB certification</strong> on my own and
+            completing an intensive software development course, while building
+            the six projects in the Portfolio tab to actually prove the skills —
+            product decisions, UX, QA process, and the code itself — rather than
+            just claim them.
+          </p>
+          <p class="muted">
+            I'm upfront about how these were built: the product decisions, UX,
+            specs, and testing are mine; the code was written in
+            pair-programming with an AI assistant (Claude). I think that's an
+            honest and increasingly normal way to work, and I'd rather say so
+            than pretend otherwise.
+          </p>
+        </div>
+
+        <div class="about-sidebar">
+          <div class="about-card">
+            <h3>Currently</h3>
+            <ul class="now-list">
+              <li>Studying for ISTQB (Foundation Level) certification, self-directed</li>
+              <li>Completing an intensive software development course (Step IT Academy)</li>
+              <li>Building and shipping the six projects in this portfolio</li>
+              <li>Looking for QA / entry-level development roles</li>
+            </ul>
+          </div>
+          <div class="about-card">
+            <h3>Background</h3>
+            <div class="chip-row">
+              <span class="chip">Technical Support (HP)</span>
+              <span class="chip">QA Testing (uTest)</span>
+              <span class="chip">ISTQB (in progress)</span>
+            </div>
+          </div>
+          <div class="about-card">
+            <h3>CV</h3>
+            <span class="btn btn-ghost btn-disabled" aria-disabled="true">Download CV (PDF) — coming soon</span>
+            <p class="cv-note">Full CV not uploaded yet — in the meantime, my background is on <a href="https://www.linkedin.com/in/alexandra-moldovan-528152102/" target="_blank" rel="noopener">LinkedIn</a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="panel-portfolio" class="tab-panel" role="tabpanel" aria-labelledby="btn-portfolio" hidden>
+      <div class="tab-hero">
+        <div class="eyebrow">Portfolio</div>
+        <h1>Six things I built, start to finish.</h1>
+        <p class="hero-lede">Click any project for the full write-up: what it does, why it's built that way, and links to the code and live demo where one exists.</p>
+      </div>
+
+      <div class="project-list">
+
+        <a class="project-row" href="projects/desktop-buddy.html">
+          <div class="project-row-media"><img src="images/desktop-buddy.png" alt="Desktop Buddy app screenshot" loading="lazy"></div>
+          <div class="project-row-body">
+            <div class="chip-row">
+              <span class="chip chip-accent">Electron</span>
+              <span class="chip">Windows</span>
+              <span class="chip">QA</span>
+            </div>
+            <h3>Desktop Buddy</h3>
+            <p>A Windows companion that records only the app you're testing, starts and stops itself, and turns the run into short MP4 clips.</p>
+          </div>
+          <div class="project-row-arrow"><span class="arrow-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="project-row" href="projects/flashcards.html">
+          <div class="project-row-media"><img src="images/flashcards.png" alt="Flashcards app screenshot" loading="lazy"></div>
+          <div class="project-row-body">
+            <div class="chip-row">
+              <span class="chip chip-accent">Vanilla JS</span>
+              <span class="chip">AI-assisted</span>
+            </div>
+            <h3>Flashcards</h3>
+            <p>A single-file spaced-repetition app with a real SM-2–style scheduler and optional AI card generation — no backend, no account.</p>
+          </div>
+          <div class="project-row-arrow"><span class="arrow-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="project-row" href="projects/job-tracker.html">
+          <div class="project-row-media"><img src="images/job-tracker.webp" alt="Job Tracker app screenshot" loading="lazy"></div>
+          <div class="project-row-body">
+            <div class="chip-row">
+              <span class="chip chip-accent">Supabase</span>
+              <span class="chip">Security</span>
+              <span class="chip">PWA</span>
+            </div>
+            <h3>Job Tracker</h3>
+            <p>A job application tracker with real multi-user data isolation, enforced at the database level — not just hidden in the UI.</p>
+          </div>
+          <div class="project-row-arrow"><span class="arrow-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="project-row" href="projects/skyline-weather.html">
+          <div class="project-row-media"><img src="images/skyline-weather.png" alt="Skyline Weather app screenshot" loading="lazy"></div>
+          <div class="project-row-body">
+            <div class="chip-row">
+              <span class="chip chip-accent">Vanilla JS</span>
+              <span class="chip">BYOK</span>
+            </div>
+            <h3>Skyline Weather</h3>
+            <p>A weather app where every visitor brings their own free API key — no shared backend key to leak or rate-limit.</p>
+          </div>
+          <div class="project-row-arrow"><span class="arrow-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="project-row" href="projects/claritate.html">
+          <div class="project-row-media"><img src="images/claritate.jpg" alt="Claritate app screenshot" loading="lazy"></div>
+          <div class="project-row-body">
+            <div class="chip-row">
+              <span class="chip chip-accent">AI</span>
+              <span class="chip">Data</span>
+            </div>
+            <h3>Claritate</h3>
+            <p>Upload any sales CSV and get six dashboards — automatic cleaning, column detection, and a Romanian-language Q&amp;A layer. The AI only picks what to calculate; the code does the math.</p>
+          </div>
+          <div class="project-row-arrow"><span class="arrow-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a class="project-row" href="projects/document-embedding-studio.html">
+          <div class="project-row-media">
+            <div class="media-placeholder" style="background: var(--surface-2); color: var(--text-muted);">DES</div>
+          </div>
+          <div class="project-row-body">
+            <div class="chip-row">
+              <span class="chip chip-accent">Docker</span>
+              <span class="chip">RAG</span>
+              <span class="chip">Python</span>
+            </div>
+            <h3>Document Embedding Studio</h3>
+            <p>A local-first RAG ingestion pipeline — drop in documents, it chunks and embeds them locally, then you can search or chat with them.</p>
+          </div>
+          <div class="project-row-arrow"><span class="arrow-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 Alexandra Moldovan.</span>
+    <div class="footer-links">
+      <a href="https://github.com/AlexandraMoldovan95" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/alexandra-moldovan-528152102/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
