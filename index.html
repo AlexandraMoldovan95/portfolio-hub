@@ -61,10 +61,11 @@
           <p>
             In 2026 I decided to go all-in on that QA and development direction.
             I'm studying for <strong>ISTQB certification</strong> on my own and
-            completing an intensive software development course, while building
-            the six projects in the Portfolio tab to actually prove the skills —
-            product decisions, UX, QA process, and the code itself — rather than
-            just claim them.
+            taking the <strong>"Vibe Coding" course at Step IT Academy</strong>
+            — building real applications with databases using AI-assisted
+            development — while building the six projects in the Portfolio tab
+            to actually prove the skills — product decisions, UX, QA process,
+            and the code itself — rather than just claim them.
           </p>
           <p class="muted">
             I'm upfront about how these were built: the product decisions, UX,
@@ -80,7 +81,7 @@
             <h3>Currently</h3>
             <ul class="now-list">
               <li>Studying for ISTQB (Foundation Level) certification, self-directed</li>
-              <li>Completing an intensive software development course (Step IT Academy)</li>
+              <li>Taking the "Vibe Coding" course at Step IT Academy — building apps with databases using AI-assisted development</li>
               <li>Building and shipping the six projects in this portfolio</li>
               <li>Looking for QA / entry-level development roles</li>
             </ul>
@@ -91,6 +92,14 @@
               <span class="chip">Technical Support (HP)</span>
               <span class="chip">QA Testing (uTest)</span>
               <span class="chip">ISTQB (in progress)</span>
+              <span class="chip">Manual Testing</span>
+              <span class="chip">Bug Reporting</span>
+              <span class="chip">Jira &amp; ITSM</span>
+              <span class="chip">Troubleshooting</span>
+              <span class="chip">Technical Documentation</span>
+              <span class="chip">Cross-team Escalation</span>
+              <span class="chip">Data Analysis (Power BI)</span>
+              <span class="chip">Customer Support</span>
             </div>
           </div>
           <div class="about-card">
@@ -166,7 +175,7 @@
         </a>
 
         <a class="project-row" href="projects/claritate.html">
-          <div class="project-row-media"><img src="images/claritate.jpg" alt="Claritate app screenshot" loading="lazy"></div>
+          <div class="project-row-media"><img src="images/claritate.jpg" alt="Claritate app screenshot" loading="lazy" style="object-position: left center;"></div>
           <div class="project-row-body">
             <div class="chip-row">
               <span class="chip chip-accent">AI</span>
@@ -180,7 +189,62 @@
 
         <a class="project-row" href="projects/document-embedding-studio.html">
           <div class="project-row-media">
-            <div class="media-placeholder" style="background: var(--surface-2); color: var(--text-muted);">DES</div>
+            <svg class="pipeline-diagram" viewBox="0 0 960 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Document ingestion pipeline: document to chunks to embeddings to vector database">
+              <rect x="0" y="0" width="960" height="600" fill="var(--surface-2)"/>
+              <g fill="var(--border)">
+                <circle cx="60" cy="60" r="2"/><circle cx="120" cy="60" r="2"/><circle cx="180" cy="60" r="2"/>
+                <circle cx="60" cy="120" r="2"/><circle cx="120" cy="120" r="2"/><circle cx="180" cy="120" r="2"/>
+                <circle cx="780" cy="480" r="2"/><circle cx="840" cy="480" r="2"/><circle cx="900" cy="480" r="2"/>
+                <circle cx="780" cy="540" r="2"/><circle cx="840" cy="540" r="2"/><circle cx="900" cy="540" r="2"/>
+              </g>
+              <line x1="150" y1="300" x2="810" y2="300" stroke="var(--border)" stroke-width="2" stroke-dasharray="2 8" stroke-linecap="round"/>
+              <g transform="translate(80,230)">
+                <rect x="0" y="0" width="110" height="140" rx="10" fill="var(--surface)" stroke="var(--border)" stroke-width="2"/>
+                <path d="M70 0 L110 40 L70 40 Z" fill="var(--border)"/>
+                <line x1="20" y1="60" x2="90" y2="60" stroke="var(--text-muted)" stroke-width="4" stroke-linecap="round"/>
+                <line x1="20" y1="78" x2="90" y2="78" stroke="var(--text-muted)" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
+                <line x1="20" y1="96" x2="70" y2="96" stroke="var(--text-muted)" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
+              </g>
+              <text x="135" y="410" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="22" font-weight="600" fill="var(--text)">Document</text>
+              <text x="135" y="434" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" fill="var(--text-muted)">PDF · DOCX · MD · TXT</text>
+              <path d="M 220 300 L 262 300" stroke="var(--text-muted)" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+              <g transform="translate(300,255)">
+                <rect x="18" y="0" width="90" height="34" rx="7" fill="var(--surface)" stroke="var(--border)" stroke-width="2"/>
+                <rect x="8" y="42" width="90" height="34" rx="7" fill="var(--surface)" stroke="var(--border)" stroke-width="2"/>
+                <rect x="0" y="84" width="90" height="34" rx="7" fill="var(--surface)" stroke="var(--accent)" stroke-width="2.5"/>
+              </g>
+              <text x="355" y="410" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="22" font-weight="600" fill="var(--text)">Chunks</text>
+              <text x="355" y="434" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" fill="var(--text-muted)">overlapping windows</text>
+              <path d="M 440 300 L 482 300" stroke="var(--text-muted)" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+              <g transform="translate(520,240)">
+                <circle cx="60" cy="60" r="58" fill="none" stroke="var(--border)" stroke-width="2"/>
+                <circle cx="60" cy="60" r="5" fill="var(--accent)"/>
+                <circle cx="90" cy="30" r="5" fill="var(--accent)"/>
+                <circle cx="30" cy="35" r="5" fill="var(--accent)"/>
+                <circle cx="95" cy="85" r="5" fill="var(--accent)"/>
+                <circle cx="25" cy="90" r="5" fill="var(--accent)"/>
+                <line x1="60" y1="60" x2="90" y2="30" stroke="var(--accent)" stroke-width="1.5" opacity="0.6"/>
+                <line x1="60" y1="60" x2="30" y2="35" stroke="var(--accent)" stroke-width="1.5" opacity="0.6"/>
+                <line x1="60" y1="60" x2="95" y2="85" stroke="var(--accent)" stroke-width="1.5" opacity="0.6"/>
+                <line x1="60" y1="60" x2="25" y2="90" stroke="var(--accent)" stroke-width="1.5" opacity="0.6"/>
+              </g>
+              <text x="580" y="410" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="22" font-weight="600" fill="var(--text)">Embed</text>
+              <text x="580" y="434" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" fill="var(--text-muted)">local model, 384-dim</text>
+              <path d="M 668 300 L 710 300" stroke="var(--text-muted)" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+              <g transform="translate(740,235)">
+                <path d="M0 18 a60 18 0 1 0 120 0 a60 18 0 1 0 -120 0" fill="var(--surface)" stroke="var(--border)" stroke-width="2"/>
+                <path d="M0 18 L0 110 a60 18 0 0 0 120 0 L120 18" fill="var(--surface)" stroke="var(--border)" stroke-width="2"/>
+                <path d="M0 18 a60 18 0 0 0 120 0" fill="none" stroke="var(--border)" stroke-width="2"/>
+                <path d="M0 64 a60 18 0 0 0 120 0" fill="none" stroke="var(--accent)" stroke-width="2" opacity="0.8"/>
+              </g>
+              <text x="800" y="410" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="22" font-weight="600" fill="var(--text)">Vector DB</text>
+              <text x="800" y="434" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" fill="var(--text-muted)">ChromaDB, persistent</text>
+              <defs>
+                <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
+                  <path d="M0,0 L6,3 L0,6 Z" fill="var(--text-muted)"/>
+                </marker>
+              </defs>
+            </svg>
           </div>
           <div class="project-row-body">
             <div class="chip-row">

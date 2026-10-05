@@ -384,13 +384,19 @@ main > .wrap, .tab-panel { padding-top: 0; }
   background: var(--surface-2);
 }
 
-.project-row-media img {
+.project-row-media img,
+.project-row-media svg {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
   transition: transform 0.5s var(--ease);
 }
-.project-row:hover .project-row-media img { transform: scale(1.06); }
+.project-row:hover .project-row-media img,
+.project-row:hover .project-row-media svg { transform: scale(1.06); }
+
+.pipeline-diagram { background: var(--surface-2); }
+.detail-media .pipeline-diagram { width: 100%; height: auto; display: block; }
 
 .media-placeholder {
   width: 100%;
