@@ -337,6 +337,30 @@ main > .wrap, .tab-panel { padding-top: 0; }
   .about-grid { grid-template-columns: 1fr; }
 }
 
+/* Staggered entrance when the About tab activates. [hidden] -> display:none
+   means this plays from scratch every time the panel is shown (same trick
+   .tab-panel's own panel-in animation already relies on) — no JS needed.
+   Short and gentle on purpose: this is a professional portfolio, not a
+   landing page, so the motion should read as polish, not a showpiece. */
+@keyframes about-fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+#panel-about .identity-row,
+#panel-about .hero-lede,
+#panel-about .about-bio > p,
+#panel-about .about-sidebar .about-card {
+  animation: about-fade-up 0.5s var(--ease) both;
+}
+#panel-about .identity-row { animation-delay: 0.02s; }
+#panel-about .hero-lede { animation-delay: 0.08s; }
+#panel-about .about-bio > p:nth-child(1) { animation-delay: 0.14s; }
+#panel-about .about-bio > p:nth-child(2) { animation-delay: 0.19s; }
+#panel-about .about-bio > p:nth-child(3) { animation-delay: 0.24s; }
+#panel-about .about-sidebar .about-card:nth-child(1) { animation-delay: 0.16s; }
+#panel-about .about-sidebar .about-card:nth-child(2) { animation-delay: 0.22s; }
+#panel-about .about-sidebar .about-card:nth-child(3) { animation-delay: 0.28s; }
+
 /* ---------- Project list (stacked rows) ---------- */
 
 .project-list {
