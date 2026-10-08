@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Halvorsen &amp; Reyes Builders — Alexandra Moldovan</title>
+<meta name="description" content="A one-page site for a fictional construction company, with a real Supabase backend: rate-limited lead form and an AI chatbot scoped to only answer questions about the business.">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="../index.html" class="brand">Alexandra Moldovan</a>
+    <div class="header-actions">
+      <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="detail-hero">
+    <div class="wrap">
+      <a href="../index.html#portfolio" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to portfolio</a>
+      <div class="eyebrow">Client site · Supabase · AI chatbot</div>
+      <h1>Halvorsen &amp; Reyes Builders</h1>
+      <p class="detail-pitch">A one-page marketing site for <strong>Halvorsen &amp; Reyes Builders</strong> — a fictional Denver construction company, used as a case study for building a small business site the way a real client would need it: fast, accessible, and with a lead form and chatbot that are actually safe to put in front of strangers on the internet.</p>
+      <div class="detail-actions">
+        <a href="https://halvorsen-reyes-builders-655f70.netlify.app/" class="btn btn-accent" target="_blank" rel="noopener">Live demo</a>
+        <a href="https://github.com/AlexandraMoldovan95/halvorsen-reyes-builders" class="btn btn-ghost" target="_blank" rel="noopener">View on GitHub</a>
+      </div>
+
+      <div class="detail-media">
+        <img src="../images/halvorsen-reyes-builders.webp" alt="Halvorsen & Reyes Builders site screenshot">
+      </div>
+
+      <div class="facts-grid">
+        <div class="fact-block">
+          <h3>What it does</h3>
+          <p>Hero, services, a 5-project portfolio carousel, team section, and a "Request a quote" form — plus a chatbot that answers questions about the company and politely redirects anything else to the form instead of making things up.</p>
+        </div>
+        <div class="fact-block">
+          <h3>My role</h3>
+          <p>Product decisions, content, the design system, and the security/architecture choices below; the code was written in pair-programming with an AI assistant (Claude).</p>
+        </div>
+        <div class="fact-block">
+          <h3>Quality</h3>
+          <p>Audited with Lighthouse and an automated accessibility/design checker, fixed to a clean score across five review passes. Security-reviewed: no secret keys in client code, verified directly from View Source and Network.</p>
+        </div>
+        <div class="fact-block">
+          <h3>Status</h3>
+          <p>Live on Netlify · MIT · fictional client, used as a case study · source on GitHub.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Why it exists</h2>
+        <blockquote style="border-left:3px solid var(--accent); padding-left:16px; margin:0 0 20px; color:var(--text-muted); font-style:italic;">
+          A small business site is a good test of restraint: no framework, no backend you don't need, and every "smart" feature has to earn the risk it adds.
+        </blockquote>
+        <p>
+          The brief was a typical small-business ask: a fast one-page site, a way
+          for visitors to request a quote, and a chatbot that can answer basic
+          questions without a human on call 24/7. The interesting part isn't the
+          page itself — it's making the two features that touch the outside
+          world (a public form and a public chatbot) safe to actually ship:
+          rate-limited, unable to leak a key, and unable to be used for anything
+          other than what it's there for.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head"><h2>Highlights</h2></div>
+      <ul class="highlight-list">
+        <li><strong>The Anthropic API key never reaches the browser.</strong> The chatbot calls a Supabase Edge Function, which holds the key as a server-side secret and calls the model from there — confirmed empty in View Source and the Network tab, not just assumed.</li>
+        <li><strong>Row-level security does the access control, not the UI.</strong> The public <code>anon</code> key can only <em>insert</em> into the leads table, never read it back — enforced by Postgres RLS policies, the same pattern used in Job Tracker.</li>
+        <li><strong>Both public endpoints are rate-limited.</strong> The chatbot caps out at 20 messages/hour per visitor (fingerprinted by a hashed IP, not the raw IP, deleted after 2 days) and 300/day total; the lead form caps at 30 requests/hour and 3/day per email — so the public anon key can't be used to spam the form or run up the AI bill.</li>
+        <li><strong>The chatbot knows what it doesn't know.</strong> Ask it to write a poem or quote a price and it declines and points to the form instead of improvising — the system prompt is scoped to company facts only, with no retrieval layer needed for a page this size.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="prose">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>How it was built</h2>
+        <p>
+          Static frontend (vanilla HTML/CSS/JS, no build step) hosted on Netlify,
+          with GSAP + ScrollTrigger for the scroll animations. Backend is
+          Supabase: a <code>leads</code> table behind RLS, and a Deno Edge
+          Function for the chatbot. Images are WebP, capped at 1600px, with
+          separate thumbnail variants for the portfolio carousel so a photo
+          shown at 150px doesn't pull down a 1600px file. Design is a custom
+          black/white/editorial-red system — straight corners throughout, no
+          generic gradients — built in local fonts rather than pulling several
+          files from Google Fonts at runtime.
+        </p>
+      </div>
+      <div class="stack-row">
+        <span class="chip">HTML/CSS/JS</span>
+        <span class="chip">Supabase</span>
+        <span class="chip">Postgres RLS</span>
+        <span class="chip">Edge Functions (Deno)</span>
+        <span class="chip">GSAP</span>
+        <span class="chip">Netlify</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="next-project">
+        <a href="../index.html#portfolio" class="back-link" style="margin:0;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to all projects</a>
+        <a href="desktop-buddy.html" class="btn btn-ghost">Back to the start: Desktop Buddy →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 Alexandra Moldovan.</span>
+    <div class="footer-links">
+      <a href="https://github.com/AlexandraMoldovan95" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/alexandra-moldovan-528152102/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../script.js"></script>
+</body>
+</html>
