@@ -77,14 +77,67 @@
     </div>
   </section>
 
+  <section class="prose">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Cele 6 dashboard-uri</h2>
+        <p>Toate pornesc din același CSV curățat — nu există calcule ascunse, fiecare cifră se poate urmări înapoi la rândurile din fișier.</p>
+      </div>
+      <ul class="highlight-list">
+        <li><strong>Sumar general.</strong> Numărul de comenzi, valoarea totală, medie și mediană, cea mai mare comandă și distribuția pe status.</li>
+        <li><strong>Venit livrat.</strong> Doar comenzile cu status Livrată, evoluția pe luni și topul produselor.</li>
+        <li><strong>Venit pierdut.</strong> Retururi și anulări, împărțirea între ele, și clienții cu cele mai mari pierderi.</li>
+        <li><strong>Cea mai bună / slabă lună.</strong> Calculată după venitul livrat; o lună cu comenzi dar 0 livrări intră cu 0, nu lipsește din grafic; ultima lună e marcată explicit „lună incompletă" dacă datele se opresc înainte de final — altfel ar părea nejustificat de slabă.</li>
+        <li><strong>Top clienți și produse.</strong> După venit livrat, cu ponderea fiecăruia din total și un avertisment separat pentru ID-urile de comandă duplicate.</li>
+        <li><strong>Sănătatea comenzilor.</strong> Rata de livrare, retur și anulare, plus banii blocați în comenzi „În curs" — util pentru cash-flow, nu doar pentru vânzări.</li>
+      </ul>
+    </div>
+  </section>
+
   <section>
     <div class="wrap">
       <div class="section-head"><h2>Highlights</h2></div>
       <ul class="highlight-list">
         <li><strong>Curățarea e vizibilă, nu ascunsă.</strong> Fiecare rând eliminat sau ajustat apare în raportul „Ce am curățat", cu motivul exact — rânduri goale, totaluri intercalate, duplicate identice, ID-uri duplicate cu conținut diferit (păstrate pe amândouă, cu avertisment).</li>
         <li><strong>Modelul AI nu calculează niciodată cifre.</strong> Primește doar întrebarea și numele coloanelor, întoarce un plan JSON (ce metrică, ce filtre), iar codul validează planul și face singur calculul — cu o plasă de siguranță care corectează planul dacă acesta contrazice explicit întrebarea.</li>
-        <li><strong>Funcționează și fără cheie API.</strong> Dacă modelul gratuit din Val Town nu răspunde, întrebarea trece automat pe un planificator bazat pe reguli, care înțelege mai puține formulări dar nu lasă utilizatorul blocat.</li>
+        <li><strong>Plasa de siguranță a prins o greșeală reală a modelului.</strong> La primele teste live, modelul a răspuns la „cât am pierdut din retururi" incluzând și comenzile anulate, iar la „care a fost cea mai slabă lună" a ignorat complet statusul comenzilor. De atunci codul verifică fiecare plan înainte de calcul: dacă întrebarea spune explicit „retururi", „anulări" sau „cea mai ... lună", planul e corectat automat — iar corecția apare în loguri, ca să rămână vizibilă, nu doar tăcută în rezultat.</li>
+        <li><strong>Funcționează și fără cheie API.</strong> Dacă modelul gratuit din Val Town nu răspunde (limită 10 cereri/minut), întrebarea trece automat pe un planificator bazat pe reguli, care înțelege mai puține formulări dar nu lasă utilizatorul blocat.</li>
         <li><strong>„Venit livrat / venit pierdut", nu „profit".</strong> Fișierele nu au costuri, deci aplicația refuză deliberat să inventeze o cifră de profit pe care nu o poate calcula corect.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="prose">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Date neconforme: ce găsește și ce face</h2>
+        <p>
+          Exemplu real folosit la testare, <code>vanzari_2026.csv</code>: 145 de
+          rânduri sub antet, din care 129 de comenzi valide — restul erau din
+          categoriile de mai jos.
+        </p>
+      </div>
+      <ul class="highlight-list">
+        <li><strong>Antetul real nu e pe primul rând.</strong> Dacă fișierul are 2-3 rânduri de text înainte de tabel, aplicația găsește singură rândul care chiar conține numele coloanelor.</li>
+        <li><strong>Rândurile „TOTAL PARȚIAL" / „TOTAL GENERAL" intercalate sunt eliminate.</strong> Lăsate înăuntru, ar duplica toate sumele — nu sunt comenzi reale, sunt subtotaluri puse de cine a exportat fișierul.</li>
+        <li><strong>Același ID, conținut diferit, nu se alege arbitrar o variantă.</strong> Dacă <code>CMD-400003</code> apare de două ori cu date diferite, aplicația păstrează amândouă rândurile și afișează un avertisment explicit, în loc să șteargă „pe ghicite" una dintre ele.</li>
+        <li><strong>Variante de scriere ale aceluiași client sunt unificate.</strong> „Delta Foods SA", „DELTA FOODS SA" și „delta foods sa " (cu spațiu la final) devin un singur client în dashboard-uri, nu trei.</li>
+        <li><strong>Numere și monede amestecate, fără conversie inventată.</strong> <code>"1.841,86"</code> (format românesc) și <code>1,841.86</code> (format englezesc) sunt citite corect ca aceeași valoare; RON și EUR sunt calculate separat, pe dashboard-uri distincte — nu există un curs de schimb inventat.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="prose">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Limite cunoscute</h2>
+        <p>Sunt la fel de explicite în aplicație ca și restul raportului de curățare — nu ascunse într-un FAQ.</p>
+      </div>
+      <ul class="highlight-list">
+        <li><strong>Fișiere de până la 5 MB / 50.000 de rânduri.</strong> Peste asta, aplicația nu încearcă să proceseze parțial — refuză clar fișierul.</li>
+        <li><strong>Monedele nu se convertesc.</strong> RON și EUR au fiecare cifrele lor, calculate separat — niciun curs de schimb inventat.</li>
+        <li><strong>Linkul unui dashboard e public pentru oricine îl are</strong> (nu există login) — pagina spune explicit să nu se încarce date confidențiale.</li>
+        <li><strong>Modelul AI gratuit are o limită de cereri.</strong> Peste ea, planificatorul pe reguli preia întrebările; înțelege mai puține formulări, dar nu lasă utilizatorul fără răspuns.</li>
       </ul>
     </div>
   </section>
@@ -98,8 +151,11 @@
           modulele de citire/normalizare/curățare CSV), frontend cu grafice SVG
           scrise direct în cod. Fluxul de întrebări: întrebare → plan JSON de la
           model → validare → plasă de siguranță → calcul în cod → propoziție de
-          răspuns. Direcția vizuală ("Corporate Trust") a venit dintr-un sistem de
-          design folosit ca referință, adaptat separat pentru acest proiect.
+          răspuns. Testat cu 10 teste automate (cifre verificate la ban cu
+          rapoarte independente) și un audit de accesibilitate Impeccable dus de
+          la 15/20 la scor perfect. Direcția vizuală ("Corporate Trust") a venit
+          dintr-un sistem de design folosit ca referință, adaptat separat pentru
+          acest proiect.
         </p>
       </div>
       <div class="stack-row">
