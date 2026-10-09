@@ -1,7 +1,7 @@
 # Portfolio Hub
 
 The landing page for my project portfolio — two tabs, **About me** and
-**Portfolio**. Portfolio lists seven projects as stacked rows (screenshot +
+**Portfolio**. Portfolio lists eight projects as stacked rows (screenshot +
 pitch), each linking to its own detail page with the full write-up and links
 to its code and live demo.
 
@@ -23,6 +23,7 @@ projects/
   claritate.html
   document-embedding-studio.html
   halvorsen-reyes-builders.html
+  note-organizer.html
 netlify.toml
 .gitignore
 ```

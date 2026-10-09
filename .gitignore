@@ -2,3 +2,6 @@
 # Deploy manually (drag-and-drop) so it still reaches the live site.
 images/avatar.jpg
 1725970215420.jpg
+
+# Local Netlify folder
+.netlify

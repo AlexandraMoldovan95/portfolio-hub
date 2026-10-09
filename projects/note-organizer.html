@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Note Organizer — Alexandra Moldovan</title>
+<meta name="description" content="An offline Windows notes app in Python and Tkinter — rich notes, tables, checklists, repeating notes and a calendar, tested with a 176-mutant mutation suite. Try the browser demo.">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="../index.html" class="brand">Alexandra Moldovan</a>
+    <div class="header-actions">
+      <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="detail-hero">
+    <div class="wrap">
+      <a href="../index.html#portfolio" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to portfolio</a>
+      <div class="eyebrow">Python · Tkinter · Windows desktop</div>
+      <h1>Note Organizer</h1>
+      <p class="detail-pitch">An offline notes app for Windows — rich notes with tables and checklists, notes that repeat, and a calendar that shows them. No account, no cloud, no network calls: everything stays on your own computer.</p>
+      <div class="detail-actions">
+        <a href="https://note-organizer-8f7772.netlify.app/" class="btn btn-accent" target="_blank" rel="noopener">Project site &amp; demo</a>
+        <a href="https://note-organizer-8f7772.netlify.app/demo/" class="btn btn-ghost" target="_blank" rel="noopener">Open the browser demo →</a>
+      </div>
+
+      <div class="detail-media">
+        <img src="../images/note-organizer.webp" alt="The Note Organizer window: the note list on the left, a note with a table open on the right.">
+      </div>
+
+      <div class="facts-grid">
+        <div class="fact-block">
+          <h3>What it does</h3>
+          <p>Rich text (bold, italic, colours, headings, lists), tables you edit in place, a checklist under every note, notes that repeat on a schedule, a calendar that shows them, search/sort/group, a Trash you can restore from, full backups, and copy-paste share codes between copies of the app. Eight light/dark themes.</p>
+        </div>
+        <div class="fact-block">
+          <h3>My role</h3>
+          <p>Product decisions, every design and testing call, and three years of technical-support experience feeding directly into what the app protects against. Built in pair-programming with an AI coding agent (Claude Code): I decide what it does, test every change by hand on the packaged app, and approve it before it merges.</p>
+        </div>
+        <div class="fact-block">
+          <h3>Quality</h3>
+          <p>~3,400 automated checks across 9 GUI suites and 7 unit suites, run on both Windows and Linux. 176 mutants (fixes deliberately removed to prove a check actually fails without them) and 533 manual test cases walked on the packaged app. Every colour pair in all eight themes is measured against WCAG AA; CI fails on any that isn't.</p>
+        </div>
+        <div class="fact-block">
+          <h3>Status</h3>
+          <p>In active development, not yet a 1.0 release — the site and demo above are already public, but the app isn't finished and the source isn't published yet. The live link is a browser recreation of the interface; the real app is a Windows program in Python and Tkinter that a browser can't run.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Why this exists</h2>
+        <blockquote style="border-left:3px solid var(--accent); padding-left:16px; margin:0 0 20px; color:var(--text-muted); font-style:italic;">
+          Everyone takes notes, whatever they do. I spent years in support, and I saw how much time is lost when notes are short or scattered.
+        </blockquote>
+        <p>
+          I wanted a simple, dependable place for notes that works offline and
+          keeps the data on the user's own machine — no account to lose
+          access to, no server to go down, nothing phoned home. The interesting
+          part wasn't the note-taking itself; it was building the parts people
+          only notice when they fail: a delete you can always undo, an import
+          that never silently overwrites what you already had, and a save that
+          survives a slow machine, a mid-typing crash, or doing the same thing
+          twice.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head"><h2>Highlights</h2></div>
+      <ul class="highlight-list">
+        <li><strong>A delete you can undo looks different from one you can't.</strong> Moving a note to the Trash is a quiet red; deleting it from the Trash for good is a dark red that asks first — and on anything irreversible, both Enter and Escape give the safe answer.</li>
+        <li><strong>Meaning carried by shape, not just colour.</strong> Save is the one filled button, the open tab stands taller, the current search match is boxed — checked against colour-blindness simulations, not just assumed to be readable.</li>
+        <li><strong>Nothing you type is lost to a wrong field.</strong> A date that can't be read, an import that overlaps what's already there, a note left half-written when you switch away — the app keeps what you wrote and asks, instead of guessing or discarding it.</li>
+        <li><strong>Fixes are proved, not just believed.</strong> Every bug fix gets a regression test, and a mutation runner deletes the fix from a throwaway copy of the code to confirm the test actually fails without it — 176 of those on file today.</li>
+        <li><strong>Speed measured, not assumed.</strong> With 5,000 notes the app starts in about two seconds and saves a note in about 42ms — benchmarked, with the pre-optimization numbers kept on record for comparison.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="prose">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>How it was built</h2>
+        <p>
+          Python 3.13 and Tkinter, with exactly one runtime dependency
+          (Pillow, for image previews) — plain local JSON files for storage,
+          no database. The code is split into a <code>core/</code> data layer
+          that is never allowed to import Tkinter, and a set of UI mixins
+          built on top of it; every dropdown and dialog is hand-built rather
+          than relying on the OS's own, except for the five places (opening a
+          file, saving an export) where the OS picker is genuinely better. The
+          project's own working agreement with its AI coding agent — what
+          runs without asking, what always needs a human decision, and why —
+          is public on the project site.
+        </p>
+      </div>
+      <div class="stack-row">
+        <span class="chip">Python</span>
+        <span class="chip">Tkinter</span>
+        <span class="chip">Pillow</span>
+        <span class="chip">Local JSON storage</span>
+        <span class="chip">PyInstaller</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="next-project">
+        <a href="../index.html#portfolio" class="back-link" style="margin:0;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to all projects</a>
+        <a href="desktop-buddy.html" class="btn btn-ghost">Back to the start: Desktop Buddy →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 Alexandra Moldovan.</span>
+    <div class="footer-links">
+      <a href="https://github.com/AlexandraMoldovan95" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/alexandra-moldovan-528152102/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../script.js"></script>
+</body>
+</html>
