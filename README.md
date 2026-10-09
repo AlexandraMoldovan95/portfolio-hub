@@ -5,7 +5,7 @@ The landing page for my project portfolio — two tabs, **About me** and
 pitch), each linking to its own detail page with the full write-up and links
 to its code and live demo.
 
-**[Live →](#)** *(update this link after deploying to Netlify)*
+**[Live →](https://alexandra-moldovan.netlify.app/)**
 
 ## Structure
 
