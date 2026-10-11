@@ -86,7 +86,7 @@
         <li><strong>The Anthropic API key never reaches the browser.</strong> The chatbot calls a Supabase Edge Function, which holds the key as a server-side secret and calls the model from there - confirmed empty in View Source and the Network tab, not just assumed.</li>
         <li><strong>Row-level security does the access control, not the UI.</strong> The public <code>anon</code> key can only <em>insert</em> into the leads table, never read it back - enforced by Postgres RLS policies, the same pattern used in Job Tracker.</li>
         <li><strong>Both public endpoints are rate-limited.</strong> The chatbot caps out at 20 messages/hour per visitor (fingerprinted by a hashed IP, not the raw IP, deleted after 2 days) and 300/day total; the lead form caps at 30 requests/hour and 3/day per email - so the public anon key can't be used to spam the form or run up the AI bill.</li>
-        <li><strong>The chatbot knows what it doesn't know.</strong> Ask it to write a poem or quote a price and it declines and points to the form instead of improvising - the system prompt is scoped to company facts only, with no retrieval layer needed for a page this size.</li>
+        <li><strong>The chatbot knows what it doesn't know.</strong> Ask it to write a poem or quote a price and it declines and points to the form instead of improvising - the system prompt is scoped to company facts only. No retrieval layer (no vector database, no document search) is needed, because the entire company knowledge base is small enough to fit directly in that system prompt - well within what the model can read at once, so there's nothing to "look up."</li>
       </ul>
     </div>
   </section>
@@ -99,7 +99,9 @@
           Static frontend (vanilla HTML/CSS/JS, no build step) hosted on Netlify,
           with GSAP + ScrollTrigger for the scroll animations. Backend is
           Supabase: a <code>leads</code> table behind RLS, and a Deno Edge
-          Function for the chatbot. Images are WebP, capped at 1600px, with
+          Function for the chatbot that calls Claude Haiku 4.5 - deliberately
+          the smallest/cheapest Claude model, chosen because a single-page
+          company FAQ doesn't need anything larger. Images are WebP, capped at 1600px, with
           separate thumbnail variants for the portfolio carousel so a photo
           shown at 150px doesn't pull down a 1600px file. Design is a custom
           black/white/editorial-red system - straight corners throughout, no

@@ -99,7 +99,11 @@
           management by hand was the point of the exercise, not a constraint I
           hit by accident. LocalStorage is the only persistence layer; the
           optional AI generation feature calls the Anthropic API directly from
-          the browser, with the user's own key.
+          the browser (model: Claude Sonnet 5), using a key the visitor provides
+          themselves. That key is stored in the browser's localStorage, scoped
+          to this site only - it stays on the visitor's own device until they
+          remove it or clear their browser data, and it's never sent anywhere
+          except directly to Anthropic's API.
         </p>
       </div>
       <div class="stack-row">

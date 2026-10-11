@@ -40,7 +40,7 @@
       <div class="facts-grid">
         <div class="fact-block">
           <h3>What</h3>
-          <p>Auth (email/password), companies, applications with status tracking, a dashboard with response-rate and top-company stats, multi-version resumes exportable to a formatted HTML/PDF file, and an installable PWA with a proper offline fallback.</p>
+          <p>Auth (email/password), companies, applications with status tracking, a dashboard with response-rate and top-company stats, multi-version resumes exportable to a formatted HTML/PDF file, an installable PWA with a proper offline fallback, and a "Support the project" button that opens a Stripe checkout page in test mode, just to show the flow.</p>
         </div>
         <div class="fact-block">
           <h3>My role</h3>
@@ -83,6 +83,7 @@
         <li><strong>A real HTTP Content-Security-Policy header</strong> via Netlify's <code>_headers</code> file - not just a meta tag, which can't carry <code>frame-ancestors</code> - plus X-Frame-Options and a locked-down Referrer-Policy.</li>
         <li><strong>A modal UX bug fixed properly.</strong> Modals used to close on any click outside them, so selecting text inside a field (a drag that ends over the backdrop) could silently discard unsaved input. Fixed by removing backdrop-close entirely, with a visual cue when changes are unsaved.</li>
         <li><strong>An honest PWA.</strong> The service worker makes the app installable with a proper offline fallback screen, but deliberately doesn't cache the app shell - since the app is live-data-dependent anyway, caching it would just produce the classic bug of users stuck on a stale version after a deploy.</li>
+        <li><strong>A payment flow that's demonstrated, not faked.</strong> "Support the project" opens a real Stripe Payment Link in test mode, so a reviewer sees an actual Stripe checkout screen rather than a mockup - but it's clearly scoped as a demo: test mode only, no live key anywhere in the code, no backend order record, and no webhook, so no real charge ever happens.</li>
       </ul>
     </div>
   </section>
