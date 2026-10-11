@@ -27,7 +27,7 @@
       <a href="../index.html#portfolio" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to portfolio</a>
       <div class="eyebrow">PWA · Supabase</div>
       <h1>Job Tracker</h1>
-      <p class="detail-pitch">A job application tracker with real authentication and database-level data isolation - plain HTML/CSS/JS and Supabase (Postgres + Auth + Row Level Security), no framework, no build step.</p>
+      <p class="detail-pitch">A job application tracker where every user's data stays completely private from every other user - not hidden by the interface, but actually walled off at the database level, so even a buggy or tampered client couldn't see someone else's applications. That protection comes from a Postgres/Supabase feature called Row Level Security. It runs on plain HTML/CSS/JS with real authentication, no framework, no build step.</p>
       <div class="detail-actions">
         <a href="https://job-tracker-69cc42.netlify.app/" class="btn btn-accent" target="_blank" rel="noopener">Live demo</a>
         <a href="https://github.com/AlexandraMoldovan95/job-tracker" class="btn btn-ghost" target="_blank" rel="noopener">View on GitHub</a>
@@ -78,12 +78,12 @@
     <div class="wrap">
       <div class="section-head"><h2>Highlights</h2></div>
       <ul class="highlight-list">
-        <li><strong>Row Level Security on every table, scoped to the logged-in user.</strong> Not an app-level filter - enforced by Postgres itself, so a user can only select, insert, update, or delete their own rows.</li>
-        <li><strong>Isolation verified with a second account, not assumed.</strong> A dedicated test account confirmed it saw zero companies and zero applications from the first account.</li>
-        <li><strong>A real HTTP Content-Security-Policy header</strong> via Netlify's <code>_headers</code> file - not just a meta tag, which can't carry <code>frame-ancestors</code> - plus X-Frame-Options and a locked-down Referrer-Policy.</li>
         <li><strong>A modal UX bug fixed properly.</strong> Modals used to close on any click outside them, so selecting text inside a field (a drag that ends over the backdrop) could silently discard unsaved input. Fixed by removing backdrop-close entirely, with a visual cue when changes are unsaved.</li>
-        <li><strong>An honest PWA.</strong> The service worker makes the app installable with a proper offline fallback screen, but deliberately doesn't cache the app shell - since the app is live-data-dependent anyway, caching it would just produce the classic bug of users stuck on a stale version after a deploy.</li>
+        <li><strong>Isolation verified with a second account, not assumed.</strong> A dedicated test account confirmed it saw zero companies and zero applications from the first account.</li>
         <li><strong>A payment flow that's demonstrated, not faked.</strong> "Support the project" opens a real Stripe Payment Link in test mode, so a reviewer sees an actual Stripe checkout screen rather than a mockup - but it's clearly scoped as a demo: test mode only, no live key anywhere in the code, no backend order record, and no webhook, so no real charge ever happens.</li>
+        <li><strong>Database-level protection on every table, not just app-level checks.</strong> Enforced by Postgres itself through a feature called Row Level Security, so a user can only select, insert, update, or delete their own rows - even if the app code were buggy or bypassed.</li>
+        <li><strong>Extra browser-side security headers, not just HTTPS.</strong> A real HTTP Content-Security-Policy header - via Netlify's <code>_headers</code> file, not just a meta tag, which can't carry <code>frame-ancestors</code> - plus X-Frame-Options and a locked-down Referrer-Policy, guarding against clickjacking and script-injection attacks.</li>
+        <li><strong>An honest PWA (installable app) that doesn't fake offline support.</strong> The service worker - the background script that makes a web page installable like a native app - gives it a proper offline fallback screen, but deliberately doesn't cache the app shell itself: since the app is live-data-dependent anyway, caching it would just produce the classic bug of users stuck on a stale version after a deploy.</li>
       </ul>
     </div>
   </section>

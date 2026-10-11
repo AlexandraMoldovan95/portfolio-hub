@@ -27,7 +27,7 @@
       <a href="../index.html#portfolio" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to portfolio</a>
       <div class="eyebrow">CSV-to-dashboard · AI</div>
       <h1>Claritate</h1>
-      <p class="detail-pitch">Upload a sales CSV and the app reads it, detects its columns, cleans it, and shows six dashboards - figures, charts, and tables. You can also ask questions about the data in natural language; the AI model only picks <em>what</em> to calculate, the code calculates every figure.</p>
+      <p class="detail-pitch">Upload a sales CSV and the app reads it, detects its columns, cleans it, and shows six dashboards - figures, charts, and tables. You can also ask questions about the data in natural language; the AI model only picks <em>what</em> to calculate, the code calculates every figure. In AI-engineering terms, that's a "tool use" (or "LLM-as-planner") pattern - the model never sees the data itself, so it can plan a calculation but can't quietly make up a number.</p>
       <div class="detail-actions">
         <a href="https://claritate.val.run" class="btn btn-accent" target="_blank" rel="noopener">Live demo</a>
         <a href="https://github.com/AlexandraMoldovan95/claritate" class="btn btn-ghost" target="_blank" rel="noopener">View on GitHub</a>
@@ -48,7 +48,7 @@
         </div>
         <div class="fact-block">
           <h3>Quality</h3>
-          <p>10 automated tests, with every figure cross-checked against independent reports. Accessibility audit (Impeccable): started at 15/20, fixed to zero contrast or tap-target issues.</p>
+          <p>10 automated tests, with every figure cross-checked against independent reports. Accessibility audit (Impeccable): started at 15/20, fixed to zero contrast issues; one known tap-target exception remains on mobile chart bars, mitigated with a table alternative.</p>
         </div>
         <div class="fact-block">
           <h3>Status</h3>
@@ -110,10 +110,10 @@
       <div class="section-head"><h2>Highlights</h2></div>
       <ul class="highlight-list">
         <li><strong>Cleaning is visible, not hidden.</strong> Every row removed or adjusted shows up in a "What I cleaned" report, with the exact reason - blank rows, stray subtotal rows, exact duplicates, duplicate IDs with different contents (both rows are kept, with a warning).</li>
+        <li><strong>"Delivered revenue / lost revenue," never "profit."</strong> The files carry no cost data, so the app deliberately refuses to invent a profit figure it can't calculate correctly.</li>
         <li><strong>The AI model never calculates a number.</strong> It only receives the question and the column names, and returns a JSON plan (which metric, which filters); the code validates that plan and does the calculation itself - with a safety net that corrects the plan when it explicitly contradicts the question.</li>
         <li><strong>The safety net has already caught a real model mistake.</strong> In early live testing, the model answered "how much did I lose to returns" by including cancelled orders too, and answered "what was the worst month" while ignoring order status entirely. Since then, every plan is checked before the calculation runs: if the question explicitly says "returns," "cancellations," or "worst/best month," the plan is corrected automatically - and the correction is logged, so it stays visible rather than silently baked into the result.</li>
         <li><strong>Works even without an API key.</strong> The Q&amp;A call runs entirely server-side on Val Town, using Val Town's own built-in, keyless access to GPT-5.4 Nano - so no API key is required from you, and none is ever exposed to the browser. If that free access doesn't respond (a 10 requests/minute limit), the question automatically falls back to a rule-based planner, which understands fewer phrasings but never leaves the user stuck.</li>
-        <li><strong>"Delivered revenue / lost revenue," never "profit."</strong> The files carry no cost data, so the app deliberately refuses to invent a profit figure it can't calculate correctly.</li>
       </ul>
     </div>
   </section>
@@ -164,7 +164,9 @@
           from the model → validation → safety net → calculation in code →
           answer sentence. Tested with 10 automated tests (figures verified
           to the cent against independent reports) and an Impeccable
-          accessibility audit taken from 15/20 to a perfect score. The visual
+          accessibility audit taken from 15/20 to a clean score, with one known
+          exception (mobile chart-bar tap targets, which have a table
+          alternative). The visual
           direction ("Corporate Trust") came from a reference design system,
           adapted separately for this project.
         </p>

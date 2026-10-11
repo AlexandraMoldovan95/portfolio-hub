@@ -27,7 +27,7 @@
       <a href="../index.html#portfolio" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to portfolio</a>
       <div class="eyebrow">Single-file app · Vanilla JS</div>
       <h1>Skyline Weather</h1>
-      <p class="detail-pitch">A single-file weather app that uses each user's own API key (BYOK - Bring Your Own Key) to query OpenWeatherMap - no account, no backend, no shared key.</p>
+      <p class="detail-pitch">Type in a city and get live weather - temperature, feels-like, humidity, wind, pressure - straight from OpenWeatherMap. Instead of the app holding one shared API key for every visitor, each person pastes in their own free key, which never leaves their own browser - no account, no backend server in between. Developers call that pattern BYOK (Bring Your Own Key).</p>
       <div class="detail-actions">
         <a href="https://skyline-weatherapp-c67411.netlify.app/" class="btn btn-accent" target="_blank" rel="noopener">Live demo</a>
         <a href="https://github.com/AlexandraMoldovan95/skyline-weather" class="btn btn-ghost" target="_blank" rel="noopener">View on GitHub</a>
@@ -78,10 +78,10 @@
     <div class="wrap">
       <div class="section-head"><h2>Highlights</h2></div>
       <ul class="highlight-list">
-        <li><strong>The BYOK trade-off is named, not hidden.</strong> The key lives in that browser's localStorage, visible to anyone with DevTools access on that device - stated as an accepted limitation for a personal project, with the real fix (a small backend proxy) named for what a production app would need.</li>
-        <li><strong>Errors split explicitly by case.</strong> A network failure, an invalid key (401), a city not found (404), and anything else each get their own message and, where relevant, their own recovery action - instead of one generic failure state.</li>
         <li><strong>A debugging habit worth keeping.</strong> A weather icon that looked like a broken image turned out to be OpenWeatherMap's genuine minimalist "clear sky" icon - caught by checking the actual network request in DevTools instead of assuming a bug.</li>
         <li><strong>A dedicated Open Graph image</strong>, built in the same visual language as the app, with full OG and Twitter Card meta tags so the link looks intentional when shared.</li>
+        <li><strong>Errors split explicitly by case.</strong> A network failure, an invalid key (401), a city not found (404), and anything else each get their own message and, where relevant, their own recovery action - instead of one generic failure state.</li>
+        <li><strong>The storage trade-off is named, not hidden.</strong> Each visitor's key is remembered right in their own browser so they don't have to re-enter it or create an account - but that also means anyone with DevTools access to that specific device could read the key back out. That plain-text browser storage is called localStorage, and the trade-off is stated as an accepted limitation for a personal project, with the real fix (a small backend proxy) named for what a production app would need.</li>
       </ul>
     </div>
   </section>

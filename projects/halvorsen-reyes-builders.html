@@ -83,10 +83,10 @@
     <div class="wrap">
       <div class="section-head"><h2>Highlights</h2></div>
       <ul class="highlight-list">
-        <li><strong>The Anthropic API key never reaches the browser.</strong> The chatbot calls a Supabase Edge Function, which holds the key as a server-side secret and calls the model from there - confirmed empty in View Source and the Network tab, not just assumed.</li>
-        <li><strong>Row-level security does the access control, not the UI.</strong> The public <code>anon</code> key can only <em>insert</em> into the leads table, never read it back - enforced by Postgres RLS policies, the same pattern used in Job Tracker.</li>
-        <li><strong>Both public endpoints are rate-limited.</strong> The chatbot caps out at 20 messages/hour per visitor (fingerprinted by a hashed IP, not the raw IP, deleted after 2 days) and 300/day total; the lead form caps at 30 requests/hour and 3/day per email - so the public anon key can't be used to spam the form or run up the AI bill.</li>
+        <li><strong>The Anthropic API key never reaches the browser.</strong> The chatbot calls a small piece of server-side code (a Supabase "Edge Function") that holds the key as a secret and talks to the model from there, instead of the browser ever seeing it - confirmed empty in View Source and the Network tab, not just assumed.</li>
         <li><strong>The chatbot knows what it doesn't know.</strong> Ask it to write a poem or quote a price and it declines and points to the form instead of improvising - the system prompt is scoped to company facts only. No retrieval layer (no vector database, no document search) is needed, because the entire company knowledge base is small enough to fit directly in that system prompt - well within what the model can read at once, so there's nothing to "look up."</li>
+        <li><strong>Visitors can submit the quote form, but nothing on the public site can read anyone's submissions back - the database enforces that, not just the app's code.</strong> In Postgres terms this is Row Level Security (RLS): the public <code>anon</code> key can only <em>insert</em> into the leads table, never read it back - the same pattern used in Job Tracker.</li>
+        <li><strong>Neither public endpoint can be hammered to run up the AI bill or spam the form.</strong> Both the chatbot and the lead form are rate-limited: the chatbot caps out at 20 messages/hour per visitor (fingerprinted by a hashed IP, not the raw IP, deleted after 2 days) and 300/day total; the lead form caps at 30 requests/hour and 3/day per email.</li>
       </ul>
     </div>
   </section>

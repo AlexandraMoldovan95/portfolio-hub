@@ -79,10 +79,10 @@
       <div class="section-head"><h2>Highlights</h2></div>
       <ul class="highlight-list">
         <li><strong>Window-targeted recording.</strong> Captures a single app window by its title and joins relaunches of the same app into one continuous file, instead of leaving you with a folder of fragments.</li>
-        <li><strong>Clip cutting without ffmpeg.</strong> Flag a good moment during a recording and cut clips or a short highlight movie afterward, using the browser's own media pipeline (MediaRecorder + canvas) rather than shelling out to an external binary.</li>
         <li><strong>A clipboard history that's deliberately safe.</strong> Keeps recent clipboard entries for convenience, with logic in place to never save anything that looks like a secret.</li>
-        <li><strong>Electron hardened, not just functional.</strong> Sandbox, CSP, IPC channel checks, and encrypted secrets - security review was part of the three audit rounds, not an afterthought.</li>
-        <li><strong>Testable by design.</strong> Core logic lives in pure, framework-free modules specifically so it could be unit tested - 294 tests - rather than only exercised by hand.</li>
+        <li><strong>Clip cutting without a separate video editor.</strong> Flag a good moment during a recording, then cut clips or a short highlight movie afterward - using the browser's own built-in media tools (MediaRecorder + canvas) instead of bundling an external video-encoding program (ffmpeg).</li>
+        <li><strong>Testable by design.</strong> The app's decision-making logic is kept separate from the on-screen app itself, in plain, framework-free modules, so each piece can be checked automatically - 294 unit tests - instead of only by clicking around by hand.</li>
+        <li><strong>Locked down, not just functional.</strong> Each window runs in a restricted sandbox that can't reach your files directly, messages between app parts are checked before being trusted, and stored secrets are encrypted - what engineers call sandboxing, a Content Security Policy (CSP), and verified IPC (inter-process communication) channels. Security review was part of all three audit rounds, not an afterthought.</li>
       </ul>
     </div>
   </section>
