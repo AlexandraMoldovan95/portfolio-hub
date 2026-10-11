@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Flashcards — Alexandra Moldovan</title>
+<title>Flashcards - Alexandra Moldovan</title>
 <meta name="description" content="A single-file spaced-repetition flashcards app with a real SM-2-style scheduler and optional AI card generation.">
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -27,7 +27,7 @@
       <a href="../index.html#portfolio" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to portfolio</a>
       <div class="eyebrow">Single-file app · Vanilla JS</div>
       <h1>Flashcards</h1>
-      <p class="detail-pitch">A single-file spaced-repetition flashcards app, built with plain HTML, CSS, and JavaScript — no frameworks, no build step, no backend.</p>
+      <p class="detail-pitch">A single-file spaced-repetition flashcards app, built with plain HTML, CSS, and JavaScript - no frameworks, no build step, no backend.</p>
       <div class="detail-actions">
         <a href="https://flashcards-bedce5.netlify.app/" class="btn btn-accent" target="_blank" rel="noopener">Live demo</a>
         <a href="https://github.com/AlexandraMoldovan95/flashcards" class="btn btn-ghost" target="_blank" rel="noopener">View on GitHub</a>
@@ -40,7 +40,7 @@
       <div class="facts-grid">
         <div class="fact-block">
           <h3>What</h3>
-          <p>A spaced-repetition flashcard app with a simplified SM-2–style scheduler, categories and search, optional images per card, two quiz modes, a coins-and-hints system, stats, and optional AI-assisted card generation (bring your own API key). Everything stays in the browser's local storage — no server, no account.</p>
+          <p>A spaced-repetition flashcard app with a simplified SM-2–style scheduler, categories and search, optional images per card, two quiz modes, a coins-and-hints system, stats, and optional AI-assisted card generation (bring your own API key). Everything stays in the browser's local storage - no server, no account.</p>
         </div>
         <div class="fact-block">
           <h3>My role</h3>
@@ -67,7 +67,7 @@
           over-engineered for what's fundamentally a simple problem: show a
           question, hide the answer, let the learner grade their own recall, and
           use that grade to decide when to show the card again. This was an
-          exercise in building that loop well — a real spaced-repetition
+          exercise in building that loop well - a real spaced-repetition
           scheduler, a thoughtful visual design, and a few small ideas
           (hint-buying with earned coins, AI-assisted card generation) layered on
           top without compromising the core mechanic.
@@ -80,10 +80,10 @@
     <div class="wrap">
       <div class="section-head"><h2>Highlights</h2></div>
       <ul class="highlight-list">
-        <li><strong>Deterministic category colors.</strong> Each category's color is derived from a hash of its name at render time — never stored — so the data model never needs a "color" field and two devices always render categories identically.</li>
-        <li><strong>The answer isn't in the DOM until you ask for it.</strong> Clicking "Show Answer" is what writes the answer into the page, rather than just unhiding it with CSS — a deliberate choice so the quiz can't be "cheated" by inspecting the page early.</li>
-        <li><strong>An anti-farming rule in free-practice mode.</strong> "All cards" mode intentionally doesn't touch the spaced-repetition schedule, and a card only earns coins once per calendar day there — otherwise the same card could be regraded in a loop for infinite coins.</li>
-        <li><strong>AI card generation stays optional and reviewed.</strong> Paste text or drop a file, and Claude drafts question/answer pairs — but nothing is added to the deck until each card is reviewed and confirmed.</li>
+        <li><strong>Deterministic category colors.</strong> Each category's color is derived from a hash of its name at render time - never stored - so the data model never needs a "color" field and two devices always render categories identically.</li>
+        <li><strong>The answer isn't in the DOM until you ask for it.</strong> Clicking "Show Answer" is what writes the answer into the page, rather than just unhiding it with CSS - a deliberate choice so the quiz can't be "cheated" by inspecting the page early.</li>
+        <li><strong>An anti-farming rule in free-practice mode.</strong> "All cards" mode intentionally doesn't touch the spaced-repetition schedule, and a card only earns coins once per calendar day there - otherwise the same card could be regraded in a loop for infinite coins.</li>
+        <li><strong>AI card generation stays optional and reviewed.</strong> Paste text or drop a file, and Claude drafts question/answer pairs - but nothing is added to the deck until each card is reviewed and confirmed.</li>
         <li><strong>Client-side image compression.</strong> Images attached to cards are resized and compressed before saving, so a handful of photos don't blow through the browser's local storage quota.</li>
       </ul>
     </div>
@@ -94,7 +94,7 @@
       <div class="section-head">
         <h2>How it was built</h2>
         <p>
-          HTML5, CSS3, and vanilla JavaScript (ES6+) — no framework, no bundler.
+          HTML5, CSS3, and vanilla JavaScript (ES6+) - no framework, no bundler.
           Building the scheduling algorithm, the data model, and the UI state
           management by hand was the point of the exercise, not a constraint I
           hit by accident. LocalStorage is the only persistence layer; the
@@ -113,9 +113,12 @@
 
   <section>
     <div class="wrap">
+      <div class="continue-row">
+        <a href="job-tracker.html" class="btn btn-ghost">Next: Job Tracker →</a>
+      </div>
       <div class="next-project">
         <a href="../index.html#portfolio" class="back-link" style="margin:0;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to all projects</a>
-        <a href="job-tracker.html" class="btn btn-ghost">Next: Job Tracker →</a>
+        <a href="desktop-buddy.html" class="btn btn-ghost">← Previous: Desktop Buddy</a>
       </div>
     </div>
   </section>

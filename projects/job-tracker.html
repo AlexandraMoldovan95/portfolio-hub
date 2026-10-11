@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Job Tracker — Alexandra Moldovan</title>
+<title>Job Tracker - Alexandra Moldovan</title>
 <meta name="description" content="A job application tracker with real multi-user data isolation, enforced at the database level via Supabase Row Level Security.">
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -27,7 +27,7 @@
       <a href="../index.html#portfolio" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to portfolio</a>
       <div class="eyebrow">PWA · Supabase</div>
       <h1>Job Tracker</h1>
-      <p class="detail-pitch">A job application tracker with real authentication and database-level data isolation — plain HTML/CSS/JS and Supabase (Postgres + Auth + Row Level Security), no framework, no build step.</p>
+      <p class="detail-pitch">A job application tracker with real authentication and database-level data isolation - plain HTML/CSS/JS and Supabase (Postgres + Auth + Row Level Security), no framework, no build step.</p>
       <div class="detail-actions">
         <a href="https://job-tracker-69cc42.netlify.app/" class="btn btn-accent" target="_blank" rel="noopener">Live demo</a>
         <a href="https://github.com/AlexandraMoldovan95/job-tracker" class="btn btn-ghost" target="_blank" rel="noopener">View on GitHub</a>
@@ -65,7 +65,7 @@
         <p>
           A job tracker looks like a simple CRUD problem, but it's a good vehicle
           to demonstrate something that's easy to get wrong: real multi-user data
-          isolation, enforced where it actually matters — the database — not just
+          isolation, enforced where it actually matters - the database - not just
           hidden in the UI. Every row a user creates is tied to their own
           <code>auth.uid()</code> through Postgres Row Level Security policies, so
           even a broken or malicious client can't read another user's data.
@@ -78,11 +78,11 @@
     <div class="wrap">
       <div class="section-head"><h2>Highlights</h2></div>
       <ul class="highlight-list">
-        <li><strong>Row Level Security on every table, scoped to the logged-in user.</strong> Not an app-level filter — enforced by Postgres itself, so a user can only select, insert, update, or delete their own rows.</li>
+        <li><strong>Row Level Security on every table, scoped to the logged-in user.</strong> Not an app-level filter - enforced by Postgres itself, so a user can only select, insert, update, or delete their own rows.</li>
         <li><strong>Isolation verified with a second account, not assumed.</strong> A dedicated test account confirmed it saw zero companies and zero applications from the first account.</li>
-        <li><strong>A real HTTP Content-Security-Policy header</strong> via Netlify's <code>_headers</code> file — not just a meta tag, which can't carry <code>frame-ancestors</code> — plus X-Frame-Options and a locked-down Referrer-Policy.</li>
+        <li><strong>A real HTTP Content-Security-Policy header</strong> via Netlify's <code>_headers</code> file - not just a meta tag, which can't carry <code>frame-ancestors</code> - plus X-Frame-Options and a locked-down Referrer-Policy.</li>
         <li><strong>A modal UX bug fixed properly.</strong> Modals used to close on any click outside them, so selecting text inside a field (a drag that ends over the backdrop) could silently discard unsaved input. Fixed by removing backdrop-close entirely, with a visual cue when changes are unsaved.</li>
-        <li><strong>An honest PWA.</strong> The service worker makes the app installable with a proper offline fallback screen, but deliberately doesn't cache the app shell — since the app is live-data-dependent anyway, caching it would just produce the classic bug of users stuck on a stale version after a deploy.</li>
+        <li><strong>An honest PWA.</strong> The service worker makes the app installable with a proper offline fallback screen, but deliberately doesn't cache the app shell - since the app is live-data-dependent anyway, caching it would just produce the classic bug of users stuck on a stale version after a deploy.</li>
       </ul>
     </div>
   </section>
@@ -92,12 +92,12 @@
       <div class="section-head">
         <h2>How it was built</h2>
         <p>
-          No framework, no bundler — HTML5/CSS3/vanilla JavaScript talking
+          No framework, no bundler - HTML5/CSS3/vanilla JavaScript talking
           directly to Supabase (Postgres + Auth + Row Level Security), loaded from
           a pinned CDN URL with Subresource Integrity. The Supabase key shipped to
-          the client is the publishable key, designed to be public — the real
+          the client is the publishable key, designed to be public - the real
           access control is the RLS policies, not key secrecy. The visual
-          direction (vaporwave/outrun — cyan and magenta on near-black, a CRT
+          direction (vaporwave/outrun - cyan and magenta on near-black, a CRT
           scanline overlay) was a deliberate choice to make a CRUD app memorable
           rather than generic.
         </p>
@@ -113,9 +113,12 @@
 
   <section>
     <div class="wrap">
+      <div class="continue-row">
+        <a href="skyline-weather.html" class="btn btn-ghost">Next: Skyline Weather →</a>
+      </div>
       <div class="next-project">
         <a href="../index.html#portfolio" class="back-link" style="margin:0;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to all projects</a>
-        <a href="skyline-weather.html" class="btn btn-ghost">Next: Skyline Weather →</a>
+        <a href="flashcards.html" class="btn btn-ghost">← Previous: Flashcards</a>
       </div>
     </div>
   </section>

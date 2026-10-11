@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Skyline Weather — Alexandra Moldovan</title>
-<meta name="description" content="A BYOK weather app — every visitor uses their own free OpenWeatherMap key, no shared backend key.">
+<title>Skyline Weather - Alexandra Moldovan</title>
+<meta name="description" content="A BYOK weather app - every visitor uses their own free OpenWeatherMap key, no shared backend key.">
 <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
@@ -27,7 +27,7 @@
       <a href="../index.html#portfolio" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to portfolio</a>
       <div class="eyebrow">Single-file app · Vanilla JS</div>
       <h1>Skyline Weather</h1>
-      <p class="detail-pitch">A single-file weather app that uses each user's own API key (BYOK — Bring Your Own Key) to query OpenWeatherMap — no account, no backend, no shared key.</p>
+      <p class="detail-pitch">A single-file weather app that uses each user's own API key (BYOK - Bring Your Own Key) to query OpenWeatherMap - no account, no backend, no shared key.</p>
       <div class="detail-actions">
         <a href="https://skyline-weatherapp-c67411.netlify.app/" class="btn btn-accent" target="_blank" rel="noopener">Live demo</a>
         <a href="https://github.com/AlexandraMoldovan95/skyline-weather" class="btn btn-ghost" target="_blank" rel="noopener">View on GitHub</a>
@@ -40,7 +40,7 @@
       <div class="facts-grid">
         <div class="fact-block">
           <h3>What</h3>
-          <p>A BYOK login screen over an animated CSS sky, a search form (city + optional country), and a weather card with current conditions, feels-like, humidity, wind, and pressure — with error handling split explicitly by failure case (network, invalid key, city not found, other).</p>
+          <p>A BYOK login screen over an animated CSS sky, a search form (city + optional country), and a weather card with current conditions, feels-like, humidity, wind, and pressure - with error handling split explicitly by failure case (network, invalid key, city not found, other). A separate demo mode (no key required) shows the same app with clearly-labelled sample data, for anyone who'd rather not create an OpenWeatherMap key just to look around.</p>
         </div>
         <div class="fact-block">
           <h3>My role</h3>
@@ -64,8 +64,8 @@
         <h2>Why this exists</h2>
         <p>
           A weather app is a well-worn exercise, so the interesting part here is
-          the access model: instead of embedding a shared API key — which either
-          leaks or hits rate limits fast — each visitor enters their own free
+          the access model: instead of embedding a shared API key - which either
+          leaks or hits rate limits fast - each visitor enters their own free
           OpenWeatherMap key, stored only in their own browser. There's no server
           in between and no key ever shared across users, a trade-off stated
           plainly in the app rather than glossed over.
@@ -78,9 +78,9 @@
     <div class="wrap">
       <div class="section-head"><h2>Highlights</h2></div>
       <ul class="highlight-list">
-        <li><strong>The BYOK trade-off is named, not hidden.</strong> The key lives in that browser's localStorage, visible to anyone with DevTools access on that device — stated as an accepted limitation for a personal project, with the real fix (a small backend proxy) named for what a production app would need.</li>
-        <li><strong>Errors split explicitly by case.</strong> A network failure, an invalid key (401), a city not found (404), and anything else each get their own message and, where relevant, their own recovery action — instead of one generic failure state.</li>
-        <li><strong>A debugging habit worth keeping.</strong> A weather icon that looked like a broken image turned out to be OpenWeatherMap's genuine minimalist "clear sky" icon — caught by checking the actual network request in DevTools instead of assuming a bug.</li>
+        <li><strong>The BYOK trade-off is named, not hidden.</strong> The key lives in that browser's localStorage, visible to anyone with DevTools access on that device - stated as an accepted limitation for a personal project, with the real fix (a small backend proxy) named for what a production app would need.</li>
+        <li><strong>Errors split explicitly by case.</strong> A network failure, an invalid key (401), a city not found (404), and anything else each get their own message and, where relevant, their own recovery action - instead of one generic failure state.</li>
+        <li><strong>A debugging habit worth keeping.</strong> A weather icon that looked like a broken image turned out to be OpenWeatherMap's genuine minimalist "clear sky" icon - caught by checking the actual network request in DevTools instead of assuming a bug.</li>
         <li><strong>A dedicated Open Graph image</strong>, built in the same visual language as the app, with full OG and Twitter Card meta tags so the link looks intentional when shared.</li>
       </ul>
     </div>
@@ -91,8 +91,8 @@
       <div class="section-head">
         <h2>How it was built</h2>
         <p>
-          Everything lives in one self-contained HTML file — styles, markup, and
-          script — with no bundler and no dependencies to install. A
+          Everything lives in one self-contained HTML file - styles, markup, and
+          script - with no bundler and no dependencies to install. A
           glassmorphism login card sits over a pure-CSS animated sky; a
           <code>&lt;select&gt;</code> of ISO country codes was chosen deliberately
           over free text, to avoid inconsistent input breaking the API request.
@@ -109,9 +109,12 @@
 
   <section>
     <div class="wrap">
+      <div class="continue-row">
+        <a href="claritate.html" class="btn btn-ghost">Next: Claritate →</a>
+      </div>
       <div class="next-project">
         <a href="../index.html#portfolio" class="back-link" style="margin:0;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to all projects</a>
-        <a href="claritate.html" class="btn btn-ghost">Next: Claritate →</a>
+        <a href="job-tracker.html" class="btn btn-ghost">← Previous: Job Tracker</a>
       </div>
     </div>
   </section>

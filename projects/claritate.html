@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="ro">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Claritate — Alexandra Moldovan</title>
-<meta name="description" content="Urci un CSV cu vânzări și aplicația îl citește, îl curăță și îți arată 6 dashboard-uri, cu întrebări în română.">
+<title>Claritate - Alexandra Moldovan</title>
+<meta name="description" content="Upload a sales CSV and the app reads it, cleans it, and shows six dashboards - with a natural-language Q&A layer in Romanian.">
 <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
@@ -25,34 +25,34 @@
   <section class="detail-hero">
     <div class="wrap">
       <a href="../index.html#portfolio" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to portfolio</a>
-      <div class="eyebrow">Dashboard din CSV · AI</div>
+      <div class="eyebrow">CSV-to-dashboard · AI</div>
       <h1>Claritate</h1>
-      <p class="detail-pitch">Urci un CSV cu vânzări și aplicația îl citește, îi detectează coloanele, îl curăță și îți arată 6 dashboard-uri cu cifre, grafice și tabele. Poți pune și întrebări în română despre date — modelul AI alege doar <em>ce</em> se calculează, toate cifrele le calculează codul.</p>
+      <p class="detail-pitch">Upload a sales CSV and the app reads it, detects its columns, cleans it, and shows six dashboards - figures, charts, and tables. You can also ask questions about the data in natural language; the AI model only picks <em>what</em> to calculate, the code calculates every figure.</p>
       <div class="detail-actions">
         <a href="https://claritate.val.run" class="btn btn-accent" target="_blank" rel="noopener">Live demo</a>
         <a href="https://github.com/AlexandraMoldovan95/claritate" class="btn btn-ghost" target="_blank" rel="noopener">View on GitHub</a>
       </div>
 
       <div class="detail-media">
-        <img src="../images/claritate.jpg" alt="Captură din aplicația Claritate">
+        <img src="../images/claritate.jpg" alt="Screenshot of the Claritate app">
       </div>
 
       <div class="facts-grid">
         <div class="fact-block">
-          <h3>Ce face</h3>
-          <p>6 dashboard-uri (sumar general, venit livrat, venit pierdut, cea mai bună/slabă lună, top clienți și produse, sănătatea comenzilor), detecție automată a coloanelor, curățare de date vizibilă și explicată, și un strat de întrebări în limbaj natural în română.</p>
+          <h3>What it does</h3>
+          <p>Six dashboards (general summary, delivered revenue, lost revenue, best/worst month, top customers and products, order health), automatic column detection, data cleaning that's shown and explained rather than hidden, and a natural-language Q&amp;A layer - in Romanian, by design (see the note below).</p>
         </div>
         <div class="fact-block">
-          <h3>Rolul meu</h3>
-          <p>Ideea de produs, UX-ul, regulile de curățare și plasa de siguranță pentru planurile AI; codul a fost scris în pair-programming cu un asistent AI (Claude).</p>
+          <h3>My role</h3>
+          <p>Product idea, UX, the cleaning rules, and the safety net around the AI's query plans; built in pair-programming with an AI assistant (Claude).</p>
         </div>
         <div class="fact-block">
-          <h3>Calitate</h3>
-          <p>10 teste automate, cifre verificate la ban cu rapoarte independente. Audit de accesibilitate (Impeccable): scor inițial 15/20, corectat până la zero probleme de contrast sau ținte prea mici.</p>
+          <h3>Quality</h3>
+          <p>10 automated tests, with every figure cross-checked against independent reports. Accessibility audit (Impeccable): started at 15/20, fixed to zero contrast or tap-target issues.</p>
         </div>
         <div class="fact-block">
           <h3>Status</h3>
-          <p>Live pe Val Town · MIT · sursă pe GitHub.</p>
+          <p>Live on Val Town · MIT · source on GitHub. Database: SQLite.</p>
         </div>
       </div>
     </div>
@@ -61,17 +61,28 @@
   <section class="prose">
     <div class="wrap">
       <div class="section-head">
-        <h2>De ce există</h2>
+        <h2>Why this exists</h2>
         <blockquote style="border-left:3px solid var(--accent); padding-left:16px; margin:0 0 20px; color:var(--text-muted); font-style:italic;">
-          Proiect demo de portofoliu — gândit, construit și testat ca un produs live, livrabil unui client real.
+          A portfolio demo project - scoped, built, and tested like a live product delivered to a real client.
         </blockquote>
         <p>
-          Majoritatea fișierelor de vânzări din lumea reală nu sunt curate: au
-          rânduri de total intercalate, duplicate, formate numerice amestecate
-          (românesc și englezesc), statusuri scrise diferit de fiecare dată.
-          Claritate pornește de la ideea că un dashboard bun nu ignoră asta — îl
-          arată explicit utilizatorului ce a găsit și ce a corectat, în loc să
-          calculeze tăcut cifre pe un fișier murdar.
+          Most real-world sales exports aren't clean: stray subtotal rows,
+          duplicates, mixed number formats (Romanian and English), the same
+          status spelled differently every time. Claritate starts from the
+          idea that a good dashboard doesn't ignore that - it shows the user
+          exactly what it found and what it corrected, instead of silently
+          computing numbers on top of a dirty file.
+        </p>
+        <p style="margin-top:16px; padding:14px 16px; border:1px solid var(--border); border-radius: var(--radius); background: var(--surface-2); font-size: 0.95rem;">
+          <strong>A note on language:</strong> Claritate was built as a project for the
+          "Vibe Coding" course at Step IT Academy, where the brief - and the
+          sample sales data used to design and test it - were specified in
+          Romanian. Rather than bolt an English interface onto a product that
+          was scoped, built, and user-tested end-to-end in Romanian, I kept it
+          faithful to the brief it was actually written for. This write-up is
+          in English so the engineering decisions are legible to any reviewer;
+          the application itself still speaks the language of the assignment
+          it answers.
         </p>
       </div>
     </div>
@@ -80,16 +91,16 @@
   <section class="prose">
     <div class="wrap">
       <div class="section-head">
-        <h2>Cele 6 dashboard-uri</h2>
-        <p>Toate pornesc din același CSV curățat — nu există calcule ascunse, fiecare cifră se poate urmări înapoi la rândurile din fișier.</p>
+        <h2>The six dashboards</h2>
+        <p>All six start from the same cleaned CSV - nothing is calculated out of sight; every figure can be traced back to rows in the file.</p>
       </div>
       <ul class="highlight-list">
-        <li><strong>Sumar general.</strong> Numărul de comenzi, valoarea totală, medie și mediană, cea mai mare comandă și distribuția pe status.</li>
-        <li><strong>Venit livrat.</strong> Doar comenzile cu status Livrată, evoluția pe luni și topul produselor.</li>
-        <li><strong>Venit pierdut.</strong> Retururi și anulări, împărțirea între ele, și clienții cu cele mai mari pierderi.</li>
-        <li><strong>Cea mai bună / slabă lună.</strong> Calculată după venitul livrat; o lună cu comenzi dar 0 livrări intră cu 0, nu lipsește din grafic; ultima lună e marcată explicit „lună incompletă" dacă datele se opresc înainte de final — altfel ar părea nejustificat de slabă.</li>
-        <li><strong>Top clienți și produse.</strong> După venit livrat, cu ponderea fiecăruia din total și un avertisment separat pentru ID-urile de comandă duplicate.</li>
-        <li><strong>Sănătatea comenzilor.</strong> Rata de livrare, retur și anulare, plus banii blocați în comenzi „În curs" — util pentru cash-flow, nu doar pentru vânzări.</li>
+        <li><strong>General summary.</strong> Order count, total value, mean and median, the largest order, and the breakdown by status.</li>
+        <li><strong>Delivered revenue.</strong> Only orders with a Delivered status, the month-by-month trend, and the top products.</li>
+        <li><strong>Lost revenue.</strong> Returns and cancellations, the split between them, and the customers with the biggest losses.</li>
+        <li><strong>Best / worst month.</strong> Calculated from delivered revenue; a month with orders but zero deliveries shows as 0 rather than disappearing from the chart, and the final month is explicitly flagged as "incomplete" if the data cuts off before month's end - otherwise it would look unfairly weak.</li>
+        <li><strong>Top customers and products.</strong> Ranked by delivered revenue, with each one's share of the total, and a separate warning for duplicate order IDs.</li>
+        <li><strong>Order health.</strong> Delivery, return, and cancellation rates, plus the money tied up in "In progress" orders - useful for cash flow, not just sales.</li>
       </ul>
     </div>
   </section>
@@ -98,11 +109,11 @@
     <div class="wrap">
       <div class="section-head"><h2>Highlights</h2></div>
       <ul class="highlight-list">
-        <li><strong>Curățarea e vizibilă, nu ascunsă.</strong> Fiecare rând eliminat sau ajustat apare în raportul „Ce am curățat", cu motivul exact — rânduri goale, totaluri intercalate, duplicate identice, ID-uri duplicate cu conținut diferit (păstrate pe amândouă, cu avertisment).</li>
-        <li><strong>Modelul AI nu calculează niciodată cifre.</strong> Primește doar întrebarea și numele coloanelor, întoarce un plan JSON (ce metrică, ce filtre), iar codul validează planul și face singur calculul — cu o plasă de siguranță care corectează planul dacă acesta contrazice explicit întrebarea.</li>
-        <li><strong>Plasa de siguranță a prins o greșeală reală a modelului.</strong> La primele teste live, modelul a răspuns la „cât am pierdut din retururi" incluzând și comenzile anulate, iar la „care a fost cea mai slabă lună" a ignorat complet statusul comenzilor. De atunci codul verifică fiecare plan înainte de calcul: dacă întrebarea spune explicit „retururi", „anulări" sau „cea mai ... lună", planul e corectat automat — iar corecția apare în loguri, ca să rămână vizibilă, nu doar tăcută în rezultat.</li>
-        <li><strong>Funcționează și fără cheie API.</strong> Dacă modelul gratuit din Val Town nu răspunde (limită 10 cereri/minut), întrebarea trece automat pe un planificator bazat pe reguli, care înțelege mai puține formulări dar nu lasă utilizatorul blocat.</li>
-        <li><strong>„Venit livrat / venit pierdut", nu „profit".</strong> Fișierele nu au costuri, deci aplicația refuză deliberat să inventeze o cifră de profit pe care nu o poate calcula corect.</li>
+        <li><strong>Cleaning is visible, not hidden.</strong> Every row removed or adjusted shows up in a "What I cleaned" report, with the exact reason - blank rows, stray subtotal rows, exact duplicates, duplicate IDs with different contents (both rows are kept, with a warning).</li>
+        <li><strong>The AI model never calculates a number.</strong> It only receives the question and the column names, and returns a JSON plan (which metric, which filters); the code validates that plan and does the calculation itself - with a safety net that corrects the plan when it explicitly contradicts the question.</li>
+        <li><strong>The safety net has already caught a real model mistake.</strong> In early live testing, the model answered "how much did I lose to returns" by including cancelled orders too, and answered "what was the worst month" while ignoring order status entirely. Since then, every plan is checked before the calculation runs: if the question explicitly says "returns," "cancellations," or "worst/best month," the plan is corrected automatically - and the correction is logged, so it stays visible rather than silently baked into the result.</li>
+        <li><strong>Works even without an API key.</strong> If Val Town's free model doesn't respond (a 10 requests/minute limit), the question automatically falls back to a rule-based planner, which understands fewer phrasings but never leaves the user stuck.</li>
+        <li><strong>"Delivered revenue / lost revenue," never "profit."</strong> The files carry no cost data, so the app deliberately refuses to invent a profit figure it can't calculate correctly.</li>
       </ul>
     </div>
   </section>
@@ -110,19 +121,19 @@
   <section class="prose">
     <div class="wrap">
       <div class="section-head">
-        <h2>Date neconforme: ce găsește și ce face</h2>
+        <h2>Messy data: what it finds, and what it does</h2>
         <p>
-          Exemplu real folosit la testare, <code>vanzari_2026.csv</code>: 145 de
-          rânduri sub antet, din care 129 de comenzi valide — restul erau din
-          categoriile de mai jos.
+          A real example used in testing, <code>vanzari_2026.csv</code>: 145 rows
+          under the header, of which 129 were valid orders - the rest fell
+          into the categories below.
         </p>
       </div>
       <ul class="highlight-list">
-        <li><strong>Antetul real nu e pe primul rând.</strong> Dacă fișierul are 2-3 rânduri de text înainte de tabel, aplicația găsește singură rândul care chiar conține numele coloanelor.</li>
-        <li><strong>Rândurile „TOTAL PARȚIAL" / „TOTAL GENERAL" intercalate sunt eliminate.</strong> Lăsate înăuntru, ar duplica toate sumele — nu sunt comenzi reale, sunt subtotaluri puse de cine a exportat fișierul.</li>
-        <li><strong>Același ID, conținut diferit, nu se alege arbitrar o variantă.</strong> Dacă <code>CMD-400003</code> apare de două ori cu date diferite, aplicația păstrează amândouă rândurile și afișează un avertisment explicit, în loc să șteargă „pe ghicite" una dintre ele.</li>
-        <li><strong>Variante de scriere ale aceluiași client sunt unificate.</strong> „Delta Foods SA", „DELTA FOODS SA" și „delta foods sa " (cu spațiu la final) devin un singur client în dashboard-uri, nu trei.</li>
-        <li><strong>Numere și monede amestecate, fără conversie inventată.</strong> <code>"1.841,86"</code> (format românesc) și <code>1,841.86</code> (format englezesc) sunt citite corect ca aceeași valoare; RON și EUR sunt calculate separat, pe dashboard-uri distincte — nu există un curs de schimb inventat.</li>
+        <li><strong>The real header isn't on the first row.</strong> If the file has 2–3 lines of text before the table, the app finds the row that actually contains the column names on its own.</li>
+        <li><strong>Stray "PARTIAL TOTAL" / "GRAND TOTAL" rows are removed.</strong> Left in, they would double-count every sum - they aren't real orders, they're subtotals someone added when exporting the file.</li>
+        <li><strong>The same ID with different content is never resolved by guessing.</strong> If <code>CMD-400003</code> appears twice with different data, the app keeps both rows and shows an explicit warning, instead of deleting one "arbitrarily."</li>
+        <li><strong>Spelling variants of the same customer are merged.</strong> "Delta Foods SA," "DELTA FOODS SA," and "delta foods sa " (trailing space) become a single customer in the dashboards, not three.</li>
+        <li><strong>Mixed numbers and currencies, with no invented conversion.</strong> <code>"1.841,86"</code> (Romanian format) and <code>1,841.86</code> (English format) are both read correctly as the same value; RON and EUR are calculated separately, on their own dashboards - there is no invented exchange rate.</li>
       </ul>
     </div>
   </section>
@@ -130,14 +141,14 @@
   <section class="prose">
     <div class="wrap">
       <div class="section-head">
-        <h2>Limite cunoscute</h2>
-        <p>Sunt la fel de explicite în aplicație ca și restul raportului de curățare — nu ascunse într-un FAQ.</p>
+        <h2>Known limits</h2>
+        <p>Stated as plainly in the app as the rest of the cleaning report - not buried in a FAQ.</p>
       </div>
       <ul class="highlight-list">
-        <li><strong>Fișiere de până la 5 MB / 50.000 de rânduri.</strong> Peste asta, aplicația nu încearcă să proceseze parțial — refuză clar fișierul.</li>
-        <li><strong>Monedele nu se convertesc.</strong> RON și EUR au fiecare cifrele lor, calculate separat — niciun curs de schimb inventat.</li>
-        <li><strong>Linkul unui dashboard e public pentru oricine îl are</strong> (nu există login) — pagina spune explicit să nu se încarce date confidențiale.</li>
-        <li><strong>Modelul AI gratuit are o limită de cereri.</strong> Peste ea, planificatorul pe reguli preia întrebările; înțelege mai puține formulări, dar nu lasă utilizatorul fără răspuns.</li>
+        <li><strong>Files up to 5 MB / 50,000 rows.</strong> Beyond that, the app doesn't attempt a partial run - it refuses the file outright.</li>
+        <li><strong>Currencies aren't converted.</strong> RON and EUR each get their own figures, calculated separately - no invented exchange rate.</li>
+        <li><strong>A dashboard's link is public to anyone who has it</strong> (there's no login) - the page explicitly says not to upload confidential data.</li>
+        <li><strong>The free AI model has a rate limit.</strong> Past it, the rule-based planner takes over; it understands fewer phrasings, but never leaves the user without an answer.</li>
       </ul>
     </div>
   </section>
@@ -145,17 +156,17 @@
   <section class="prose">
     <div class="wrap">
       <div class="section-head">
-        <h2>Cum a fost construită</h2>
+        <h2>How it was built</h2>
         <p>
-          Backend TypeScript pe Val Town (rute, SQLite pentru fișierele urcate,
-          modulele de citire/normalizare/curățare CSV), frontend cu grafice SVG
-          scrise direct în cod. Fluxul de întrebări: întrebare → plan JSON de la
-          model → validare → plasă de siguranță → calcul în cod → propoziție de
-          răspuns. Testat cu 10 teste automate (cifre verificate la ban cu
-          rapoarte independente) și un audit de accesibilitate Impeccable dus de
-          la 15/20 la scor perfect. Direcția vizuală ("Corporate Trust") a venit
-          dintr-un sistem de design folosit ca referință, adaptat separat pentru
-          acest proiect.
+          TypeScript backend on Val Town (routes, SQLite for uploaded files,
+          the CSV read/normalize/clean modules), frontend with SVG charts
+          written directly in code. The question flow: question → JSON plan
+          from the model → validation → safety net → calculation in code →
+          answer sentence. Tested with 10 automated tests (figures verified
+          to the cent against independent reports) and an Impeccable
+          accessibility audit taken from 15/20 to a perfect score. The visual
+          direction ("Corporate Trust") came from a reference design system,
+          adapted separately for this project.
         </p>
       </div>
       <div class="stack-row">
@@ -169,9 +180,12 @@
 
   <section>
     <div class="wrap">
+      <div class="continue-row">
+        <a href="document-embedding-studio.html" class="btn btn-ghost">Next: Document Embedding Studio →</a>
+      </div>
       <div class="next-project">
         <a href="../index.html#portfolio" class="back-link" style="margin:0;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to all projects</a>
-        <a href="document-embedding-studio.html" class="btn btn-ghost">Next: Document Embedding Studio →</a>
+        <a href="skyline-weather.html" class="btn btn-ghost">← Previous: Skyline Weather</a>
       </div>
     </div>
   </section>

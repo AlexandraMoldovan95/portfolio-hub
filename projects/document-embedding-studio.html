@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document Embedding Studio — Alexandra Moldovan</title>
-<meta name="description" content="A local-first RAG ingestion pipeline — drop in documents, it chunks and embeds them locally, then you can search or chat with them.">
+<title>Document Embedding Studio - Alexandra Moldovan</title>
+<meta name="description" content="A local-first RAG ingestion pipeline - drop in documents, it chunks and embeds them locally, then you can search or chat with them.">
 <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
@@ -27,9 +27,10 @@
       <a href="../index.html#portfolio" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to portfolio</a>
       <div class="eyebrow">Docker · Python · Next.js</div>
       <h1>Document Embedding Studio</h1>
-      <p class="detail-pitch">A local-first application for building the ingestion side of a RAG (Retrieval-Augmented Generation) system — the part that lets an AI answer questions using your own documents.</p>
+      <p class="detail-pitch">A local-first application for building the ingestion side of a RAG (Retrieval-Augmented Generation) system - the part that lets an AI answer questions using your own documents.</p>
       <div class="detail-actions">
-        <a href="https://github.com/AlexandraMoldovan95/document-embedding-studio" class="btn btn-accent" target="_blank" rel="noopener">View on GitHub</a>
+        <a href="https://document-embedding-studio-demo-88c9c6.netlify.app" class="btn btn-accent" target="_blank" rel="noopener">Live demo</a>
+        <a href="https://github.com/AlexandraMoldovan95/document-embedding-studio" class="btn btn-ghost" target="_blank" rel="noopener">View on GitHub</a>
       </div>
 
       <div class="detail-media">
@@ -106,7 +107,7 @@
         </div>
         <div class="fact-block">
           <h3>Status</h3>
-          <p>MIT · source on GitHub. No hosted demo — it needs a long-running Python process and direct Docker-socket access that managed hosting platforms don't expose; runs locally via Docker.</p>
+          <p>MIT · source on GitHub. No hosted demo - it needs a long-running Python process and direct Docker-socket access that managed hosting platforms don't expose; runs locally via Docker.</p>
         </div>
       </div>
     </div>
@@ -120,7 +121,7 @@
           Most "RAG demo" projects stop at a single script calling an API. This
           one is built like a real application: a proper pipeline with
           validation at every step, a UI to actually use it, and no paid API key
-          required for the core loop — embedding and retrieval run entirely on
+          required for the core loop - embedding and retrieval run entirely on
           your own machine, using a local sentence-transformers model. The
           optional chat layer is explicitly bring-your-own-key, so nothing is
           sent anywhere unless you choose it.
@@ -133,11 +134,11 @@
     <div class="wrap">
       <div class="section-head"><h2>Highlights</h2></div>
       <ul class="highlight-list">
-        <li><strong>Natural-boundary chunking.</strong> When a character-window chunk would end mid-word, the cut is pulled back to the nearest paragraph break, then sentence ending, then line break, then whitespace — so chunks stay close to the configured size without cutting words in half.</li>
+        <li><strong>Natural-boundary chunking.</strong> When a character-window chunk would end mid-word, the cut is pulled back to the nearest paragraph break, then sentence ending, then line break, then whitespace - so chunks stay close to the configured size without cutting words in half.</li>
         <li><strong>Multi-stage Docker builds.</strong> The frontend's Dockerfile builds in a Node stage and ships only the production output in a slim runtime stage, so dev dependencies never reach the final image.</li>
         <li><strong>Named volumes for real persistence.</strong> Vectors and model weights survive <code>docker compose down</code> via named volumes (<code>chroma-data</code>, <code>hf-cache</code>), since a container's own filesystem is ephemeral by design.</li>
         <li><strong>Containers found by label, not by name.</strong> The live container-monitor panel locates its own two containers via a <code>studio.monitor</code> label, so it works regardless of the folder or Compose project name.</li>
-        <li><strong>The Docker-socket trade-off is documented, not glossed over.</strong> Giving the backend read access to the Docker socket is a real privilege — anything with socket access can, in principle, control any container on the host. Stated plainly, with the reasoning for why it's acceptable for a local single-user setup.</li>
+        <li><strong>The Docker-socket trade-off is documented, not glossed over.</strong> Giving the backend read access to the Docker socket is a real privilege - anything with socket access can, in principle, control any container on the host. Stated plainly, with the reasoning for why it's acceptable for a local single-user setup.</li>
       </ul>
     </div>
   </section>
@@ -147,13 +148,13 @@
       <div class="section-head">
         <h2>How it was built</h2>
         <p>
-          FastAPI backend with a strict separation of concerns — extraction,
+          FastAPI backend with a strict separation of concerns - extraction,
           chunking, embeddings, and vector storage are independent modules
           composed by a single pipeline function. Embeddings run locally via
           <code>sentence-transformers</code> (<code>all-MiniLM-L6-v2</code>, 384
           dimensions, no API key), stored in ChromaDB. The frontend is Next.js
           (App Router) with strict TypeScript. BYOK chat supports OpenAI,
-          Anthropic, or Gemini — the key is kept only in the browser tab's
+          Anthropic, or Gemini - the key is kept only in the browser tab's
           session storage, never written to disk or logged server-side.
         </p>
       </div>
@@ -169,9 +170,12 @@
 
   <section>
     <div class="wrap">
+      <div class="continue-row">
+        <a href="halvorsen-reyes-builders.html" class="btn btn-ghost">Next: Halvorsen &amp; Reyes Builders →</a>
+      </div>
       <div class="next-project">
         <a href="../index.html#portfolio" class="back-link" style="margin:0;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to all projects</a>
-        <a href="halvorsen-reyes-builders.html" class="btn btn-ghost">Next: Halvorsen &amp; Reyes Builders →</a>
+        <a href="claritate.html" class="btn btn-ghost">← Previous: Claritate</a>
       </div>
     </div>
   </section>

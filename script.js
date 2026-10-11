@@ -55,7 +55,16 @@
       btn.addEventListener('click', function () { activate(btn.dataset.tab, true); });
     });
 
-    var DEFAULT_TAB = 'portfolio';
+    // Lets same-page links like <a href="#portfolio"> switch tabs too,
+    // not just the tab buttons themselves or a fresh page load.
+    window.addEventListener('hashchange', function () {
+      var name = (location.hash || '').replace('#', '');
+      if (tabs.some(function (t) { return t.dataset.tab === name; })) {
+        activate(name, false);
+      }
+    });
+
+    var DEFAULT_TAB = 'about';
     var initial = (location.hash || '').replace('#', '');
     var valid = tabs.some(function (t) { return t.dataset.tab === initial; });
     activate(valid ? initial : DEFAULT_TAB, false);
@@ -63,7 +72,7 @@
 
   // ---------- Subtle scroll-reveal for project rows ----------
   // Rows are fully visible by default. Only once we know JS + IntersectionObserver
-  // both work do we opt a row into the fade-up animation — and even then, a
+  // both work do we opt a row into the fade-up animation - and even then, a
   // timeout safety net guarantees every row ends up visible no matter what.
   function initScrollReveal() {
     var rows = Array.prototype.slice.call(document.querySelectorAll('.project-row'));

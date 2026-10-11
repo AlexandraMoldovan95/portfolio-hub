@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Desktop Buddy — Alexandra Moldovan</title>
+<title>Desktop Buddy - Alexandra Moldovan</title>
 <meta name="description" content="A Windows companion that records only the app you're testing, starts and stops itself, and turns the run into short MP4 clips.">
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -34,7 +34,7 @@
       </div>
 
       <div class="detail-media">
-        <img src="../images/desktop-buddy.png" alt="Desktop Buddy app screenshot — the buddy companion and the live statistics panel">
+        <img src="../images/desktop-buddy.png" alt="Desktop Buddy app screenshot - the buddy companion and the live statistics panel">
       </div>
 
       <div class="facts-grid">
@@ -63,7 +63,7 @@
       <div class="section-head">
         <h2>Why this exists</h2>
         <p>
-          I needed a way to capture clean recordings while testing an app — without
+          I needed a way to capture clean recordings while testing an app - without
           manually starting and stopping a recorder, and without ending up with
           one giant unusable video per session. The buddy itself (an on-screen
           companion that reacts to focus time) came out of wanting the tool to be
@@ -81,8 +81,8 @@
         <li><strong>Window-targeted recording.</strong> Captures a single app window by its title and joins relaunches of the same app into one continuous file, instead of leaving you with a folder of fragments.</li>
         <li><strong>Clip cutting without ffmpeg.</strong> Flag a good moment during a recording and cut clips or a short highlight movie afterward, using the browser's own media pipeline (MediaRecorder + canvas) rather than shelling out to an external binary.</li>
         <li><strong>A clipboard history that's deliberately safe.</strong> Keeps recent clipboard entries for convenience, with logic in place to never save anything that looks like a secret.</li>
-        <li><strong>Electron hardened, not just functional.</strong> Sandbox, CSP, IPC channel checks, and encrypted secrets — security review was part of the three audit rounds, not an afterthought.</li>
-        <li><strong>Testable by design.</strong> Core logic lives in pure, framework-free modules specifically so it could be unit tested — 294 tests — rather than only exercised by hand.</li>
+        <li><strong>Electron hardened, not just functional.</strong> Sandbox, CSP, IPC channel checks, and encrypted secrets - security review was part of the three audit rounds, not an afterthought.</li>
+        <li><strong>Testable by design.</strong> Core logic lives in pure, framework-free modules specifically so it could be unit tested - 294 tests - rather than only exercised by hand.</li>
       </ul>
     </div>
   </section>
@@ -92,7 +92,7 @@
       <div class="section-head">
         <h2>How it was built</h2>
         <p>
-          Electron on top of vanilla JavaScript — no UI framework. The app logic
+          Electron on top of vanilla JavaScript - no UI framework. The app logic
           (scheduling, clip-cutting rules, the buddy's state machine) is written as
           pure, side-effect-free modules so it can be unit tested without spinning
           up Electron itself; the Electron layer is a thin shell around it. Media
@@ -115,9 +115,12 @@
 
   <section>
     <div class="wrap">
+      <div class="continue-row">
+        <a href="flashcards.html" class="btn btn-ghost">Next: Flashcards →</a>
+      </div>
       <div class="next-project">
         <a href="../index.html#portfolio" class="back-link" style="margin:0;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to all projects</a>
-        <a href="flashcards.html" class="btn btn-ghost">Next: Flashcards →</a>
+        <a href="note-organizer.html" class="btn btn-ghost">← Previous: Note Organizer</a>
       </div>
     </div>
   </section>
