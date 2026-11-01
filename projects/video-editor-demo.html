@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" style="scroll-behavior:smooth;">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Video Editor — Demo</title>
-<meta name="description" content="A static, non-interactive recreation of the Video Editor app's interface, using real sample footage, a real AI-generated edit plan, and a real rendered draft - no upload, no live AI calls.">
+<title>Video Editor — Alexandra Moldovan</title>
+<meta name="description" content="A local web app that turns raw clips and photos into an AI-edited vertical video for social media - the AI proposes the cut, the code validates and renders it with ffmpeg. Try the browser demo.">
 <style>
   /* Theme: the real app's own dark palette (from the app's static/index.html), not the portfolio's theme.
      This page stands on its own - someone can land here from a direct link without ever seeing
@@ -22,50 +22,70 @@
   }
   a{color:var(--acc);text-decoration:none;}
   a:hover{text-decoration:underline;}
+  h1,h2,h3{font-weight:650;letter-spacing:-.01em;}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px;}
 
+  /* nav */
   .topbar{
     display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
     padding:14px 24px;border-bottom:1px solid var(--line);background:var(--panel);
     position:sticky;top:0;z-index:10;
   }
-  .topbar .back{color:var(--muted);font-size:13.5px;display:flex;align-items:center;gap:6px;}
-  .topbar .back:hover{color:var(--text);text-decoration:none;}
-  .topbar .back svg{width:15px;height:15px;flex:none;}
-  .topbar .title{display:flex;align-items:center;gap:10px;font-weight:650;font-size:15px;}
-  .topbar .title .tag{
+  .topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;max-width:1040px;margin:0 auto;width:100%;}
+  .brand{display:flex;align-items:center;gap:8px;font-weight:650;font-size:15px;color:var(--text);}
+  .brand span{color:var(--acc);}
+  .brand .tag{
     font-size:10.5px;font-weight:650;letter-spacing:.04em;color:#1a0d06;background:var(--acc);
     border-radius:4px;padding:2px 7px;text-transform:uppercase;
   }
-  .topbar .gh{
-    font-size:13px;color:var(--text);border:1px solid var(--line);border-radius:7px;padding:7px 13px;
-  }
-  .topbar .gh:hover{border-color:var(--muted);text-decoration:none;}
+  .nav-links{display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
+  .nav-links a{color:var(--muted);font-size:13.5px;}
+  .nav-links a:hover{color:var(--text);text-decoration:none;}
+  .nav-links .gh{color:var(--text);border:1px solid var(--line);border-radius:7px;padding:6px 12px;}
+  .nav-links .gh:hover{border-color:var(--muted);text-decoration:none;}
 
-  .wrap{max-width:1180px;margin:0 auto;padding:28px 24px 60px;}
+  /* hero */
+  .hero{padding:52px 0 36px;}
+  .eyebrow{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;}
+  .hero h1{font-size:34px;margin:0 0 14px;}
+  .hero .pitch{font-size:16px;color:var(--muted);line-height:1.6;max-width:680px;margin:0 0 24px;}
+  .hero .pitch strong{color:var(--text);}
+  .cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px;}
+  .btn{display:inline-block;border-radius:8px;padding:10px 18px;font-size:14px;border:1px solid var(--line);color:var(--text);}
+  .btn:hover{text-decoration:none;border-color:var(--muted);}
+  .btn-accent{background:var(--acc);color:#1a0d06;border-color:var(--acc);font-weight:650;}
+  .btn-accent:hover{border-color:var(--acc);opacity:.92;}
+  .stats-row{display:flex;gap:28px;flex-wrap:wrap;margin-bottom:30px;}
+  .stat b{display:block;font-size:22px;color:var(--text);}
+  .stat span{display:block;font-size:12.5px;color:var(--muted);margin-top:2px;max-width:160px;}
+  .hero-media{border-radius:12px;overflow:hidden;border:1px solid var(--line);box-shadow:0 20px 50px -20px rgba(0,0,0,.6);}
+  .hero-media img{width:100%;display:block;}
 
-  .intro h1{font-size:22px;margin:0 0 6px;}
-  .intro .eyebrow{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;}
+  section{padding:40px 0;border-top:1px solid var(--line);}
+  .section-head{margin-bottom:22px;}
+  .section-head h2{font-size:22px;margin:0 0 6px;}
+  .section-head p{color:var(--muted);font-size:14px;line-height:1.6;max-width:680px;margin:0;}
 
+  /* demo */
   .demo-banner{
     background:var(--panel2);border:1px solid var(--line);border-radius:10px;
-    padding:14px 18px;margin:18px 0 26px;font-size:13px;color:var(--muted);line-height:1.6;
+    padding:14px 18px;margin-bottom:22px;font-size:13px;color:var(--muted);line-height:1.6;
   }
   .demo-banner strong{color:var(--text);}
   .demo-banner a{color:var(--acc2);}
-
   .shell{
     background:var(--panel);border-radius:12px;overflow:hidden;
     border:1px solid var(--line);box-shadow:0 20px 50px -20px rgba(0,0,0,.6);
     font-size:14px;
   }
   .shell-header{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--panel2);}
-  .shell-header h2{font-size:15px;margin:0;font-weight:650;}
-  .shell-header h2 span{color:var(--acc);}
+  .shell-header h3{font-size:15px;margin:0;font-weight:650;}
+  .shell-header h3 span{color:var(--acc);}
   .shell-header .count{font-size:11px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:5px;padding:2px 8px;margin-left:auto;}
   .demo-grid{display:grid;grid-template-columns:260px 1fr 260px;gap:1px;background:var(--line);}
   @media (max-width:980px){.demo-grid{grid-template-columns:1fr;}}
   .demo-col{background:var(--bg);padding:16px;overflow:auto;}
-  .demo-col h3{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin:0 0 10px;}
+  .demo-col h4{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin:0 0 10px;font-weight:650;}
   .thumb-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
   .thumb-card{background:var(--panel2);border:1px solid var(--line);border-radius:8px;overflow:hidden;}
   .thumb-card img{width:100%;height:84px;object-fit:cover;display:block;background:#000;}
@@ -94,77 +114,177 @@
   .fake-btn{display:block;width:100%;text-align:center;background:var(--panel2);border:1px solid var(--line);
     color:var(--muted);border-radius:7px;padding:8px;font-size:12.5px;margin-bottom:6px;cursor:not-allowed;}
 
-  .page-footer{
-    display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;
-    margin-top:26px;padding-top:20px;border-top:1px solid var(--line);
-  }
-  .btn{display:inline-block;border-radius:8px;padding:9px 16px;font-size:13.5px;border:1px solid var(--line);}
-  .btn:hover{text-decoration:none;border-color:var(--muted);}
-  .btn-accent{background:var(--acc);color:#1a0d06;border-color:var(--acc);font-weight:650;}
-  .btn-accent:hover{border-color:var(--acc);opacity:.92;}
+  /* feature / role blocks */
+  .feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+  @media (max-width:760px){.feature-grid{grid-template-columns:1fr;}}
+  .feature-block h3{font-size:15.5px;margin:0 0 8px;color:var(--text);}
+  .feature-block h3 .ico{color:var(--acc);margin-right:6px;}
+  .feature-block p{font-size:13.5px;color:var(--muted);line-height:1.6;margin:0;}
+  .feature-block p strong{color:var(--text);}
+
+  .stack-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;}
+  .chip{font-size:12px;background:var(--panel2);border:1px solid var(--line);color:var(--muted);border-radius:6px;padding:4px 10px;}
+
+  footer{border-top:1px solid var(--line);padding:26px 0;margin-top:0;}
+  .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px;color:var(--muted);}
+  .footer-inner a{color:var(--muted);}
+  .footer-inner a:hover{color:var(--text);}
+  .footer-links{display:flex;gap:16px;}
 </style>
 </head>
 <body>
 
 <div class="topbar">
-  <a href="video-editor.html" class="back">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
-    Back to the write-up
-  </a>
-  <div class="title">Video <span style="color:var(--acc)">Editor</span><span class="tag">Demo</span></div>
-  <a href="https://github.com/AlexandraMoldovan95/video-editor" class="gh" target="_blank" rel="noopener">View on GitHub</a>
+  <div class="topbar-inner">
+    <a href="#top" class="brand">Video <span>Editor</span><span class="tag">Demo</span></a>
+    <div class="nav-links">
+      <a href="#demo">Demo</a>
+      <a href="#features">What it does</a>
+      <a href="#role">My role</a>
+      <a href="video-editor.html">← Write-up</a>
+      <a href="https://github.com/AlexandraMoldovan95/video-editor" class="gh" target="_blank" rel="noopener">View on GitHub</a>
+    </div>
+  </div>
 </div>
 
-<main class="wrap">
-  <div class="intro">
-    <div class="eyebrow">Static recreation · real data, no backend</div>
-    <h1>Video Editor — interactive demo</h1>
-  </div>
+<main id="top">
+  <section class="hero" style="border-top:none;">
+    <div class="wrap">
+      <div class="eyebrow">Python · FastAPI · ffmpeg · local web app</div>
+      <h1>Video Editor</h1>
+      <p class="pitch">Turns raw clips and photos into a finished vertical (9:16) video for social media. <strong>Claude proposes the cut</strong>, the color and the on-screen text — the code validates the plan and renders it with ffmpeg, so the AI never touches ffmpeg directly. You stay in control: change or lock anything before it renders.</p>
 
-  <div class="demo-banner">
-    <strong>Static demo, not the live app.</strong> Everything below is real - the ten sample clips/photos, the AI-generated edit plan and its reasoning, the per-clip color numbers, and the rendered video - but nothing here is running: this page doesn't call ffmpeg or the Claude API. Switching the preset below swaps between three real, pre-built plans using plain JavaScript. The actual app needs ffmpeg and your own Anthropic API key, so it only runs locally - see <a href="https://github.com/AlexandraMoldovan95/video-editor" target="_blank" rel="noopener">the source on GitHub</a> to run it yourself.
-  </div>
+      <div class="cta-row">
+        <a href="#demo" class="btn btn-accent">Try it below ↓</a>
+        <a href="https://github.com/AlexandraMoldovan95/video-editor" class="btn" target="_blank" rel="noopener">View on GitHub</a>
+      </div>
 
-  <div class="shell">
-    <div class="shell-header">
-      <h2>Video <span>Editor</span></h2>
-      <span class="count">Project demo · 10 files</span>
+      <div class="stats-row">
+        <div class="stat"><b>~2 min</b><span>for a first draft, vs. ~1 hour hand-editing the same 30s clip</span></div>
+        <div class="stat"><b>4</b><span>real crash/data-loss bugs found and fixed in a dedicated robustness audit</span></div>
+        <div class="stat"><b>3</b><span>ready-made demo plans below, no API key needed</span></div>
+      </div>
+
+      <div class="hero-media">
+        <img src="../images/video-editor.jpg" alt="Video Editor app: uploaded clips, the AI's edit plan with its reasoning, and the timeline">
+      </div>
     </div>
-    <div class="demo-grid">
+  </section>
 
-      <div class="demo-col">
-        <h3>1 · Material</h3>
-        <div class="thumb-grid" id="material-grid"></div>
+  <section id="demo">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Play with it</h2>
+        <p>A real, saved project — the same ten sample clips and photos the app was tested with — not a live install.</p>
       </div>
 
-      <div class="demo-col">
-        <h3>2 · Edit plan</h3>
-        <div class="preset-row" id="preset-row"></div>
-        <div class="chip-row2" id="chip-row"></div>
-        <div class="reasoning-box" id="reasoning-box"></div>
-        <div id="timeline-list"></div>
+      <div class="demo-banner">
+        <strong>Static demo, not the live app.</strong> Everything below is real — the sample footage, the AI-generated edit plan and its reasoning, the per-clip color numbers, and the rendered video — but nothing here is running: this page doesn't call ffmpeg or the Claude API. Switching the preset swaps between three real, pre-built plans using plain JavaScript. The actual app needs ffmpeg and your own Anthropic API key, and runs as a local web server on your own machine — see <a href="https://github.com/AlexandraMoldovan95/video-editor" target="_blank" rel="noopener">the source on GitHub</a> to run it yourself.
       </div>
 
-      <div class="demo-col">
-        <h3>3 · Preview &amp; export</h3>
-        <div class="preview-box">
-          <video controls preload="metadata">
-            <source src="../images/video-editor-demo/draft.mp4" type="video/mp4">
-          </video>
+      <div class="shell">
+        <div class="shell-header">
+          <h3>Video <span>Editor</span></h3>
+          <span class="count">Project demo · 10 files</span>
         </div>
-        <p class="preview-note">Real rendered draft (540×960, the app's fast-preview resolution) from the "Cinematic travel story" plan, rendered by the actual ffmpeg pipeline — not a mockup.</p>
-        <button class="fake-btn" disabled title="Needs the real app">Render final</button>
-        <button class="fake-btn" disabled title="Needs the real app">⚡ Quick preview</button>
-      </div>
+        <div class="demo-grid">
 
+          <div class="demo-col">
+            <h4>1 · Material</h4>
+            <div class="thumb-grid" id="material-grid"></div>
+          </div>
+
+          <div class="demo-col">
+            <h4>2 · Edit plan</h4>
+            <div class="preset-row" id="preset-row"></div>
+            <div class="chip-row2" id="chip-row"></div>
+            <div class="reasoning-box" id="reasoning-box"></div>
+            <div id="timeline-list"></div>
+          </div>
+
+          <div class="demo-col">
+            <h4>3 · Preview &amp; export</h4>
+            <div class="preview-box">
+              <video controls preload="metadata">
+                <source src="../images/video-editor-demo/draft.mp4" type="video/mp4">
+              </video>
+            </div>
+            <p class="preview-note">Real rendered draft (540×960, the app's fast-preview resolution) from the "Cinematic travel story" plan, rendered by the actual ffmpeg pipeline — not a mockup.</p>
+            <button class="fake-btn" disabled title="Needs the real app">Render final</button>
+            <button class="fake-btn" disabled title="Needs the real app">⚡ Quick preview</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What it does</h2>
+        <p>Everything below is optional and toggleable — a Settings panel keeps the interface uncluttered.</p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-block">
+          <h3><span class="ico">●</span>AI editing</h3>
+          <p>Claude picks the order, cuts, color and text, and returns a plan the code validates before it ever touches ffmpeg. <strong>Lock</strong> any cut or text you like and regenerating only reworks what's unlocked — standing rules like "keep the opening 3s" apply automatically every time.</p>
+        </div>
+        <div class="feature-block">
+          <h3><span class="ico">●</span>Manual editing, once the draft lands</h3>
+          <p>A full NLE-style toolkit: undo/redo, drag-trim, a split tool, per-clip speed (0.25×–4×), manual pan/reframe, multi-select, free-drag text, plus B-roll, picture-in-picture and split-screen overlays.</p>
+        </div>
+        <div class="feature-block">
+          <h3><span class="ico">●</span>Audio and music</h3>
+          <p>Custom beat detection written from scratch in plain numpy finds the BPM and beat grid, so cuts and zoom punches can snap to the music while the original clip audio ducks automatically underneath.</p>
+        </div>
+        <div class="feature-block">
+          <h3><span class="ico">●</span>Previews and export</h3>
+          <p>A live quick-preview re-encodes only what changed, kept fully separate from the real export path. Export a finished MP4, or an FCPXML timeline that reopens your original files in DaVinci Resolve / Final Cut.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="role">
+    <div class="wrap">
+      <div class="section-head"><h2>My role</h2></div>
+      <div class="feature-grid">
+        <div class="feature-block">
+          <h3>Product and design</h3>
+          <p>Product idea, UX, and the <strong>"AI decides, code executes"</strong> boundary — the plan Claude returns is validated against a strict schema before any ffmpeg command runs. Built in pair-programming with Claude, starting from a written requirements doc and working through the pipeline stage by stage.</p>
+        </div>
+        <div class="feature-block">
+          <h3>Quality</h3>
+          <p>Every stage tested by hand: the render pipeline, the AI planner, the server and UI. Harder features (overlay compositing, audio timing, beat sync) were checked against purpose-built test clips with exact pixel and frequency checks, not just "it ran." A dedicated robustness pass found and fixed 4 real crash/data-loss bugs. No automated test suite yet — the honest gap next to this project's others.</p>
+        </div>
+        <div class="feature-block">
+          <h3>Architecture</h3>
+          <p>The AI never writes ffmpeg: <code>planner.py</code> calls Claude, <code>edl.py</code> validates the plan (overlaps, transitions, text) before <code>render.py</code> runs anything — an invalid plan gets one retry with the validation error attached. Beat tracking, subtitle timing, and the live-preview cache are each isolated so one feature's shortcuts can't leak into another's correctness.</p>
+        </div>
+      </div>
+      <div class="stack-row">
+        <span class="chip">Python</span>
+        <span class="chip">FastAPI</span>
+        <span class="chip">ffmpeg</span>
+        <span class="chip">Claude API</span>
+        <span class="chip">Pydantic</span>
+        <span class="chip">numpy (beat tracking)</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>Video Editor — MIT License · <a href="video-editor.html">full write-up</a></span>
+    <div class="footer-links">
+      <a href="../index.html#portfolio">← Portfolio</a>
+      <a href="https://github.com/AlexandraMoldovan95/video-editor" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/alexandra-moldovan-528152102/" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </div>
-
-  <div class="page-footer">
-    <a href="video-editor.html" class="btn">Back to the write-up</a>
-    <a href="https://github.com/AlexandraMoldovan95/video-editor" class="btn btn-accent" target="_blank" rel="noopener">View on GitHub</a>
-  </div>
-</main>
+</footer>
 
 <script>
 // Real material metadata, read straight off the running app for this exact sample project.
