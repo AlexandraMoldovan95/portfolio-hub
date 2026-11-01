@@ -3,137 +3,169 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Video Editor — Demo - Alexandra Moldovan</title>
+<title>Video Editor — Demo</title>
 <meta name="description" content="A static, non-interactive recreation of the Video Editor app's interface, using real sample footage, a real AI-generated edit plan, and a real rendered draft - no upload, no live AI calls.">
-<link rel="stylesheet" href="../styles.css">
 <style>
+  /* Theme: the real app's own dark palette (from the app's static/index.html), not the portfolio's theme.
+     This page stands on its own - someone can land here from a direct link without ever seeing
+     the portfolio site, so it should look like the app, not like the portfolio hub. */
   :root{
-    --vbg:#0f1115;--vpanel:#171a21;--vpanel2:#1e222b;--vline:#2a2f3a;--vtext:#e7e9ee;--vmuted:#8a91a0;
-    --vacc:#ff7a45;--vacc2:#ffb38f;
+    --bg:#0f1115;--panel:#171a21;--panel2:#1e222b;--line:#2a2f3a;--text:#e7e9ee;--muted:#8a91a0;
+    --acc:#ff7a45;--acc2:#ffb38f;--ok:#3ecf8e;
   }
-  .demo-wrap{max-width:1180px;margin:0 auto;padding:0 20px 60px;}
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    min-height:100vh;
+  }
+  a{color:var(--acc);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+
+  .topbar{
+    display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+    padding:14px 24px;border-bottom:1px solid var(--line);background:var(--panel);
+    position:sticky;top:0;z-index:10;
+  }
+  .topbar .back{color:var(--muted);font-size:13.5px;display:flex;align-items:center;gap:6px;}
+  .topbar .back:hover{color:var(--text);text-decoration:none;}
+  .topbar .back svg{width:15px;height:15px;flex:none;}
+  .topbar .title{display:flex;align-items:center;gap:10px;font-weight:650;font-size:15px;}
+  .topbar .title .tag{
+    font-size:10.5px;font-weight:650;letter-spacing:.04em;color:#1a0d06;background:var(--acc);
+    border-radius:4px;padding:2px 7px;text-transform:uppercase;
+  }
+  .topbar .gh{
+    font-size:13px;color:var(--text);border:1px solid var(--line);border-radius:7px;padding:7px 13px;
+  }
+  .topbar .gh:hover{border-color:var(--muted);text-decoration:none;}
+
+  .wrap{max-width:1180px;margin:0 auto;padding:28px 24px 60px;}
+
+  .intro h1{font-size:22px;margin:0 0 6px;}
+  .intro .eyebrow{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;}
+
   .demo-banner{
-    background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-lg);
-    padding:16px 20px;margin:24px 0;font-size:0.92rem;color:var(--text-muted);
+    background:var(--panel2);border:1px solid var(--line);border-radius:10px;
+    padding:14px 18px;margin:18px 0 26px;font-size:13px;color:var(--muted);line-height:1.6;
   }
   .demo-banner strong{color:var(--text);}
-  .demo-shell{
-    background:var(--vbg);color:var(--vtext);border-radius:var(--radius-lg);overflow:hidden;
-    border:1px solid var(--vline);box-shadow:var(--shadow);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  .demo-banner a{color:var(--acc2);}
+
+  .shell{
+    background:var(--panel);border-radius:12px;overflow:hidden;
+    border:1px solid var(--line);box-shadow:0 20px 50px -20px rgba(0,0,0,.6);
     font-size:14px;
   }
-  .demo-header{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--vline);background:var(--vpanel);}
-  .demo-header h2{font-size:15px;margin:0;font-weight:650;}
-  .demo-header h2 span{color:var(--vacc);}
-  .demo-header .tag{font-size:11px;color:var(--vmuted);background:var(--vpanel2);border:1px solid var(--vline);border-radius:5px;padding:2px 8px;}
-  .demo-grid{display:grid;grid-template-columns:260px 1fr 260px;gap:1px;background:var(--vline);}
+  .shell-header{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--panel2);}
+  .shell-header h2{font-size:15px;margin:0;font-weight:650;}
+  .shell-header h2 span{color:var(--acc);}
+  .shell-header .count{font-size:11px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:5px;padding:2px 8px;margin-left:auto;}
+  .demo-grid{display:grid;grid-template-columns:260px 1fr 260px;gap:1px;background:var(--line);}
   @media (max-width:980px){.demo-grid{grid-template-columns:1fr;}}
-  .demo-col{background:var(--vbg);padding:14px;overflow:auto;}
-  .demo-col h3{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--vmuted);margin:0 0 10px;}
+  .demo-col{background:var(--bg);padding:16px;overflow:auto;}
+  .demo-col h3{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin:0 0 10px;}
   .thumb-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
-  .thumb-card{background:var(--vpanel2);border:1px solid var(--vline);border-radius:8px;overflow:hidden;}
+  .thumb-card{background:var(--panel2);border:1px solid var(--line);border-radius:8px;overflow:hidden;}
   .thumb-card img{width:100%;height:84px;object-fit:cover;display:block;background:#000;}
   .thumb-card .nm{font-size:10.5px;padding:4px 6px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-  .thumb-card .mt{font-size:10px;color:var(--vmuted);padding:0 6px 5px;}
+  .thumb-card .mt{font-size:10px;color:var(--muted);padding:0 6px 5px;}
   .preset-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;}
-  .preset-btn{background:var(--vpanel2);border:1px solid var(--vline);color:var(--vtext);border-radius:7px;
+  .preset-btn{background:var(--panel2);border:1px solid var(--line);color:var(--text);border-radius:7px;
     padding:6px 10px;font-size:12.5px;cursor:pointer;font-family:inherit;}
-  .preset-btn:hover{border-color:var(--vmuted);}
-  .preset-btn.active{background:var(--vacc);border-color:var(--vacc);color:#1a0d06;font-weight:650;}
+  .preset-btn:hover{border-color:var(--muted);}
+  .preset-btn.active{background:var(--acc);border-color:var(--acc);color:#1a0d06;font-weight:650;}
   .chip-row2{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
-  .vchip{font-size:11px;background:var(--vpanel2);border:1px solid var(--vline);color:var(--vmuted);
+  .vchip{font-size:11px;background:var(--panel2);border:1px solid var(--line);color:var(--muted);
     border-radius:5px;padding:3px 8px;}
-  .reasoning-box{background:var(--vpanel2);border-left:3px solid var(--vacc);border-radius:6px;
-    padding:10px 12px;font-size:12.5px;color:var(--vtext);line-height:1.5;margin-bottom:14px;}
-  .reasoning-box.empty{color:var(--vmuted);font-style:italic;}
-  .clip-row{background:var(--vpanel2);border:1px solid var(--vline);border-radius:8px;padding:8px 10px;margin-bottom:7px;}
-  .clip-row .cn{font-size:11px;color:var(--vmuted);}
+  .reasoning-box{background:var(--panel2);border-left:3px solid var(--acc);border-radius:6px;
+    padding:10px 12px;font-size:12.5px;color:var(--text);line-height:1.5;margin-bottom:14px;}
+  .reasoning-box.empty{color:var(--muted);font-style:italic;}
+  .clip-row{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:8px 10px;margin-bottom:7px;}
+  .clip-row .cn{font-size:11px;color:var(--muted);}
   .clip-row .cf{font-size:12.5px;font-weight:600;margin:2px 0 3px;word-break:break-all;}
-  .clip-row .cd{font-size:11.5px;color:var(--vmuted);}
+  .clip-row .cd{font-size:11.5px;color:var(--muted);}
   .clip-row .cv{font-size:11px;color:#8ea2c6;margin-top:3px;}
-  .clip-row .ct{font-size:10.5px;color:var(--vmuted);margin-top:3px;font-style:italic;}
-  .preview-box{background:#000;border-radius:8px;overflow:hidden;border:1px solid var(--vline);margin-bottom:10px;}
+  .clip-row .ct{font-size:10.5px;color:var(--muted);margin-top:3px;font-style:italic;}
+  .preview-box{background:#000;border-radius:8px;overflow:hidden;border:1px solid var(--line);margin-bottom:10px;}
   .preview-box video{width:100%;display:block;}
-  .preview-note{font-size:11.5px;color:var(--vmuted);line-height:1.5;margin-bottom:14px;}
-  .fake-btn{display:block;width:100%;text-align:center;background:var(--vpanel2);border:1px solid var(--vline);
-    color:var(--vmuted);border-radius:7px;padding:8px;font-size:12.5px;margin-bottom:6px;cursor:not-allowed;}
+  .preview-note{font-size:11.5px;color:var(--muted);line-height:1.5;margin-bottom:14px;}
+  .fake-btn{display:block;width:100%;text-align:center;background:var(--panel2);border:1px solid var(--line);
+    color:var(--muted);border-radius:7px;padding:8px;font-size:12.5px;margin-bottom:6px;cursor:not-allowed;}
+
+  .page-footer{
+    display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;
+    margin-top:26px;padding-top:20px;border-top:1px solid var(--line);
+  }
+  .btn{display:inline-block;border-radius:8px;padding:9px 16px;font-size:13.5px;border:1px solid var(--line);}
+  .btn:hover{text-decoration:none;border-color:var(--muted);}
+  .btn-accent{background:var(--acc);color:#1a0d06;border-color:var(--acc);font-weight:650;}
+  .btn-accent:hover{border-color:var(--acc);opacity:.92;}
 </style>
 </head>
 <body>
 
-<header class="site-header">
-  <div class="wrap">
-    <a href="../index.html" class="brand">Alexandra Moldovan</a>
-    <div class="header-actions">
-      <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-      </button>
+<div class="topbar">
+  <a href="video-editor.html" class="back">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+    Back to the write-up
+  </a>
+  <div class="title">Video <span style="color:var(--acc)">Editor</span><span class="tag">Demo</span></div>
+  <a href="https://github.com/AlexandraMoldovan95/video-editor" class="gh" target="_blank" rel="noopener">View on GitHub</a>
+</div>
+
+<main class="wrap">
+  <div class="intro">
+    <div class="eyebrow">Static recreation · real data, no backend</div>
+    <h1>Video Editor — interactive demo</h1>
+  </div>
+
+  <div class="demo-banner">
+    <strong>Static demo, not the live app.</strong> Everything below is real - the ten sample clips/photos, the AI-generated edit plan and its reasoning, the per-clip color numbers, and the rendered video - but nothing here is running: this page doesn't call ffmpeg or the Claude API. Switching the preset below swaps between three real, pre-built plans using plain JavaScript. The actual app needs ffmpeg and your own Anthropic API key, so it only runs locally - see <a href="https://github.com/AlexandraMoldovan95/video-editor" target="_blank" rel="noopener">the source on GitHub</a> to run it yourself.
+  </div>
+
+  <div class="shell">
+    <div class="shell-header">
+      <h2>Video <span>Editor</span></h2>
+      <span class="count">Project demo · 10 files</span>
+    </div>
+    <div class="demo-grid">
+
+      <div class="demo-col">
+        <h3>1 · Material</h3>
+        <div class="thumb-grid" id="material-grid"></div>
+      </div>
+
+      <div class="demo-col">
+        <h3>2 · Edit plan</h3>
+        <div class="preset-row" id="preset-row"></div>
+        <div class="chip-row2" id="chip-row"></div>
+        <div class="reasoning-box" id="reasoning-box"></div>
+        <div id="timeline-list"></div>
+      </div>
+
+      <div class="demo-col">
+        <h3>3 · Preview &amp; export</h3>
+        <div class="preview-box">
+          <video controls preload="metadata">
+            <source src="../images/video-editor-demo/draft.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="preview-note">Real rendered draft (540×960, the app's fast-preview resolution) from the "Cinematic travel story" plan, rendered by the actual ffmpeg pipeline — not a mockup.</p>
+        <button class="fake-btn" disabled title="Needs the real app">Render final</button>
+        <button class="fake-btn" disabled title="Needs the real app">⚡ Quick preview</button>
+      </div>
+
     </div>
   </div>
-</header>
 
-<main>
-  <div class="demo-wrap">
-    <a href="video-editor.html" class="back-link" style="margin-top:24px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to Video Editor</a>
-
-    <div class="demo-banner">
-      <strong>Static demo, not the live app.</strong> Everything below is real - the ten sample clips/photos, the AI-generated edit plan and its reasoning, the per-clip color numbers, and the rendered video - but nothing here is running: this page doesn't call ffmpeg or the Claude API. Switching the preset below swaps between three real, pre-built plans using plain JavaScript. The actual app needs ffmpeg and your own Anthropic API key, so it only runs locally - see <a href="https://github.com/AlexandraMoldovan95/video-editor" target="_blank" rel="noopener">the source on GitHub</a> to run it yourself.
-    </div>
-
-    <div class="demo-shell">
-      <div class="demo-header">
-        <h2>Video <span>Editor</span></h2>
-        <span class="tag">Project demo · 10 files</span>
-      </div>
-      <div class="demo-grid">
-
-        <div class="demo-col">
-          <h3>1 · Material</h3>
-          <div class="thumb-grid" id="material-grid"></div>
-        </div>
-
-        <div class="demo-col">
-          <h3>2 · Edit plan</h3>
-          <div class="preset-row" id="preset-row"></div>
-          <div class="chip-row2" id="chip-row"></div>
-          <div class="reasoning-box" id="reasoning-box"></div>
-          <div id="timeline-list"></div>
-        </div>
-
-        <div class="demo-col">
-          <h3>3 · Preview &amp; export</h3>
-          <div class="preview-box">
-            <video controls preload="metadata">
-              <source src="../images/video-editor-demo/draft.mp4" type="video/mp4">
-            </video>
-          </div>
-          <p class="preview-note">Real rendered draft (540×960, the app's fast-preview resolution) from the "Cinematic travel story" plan, rendered by the actual ffmpeg pipeline — not a mockup.</p>
-          <button class="fake-btn" disabled title="Needs the real app">Render final</button>
-          <button class="fake-btn" disabled title="Needs the real app">⚡ Quick preview</button>
-        </div>
-
-      </div>
-    </div>
-
-    <p style="text-align:center;margin-top:18px;">
-      <a href="video-editor.html" class="btn btn-ghost">Back to the write-up</a>
-      <a href="https://github.com/AlexandraMoldovan95/video-editor" class="btn btn-accent" target="_blank" rel="noopener">View on GitHub</a>
-    </p>
+  <div class="page-footer">
+    <a href="video-editor.html" class="btn">Back to the write-up</a>
+    <a href="https://github.com/AlexandraMoldovan95/video-editor" class="btn btn-accent" target="_blank" rel="noopener">View on GitHub</a>
   </div>
 </main>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <span>&copy; 2026 Alexandra Moldovan.</span>
-    <div class="footer-links">
-      <a href="https://github.com/AlexandraMoldovan95" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://www.linkedin.com/in/alexandra-moldovan-528152102/" target="_blank" rel="noopener">LinkedIn</a>
-    </div>
-  </div>
-</footer>
-
-<script src="../script.js"></script>
 <script>
 // Real material metadata, read straight off the running app for this exact sample project.
 const MATERIAL = [
