@@ -7,6 +7,14 @@ to its code and live demo.
 
 **[Live →](https://alexandra-moldovan.netlify.app/)**
 
+## Why it exists
+
+I wanted one page recruiters land on instead of nine separate repos with
+nine different styles. Every project detail page follows the same structure
+— one-line pitch → main picture → What / My role / Quality / Status → Why
+this exists → Highlights → How it was built — so a recruiter learns the
+format once on the first project and can skim the rest in seconds.
+
 ## Structure
 
 ```
@@ -14,7 +22,6 @@ index.html                           — hub: About me tab + Portfolio tab
 styles.css                            — shared styles (light/dark theme, animations)
 script.js                             — theme toggle, tabs, scroll-reveal
 images/                               — real screenshots used on rows and detail pages
-  avatar.jpg                          — personal photo, gitignored (see "The avatar photo" below)
 projects/
   desktop-buddy.html
   flashcards.html
@@ -29,55 +36,25 @@ netlify.toml
 .gitignore
 ```
 
-Every project detail page follows the same structure: one-line pitch → main
-picture → What / My role / Quality / Status → Why this exists → Highlights →
-How it was built — so a recruiter learns the format once and can skim the
-rest.
-
 ## Design
 
 Light/dark theme via CSS custom properties, following system preference by
 default with a manual toggle (remembered in `localStorage`). Near-black /
 off-white neutrals with a single lime accent, Space Grotesk for headings,
 Inter for body text — deliberately different from any single project in the
-portfolio. Project rows fade up into view on scroll (`IntersectionObserver`,
-with a visible-by-default fallback if JS doesn't run, and a 2s safety timeout
-so nothing can get stuck invisible) and respect `prefers-reduced-motion`.
+portfolio, so the hub reads as its own thing rather than borrowing one
+project's look. Project rows fade up into view on scroll
+(`IntersectionObserver`, with a visible-by-default fallback if JS doesn't
+run, and a 2s safety timeout so nothing can get stuck invisible) and respect
+`prefers-reduced-motion`.
 
-## The avatar photo
+## How it was built
 
-`images/avatar.jpg` is listed in `.gitignore` on purpose, at my own request —
-I didn't want a personal photo sitting in public git history forever, even
-though it's fine for it to be visible on the live site. **This has a real
-consequence: if you deploy by connecting this repo to Netlify (git-based
-auto-deploy), the photo will be missing on the live site, because Netlify
-only sees what's in git.** To have both — the photo excluded from git *and*
-present on the live site — deploy by dragging the whole local folder onto
-[app.netlify.com/drop](https://app.netlify.com/drop) instead (see
-"Deploying" below), and re-drag it manually after each change instead of
-relying on auto-deploy-on-push.
-
-## Updating
-
-This is plain HTML/CSS/JS, no build step. To add or update a project:
-
-1. Add a row to the `.project-list` in `index.html` (image, tags, one-line
-   pitch, link).
-2. Add a matching page in `projects/`, copying the structure of an existing
-   one.
-3. Drop a real screenshot in `images/` — never a fabricated or AI-generated
-   "screenshot."
-
-## Deploying
-
-Fully static, no build command, publish directory `/`. Two options:
-
-- **Drag-and-drop** (recommended, since the avatar photo is gitignored —
-  see above): go to [app.netlify.com/drop](https://app.netlify.com/drop) and
-  drop the whole project folder in. Re-drop after any change.
-- **Connect this repo in Netlify** (Add new site → Import an existing
-  project): auto-deploys on every push, but the avatar photo won't appear
-  live since it's not in git — fine if that trade-off is acceptable.
+Plain HTML/CSS/JS, no framework, no build step — nine project pages sharing
+one layout convention, written in pair-programming with Claude (Anthropic's
+AI assistant). I own the structure and the writing on every page: what each
+project says about itself, in what order, and how honestly (including
+listing real limitations, not just wins).
 
 ## License
 
