@@ -9,11 +9,13 @@ to its code and live demo.
 
 ## Why it exists
 
-I wanted one page recruiters land on instead of nine separate repos with
-nine different styles. Every project detail page follows the same structure
-— one-line pitch → main picture → What / My role / Quality / Status → Why
-this exists → Highlights → How it was built — so a recruiter learns the
-format once on the first project and can skim the rest in seconds.
+Nine projects built while retraining in AI-assisted development — part of a
+deliberate move from technical support toward AI development, AI
+engineering, product design, and QA. This hub ties them together in one
+place instead of nine separate repos with nine different styles. Every
+project detail page follows the same structure — one-line pitch → main
+picture → What / My role / Quality / Status → Why this exists → Highlights
+→ How it was built — so they read as one consistent body of work.
 
 ## Structure
 
