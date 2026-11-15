@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Claritate - Alexandra Moldovan</title>
-<meta name="description" content="Upload a sales CSV and the app reads it, cleans it, and shows six dashboards - with a natural-language Q&A layer in Romanian.">
+<meta name="description" content="Upload a sales CSV or Excel file and the app reads it, cleans it, and shows dashboards, a pivot table, and a two-file comparison - with a rule-based natural-language Q&A layer in Romanian.">
 <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
@@ -25,34 +25,34 @@
   <section class="detail-hero">
     <div class="wrap">
       <a href="../index.html#portfolio" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to portfolio</a>
-      <div class="eyebrow">CSV-to-dashboard · AI</div>
+      <div class="eyebrow">CSV/Excel-to-dashboard</div>
       <h1>Claritate</h1>
-      <p class="detail-pitch">Upload a sales CSV and the app reads it, detects its columns, cleans it, and shows six dashboards - figures, charts, and tables. You can also ask questions about the data in natural language; the AI model only picks <em>what</em> to calculate, the code calculates every figure. In AI-engineering terms, that's a "tool use" (or "LLM-as-planner") pattern - the model never sees the data itself, so it can plan a calculation but can't quietly make up a number.</p>
+      <p class="detail-pitch">Upload a sales CSV or Excel file and the app reads it, detects its columns, cleans it, and shows six dashboards plus a configurable pivot table - figures, charts, and tables. You can also ask questions about the data in natural language, in Romanian: a rule-based planner in code turns the question into a calculation plan, and the code does the arithmetic itself. No AI model and no API key run on the live site - a deliberate choice, not a missing feature (an optional AI-planner mode is already scaffolded in the code; see Highlights for why it's off).</p>
       <div class="detail-actions">
         <a href="https://claritate.vercel.app" class="btn btn-accent" target="_blank" rel="noopener">Live demo</a>
         <a href="https://github.com/AlexandraMoldovan95/claritate" class="btn btn-ghost" target="_blank" rel="noopener">View on GitHub</a>
       </div>
 
       <div class="detail-media">
-        <img src="../images/claritate.jpg" alt="Screenshot of the Claritate app">
+        <img src="../images/claritate.jpg" alt="Screenshot of the Claritate app: monthly delivered-revenue chart and a top-products ranking">
       </div>
 
       <div class="facts-grid">
         <div class="fact-block">
           <h3>What it does</h3>
-          <p>Six dashboards (general summary, delivered revenue, lost revenue, best/worst month, top customers and products, order health), automatic column detection, data cleaning that's shown and explained rather than hidden, and a natural-language Q&amp;A layer - in Romanian, by design (see the note below).</p>
+          <p>Six dashboards (general summary, delivered revenue, lost revenue, best/worst month, top customers and products, order health) plus a configurable pivot table, automatic column detection, data cleaning that's shown and explained rather than hidden, a printable PDF report, comparison between two files, and a natural-language Q&amp;A layer - in Romanian by design (see the note below), answered entirely by code.</p>
         </div>
         <div class="fact-block">
           <h3>My role</h3>
-          <p>Product idea, UX, the cleaning rules, and the safety net around the AI's query plans; built in pair-programming with an AI assistant (Claude).</p>
+          <p>Product idea, UX, the cleaning rules, the question-answering logic and its safety net, and every product decision that shapes what a figure actually means (e.g. whether cancelled orders count); built in pair-programming with an AI assistant (Claude).</p>
         </div>
         <div class="fact-block">
           <h3>Quality</h3>
-          <p>10 automated tests, with every figure cross-checked against independent reports. Accessibility audit (Impeccable - a manual check at desktop and mobile widths against tap-target size, contrast, and heading order): started at 15/20, fixed to zero contrast issues; one known tap-target exception remains on mobile chart bars, mitigated with a table alternative.</p>
+          <p>~80 question phrasings tested against independently-calculated figures, dedicated tests for template-independence and real multi-sheet Excel files (two real bugs caught this way, both fixed), the original 10 automated tests re-verified after the migration, and manual verification live on production. Accessibility audit (Impeccable, desktop + mobile): taken from 15/20 to a clean score on the original build; the pivot, comparison and dark-mode additions since then were checked manually, not re-audited.</p>
         </div>
         <div class="fact-block">
           <h3>Status</h3>
-          <p>Live on Val Town · MIT · source on GitHub. Database: SQLite.</p>
+          <p>Live on Vercel · MIT · source on GitHub. Storage: Upstash Redis.</p>
         </div>
       </div>
     </div>
@@ -92,15 +92,29 @@
     <div class="wrap">
       <div class="section-head">
         <h2>The six dashboards</h2>
-        <p>All six start from the same cleaned CSV - nothing is calculated out of sight; every figure can be traced back to rows in the file.</p>
+        <p>All six start from the same cleaned file - nothing is calculated out of sight; every figure can be traced back to rows in the upload.</p>
       </div>
       <ul class="highlight-list">
-        <li><strong>General summary.</strong> Order count, total value, mean and median, the largest order, and the breakdown by status.</li>
+        <li><strong>General summary.</strong> Order count, total value per currency, mean and median, the largest order, and the breakdown by status.</li>
         <li><strong>Delivered revenue.</strong> Only orders with a Delivered status, the month-by-month trend, and the top products.</li>
         <li><strong>Lost revenue.</strong> Returns and cancellations, the split between them, and the customers with the biggest losses.</li>
         <li><strong>Best / worst month.</strong> Calculated from delivered revenue; a month with orders but zero deliveries shows as 0 rather than disappearing from the chart, and the final month is explicitly flagged as "incomplete" if the data cuts off before month's end - otherwise it would look unfairly weak.</li>
         <li><strong>Top customers and products.</strong> Ranked by delivered revenue, with each one's share of the total, and a separate warning for duplicate order IDs.</li>
         <li><strong>Order health.</strong> Delivery, return, and cancellation rates, plus the money tied up in "In progress" orders - useful for cash flow, not just sales.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="prose">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Pivot table, a PDF report, and comparing two files</h2>
+        <p>Added after the first version, on top of the same cleaned data and the same "no invented numbers" rule.</p>
+      </div>
+      <ul class="highlight-list">
+        <li><strong>Pivot table (7th tab).</strong> Pick what goes on rows (customer, product, status, month…), on columns, and what gets summed (delivered value, value across all statuses, order count, delivered quantity) - with row, column and grand totals, no formulas, downloadable as CSV. Defaults to customer × month, delivered value: the pivot most people would build by hand from a sales export.</li>
+        <li><strong>One-click PDF report.</strong> Key figures, the monthly chart, top customers and products, the pivot as configured on screen, and lost revenue - for the whole file or a single month. Printed via the browser's own print dialog (an A4 print stylesheet), no PDF library and no server involved.</li>
+        <li><strong>Comparing two files.</strong> Upload a second file (two periods, or two branches) and get columns matched like a SQL join - first by name, then by overlapping values - then a full outer join per shared column: new / gone / up / down, with the difference and the percentage. You can also ask comparison questions ("how much did X grow", "which customers are new"), answered the same rule-based way as single-file questions.</li>
       </ul>
     </div>
   </section>
@@ -111,9 +125,10 @@
       <ul class="highlight-list">
         <li><strong>Cleaning is visible, not hidden.</strong> Every row removed or adjusted shows up in a "What I cleaned" report, with the exact reason - blank rows, stray subtotal rows, exact duplicates, duplicate IDs with different contents (both rows are kept, with a warning).</li>
         <li><strong>"Delivered revenue / lost revenue," never "profit."</strong> The files carry no cost data, so the app deliberately refuses to invent a profit figure it can't calculate correctly.</li>
-        <li><strong>The AI model never calculates a number.</strong> It only receives the question and the column names, and returns a JSON plan (which metric, which filters); the code validates that plan and does the calculation itself - with a safety net that corrects the plan when it explicitly contradicts the question.</li>
-        <li><strong>The safety net has already caught a real model mistake.</strong> In early live testing, the model answered "how much did I lose to returns" by including cancelled orders too, and answered "what was the worst month" while ignoring order status entirely. Since then, every plan is checked before the calculation runs: if the question explicitly says "returns," "cancellations," or "worst/best month," the plan is corrected automatically - and the correction is logged, so it stays visible rather than silently baked into the result.</li>
-        <li><strong>Works even without an API key.</strong> The Q&amp;A call runs entirely server-side on Val Town, using Val Town's own built-in, keyless access to GPT-5.4 Nano - so no API key is required from you, and none is ever exposed to the browser. If that free access doesn't respond (a 10 requests/minute limit), the question automatically falls back to a rule-based planner, which understands fewer phrasings but never leaves the user stuck.</li>
+        <li><strong>Answers come from code, not AI - and the page says so.</strong> A rule-based planner turns the question into a strict JSON plan (metric, field, filters, grouping); the code validates that plan, runs the calculation, and writes the answer. Every answer shows the exact plan used and "plan chosen by: fixed rules, no AI," directly on the page.</li>
+        <li><strong>An AI planner is designed in, deliberately not switched on.</strong> The original Val Town build called a free, keyless model to choose the plan (never the figures) - a "tool use" / "LLM-as-planner" pattern. On Vercel there's no equivalent free access, and a paid key wasn't added, so every question goes through the rule-based planner instead; the validation layer that would catch a bad model plan (<code>guardPlan</code>) is still in the code, unused for now, ready if a model is reconnected.</li>
+        <li><strong>Refuses rather than guesses.</strong> If a question names a customer, city, month or column that isn't in the file, the answer says exactly what it couldn't find instead of quietly returning the company-wide total.</li>
+        <li><strong>Cancelled and returned orders never quietly inflate - or quietly disappear from - a total.</strong> By default, sums and rankings count delivered orders only, and the cancelled, returned, and in-progress amounts are listed right under the same answer rather than being silently folded in or silently dropped.</li>
       </ul>
     </div>
   </section>
@@ -130,10 +145,12 @@
       </div>
       <ul class="highlight-list">
         <li><strong>The real header isn't on the first row.</strong> If the file has 2–3 lines of text before the table, the app finds the row that actually contains the column names on its own.</li>
-        <li><strong>Stray "PARTIAL TOTAL" / "GRAND TOTAL" rows are removed.</strong> Left in, they would double-count every sum - they aren't real orders, they're subtotals someone added when exporting the file.</li>
-        <li><strong>The same ID with different content is never resolved by guessing.</strong> If <code>CMD-400003</code> appears twice with different data, the app keeps both rows and shows an explicit warning, instead of deleting one "arbitrarily."</li>
+        <li><strong>Stray "PARTIAL TOTAL" / "GRAND TOTAL" rows are removed</strong> - checked against every id/category column, not just the first one, since the label's position depends on column order. (A real gap here, caught while testing a reordered Excel file: the first version only checked the first cell.)</li>
+        <li><strong>The same ID with different content is never resolved by guessing.</strong> If an order ID appears twice with different data, the app keeps both rows and shows an explicit warning, instead of deleting one "arbitrarily."</li>
         <li><strong>Spelling variants of the same customer are merged.</strong> "Delta Foods SA," "DELTA FOODS SA," and "delta foods sa " (trailing space) become a single customer in the dashboards, not three.</li>
-        <li><strong>Mixed numbers and currencies, with no invented conversion.</strong> <code>"1.841,86"</code> (Romanian format) and <code>1,841.86</code> (English format) are both read correctly as the same value; RON and EUR are calculated separately, on their own dashboards - there is no invented exchange rate.</li>
+        <li><strong>Mixed numbers and currencies, with no invented conversion.</strong> <code>"1.841,86"</code> (Romanian format) and <code>1,841.86</code> (English format) are both read correctly as the same value; RON and EUR are calculated separately, on their own figures - there is no invented exchange rate.</li>
+        <li><strong>An Excel file is read by its actual cell values, not its displayed text.</strong> Converting a spreadsheet to text the obvious way exports American-style formatting (<code>2,400</code> for 2400, <code>3/14/26</code> for a date) - which a cleaner written for Romanian formatting would misread as sums a thousand times too small, or days and months swapped. Reading the real cell value instead (the number, the Excel date serial) sidesteps that entirely - a bug this project actually hit and fixed, not a hypothetical one.</li>
+        <li><strong>An <code>.xlsx</code>/<code>.xls</code> file is recognized even renamed without the right extension</strong> - detected by its file signature, not just the filename. If a workbook has more than one sheet, the one that actually has data is picked automatically, not just the first.</li>
       </ul>
     </div>
   </section>
@@ -145,10 +162,12 @@
         <p>Stated as plainly in the app as the rest of the cleaning report - not buried in a FAQ.</p>
       </div>
       <ul class="highlight-list">
-        <li><strong>Files up to 5 MB / 50,000 rows.</strong> Beyond that, the app doesn't attempt a partial run - it refuses the file outright.</li>
+        <li><strong>Files up to 5 MB / 50,000 rows</strong>, CSV or Excel. Beyond that, the app doesn't attempt a partial run - it refuses the file outright.</li>
+        <li><strong>Only one Excel sheet is read</strong> - whichever has the most data; a cover sheet or a second sheet is skipped automatically, never merged in.</li>
         <li><strong>Currencies aren't converted.</strong> RON and EUR each get their own figures, calculated separately - no invented exchange rate.</li>
         <li><strong>A dashboard's link is public to anyone who has it</strong> (there's no login) - the page explicitly says not to upload confidential data.</li>
-        <li><strong>The free AI model has a rate limit.</strong> Past it, the rule-based planner takes over; it understands fewer phrasings, but never leaves the user without an answer.</li>
+        <li><strong>The rule-based planner understands a tested set of phrasings</strong> (~80 question types, cross-checked against independently-calculated figures) - partial names, synonyms, date ranges, numeric filters, top-N, rates - but it isn't a language model: a phrasing genuinely outside that set gets a clear refusal, not a best-effort guess.</li>
+        <li><strong>Uploaded files expire after 90 days</strong> in storage; the built-in examples are unaffected since they're static, not stored.</li>
       </ul>
     </div>
   </section>
@@ -158,23 +177,34 @@
       <div class="section-head">
         <h2>How it was built</h2>
         <p>
-          TypeScript backend on Val Town (routes, SQLite for uploaded files,
-          the CSV read/normalize/clean modules), frontend with SVG charts
-          written directly in code. The question flow: question → JSON plan
-          from the model → validation → safety net → calculation in code →
-          answer sentence. Tested with 10 automated tests (figures verified
-          to the cent against independent reports) and an Impeccable
-          accessibility audit taken from 15/20 to a clean score, with one known
-          exception (mobile chart-bar tap targets, which have a table
-          alternative). The visual
-          direction ("Corporate Trust") came from a reference design system,
-          adapted separately for this project.
+          Originally built on Val Town (TypeScript, SQLite, a free connected AI
+          model for the Q&amp;A layer); migrated in full to Vercel when Val Town
+          shut down. The core logic - column detection, cleaning, the six
+          dashboards, the question planner - didn't need to change at all for
+          the migration, since it never depended on Val Town specifically. What
+          did change: a Node.js serverless function with the Hono router
+          (not Edge - a platform-level routing bug on multi-segment
+          <code>/api/...</code> paths forced that switch), Upstash Redis
+          replacing SQLite, and static files served straight from a CDN.
+          Excel support, the pivot table, the two-file comparison, and dark
+          mode were all added after the migration. The question flow stayed the
+          same shape throughout: question → rule-based plan (metric, field,
+          filters, grouping) → validation → calculation in code → answer, with
+          cancelled and returned orders always broken out separately rather
+          than silently folded in or dropped. Tested with the original 10
+          automated tests (re-verified after the migration, which caught a
+          real regression), dedicated scripts for template-independence and
+          real multi-sheet Excel files, and an Impeccable accessibility audit
+          on the original build (15/20 → a clean score; the features added
+          afterward were checked manually, not re-audited). Full migration
+          history, every bug hit along the way, and how each was fixed are
+          written up in the repo.
         </p>
       </div>
       <div class="stack-row">
         <span class="chip">TypeScript</span>
-        <span class="chip">Val Town</span>
-        <span class="chip">SQLite</span>
+        <span class="chip">Vercel</span>
+        <span class="chip">Upstash Redis</span>
         <span class="chip">SVG charts</span>
       </div>
     </div>
