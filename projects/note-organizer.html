@@ -62,7 +62,7 @@
         </div>
         <div class="fact-block">
           <h3>Quality</h3>
-          <p>~3,400 automated checks across 9 GUI suites and 7 unit suites, run on both Windows and Linux. 176 mutants (fixes deliberately removed to prove a check actually fails without them) and 533 manual test cases walked on the packaged app. Every colour pair in all eight themes is measured against WCAG AA; CI fails on any that isn't. The Android companion has its own suite: about 1,100 unit tests and roughly 679 checks walked by hand on an emulator.</p>
+          <p>~5,000 automated checks across 9 GUI suites and 8 unit suites, run on both Windows and Linux. 1,455 mutants (fixes deliberately removed to prove a check actually fails without them) and 992 manual test cases, 604 of them passed by hand on the packaged app (the rest by scripts or still to do). Every colour pair in all eight themes is measured against WCAG AA; CI fails on any that isn't. The Android companion has its own suite: about 1,100 unit tests and roughly 679 checks walked by hand on an emulator.</p>
         </div>
         <div class="fact-block">
           <h3>Status</h3>
@@ -100,7 +100,7 @@
         <li><strong>A delete you can undo looks different from one you can't.</strong> Moving a note to the Trash is a quiet red; deleting it from the Trash for good is a dark red that asks first - and on anything irreversible, both Enter and Escape give the safe answer.</li>
         <li><strong>Meaning carried by shape, not just colour.</strong> Save is the one filled button, the open tab stands taller, the current search match is boxed - checked against colour-blindness simulations, not just assumed to be readable.</li>
         <li><strong>Nothing you type is lost to a wrong field.</strong> A date that can't be read, an import that overlaps what's already there, a note left half-written when you switch away - the app keeps what you wrote and asks, instead of guessing or discarding it.</li>
-        <li><strong>Fixes are proved, not just believed.</strong> Every bug fix gets a regression test, and a mutation runner deletes the fix from a throwaway copy of the code to confirm the test actually fails without it - 176 of those on file today.</li>
+        <li><strong>Fixes are proved, not just believed.</strong> Every bug fix gets a regression test, and a mutation runner deletes the fix from a throwaway copy of the code to confirm the test actually fails without it - 1,455 of those on file today.</li>
         <li><strong>Speed measured, not assumed.</strong> With 5,000 notes the app starts in about two seconds and saves a note in about 42ms - benchmarked, with the pre-optimization numbers kept on record for comparison.</li>
         <li><strong>Cross-platform by share code, not by account.</strong> A note, or a full backup, moves between the Windows app and the Android companion as a plain share code - no server, no account, no sync service sitting in between - and it's the desktop app's own code that reads an Android export back in, not a format the two just happen to agree on.</li>
       </ul>
