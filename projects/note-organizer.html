@@ -4,18 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Note Organizer - Alexandra Moldovan</title>
-<meta name="description" content="An offline Windows notes app in Python and Tkinter - rich notes, tables, checklists, repeating notes and a calendar, tested with a 176-mutant mutation suite. Try the browser demo.">
+<meta name="description" content="An offline Windows notes app in Python and Tkinter, with an Android companion in Kotlin - rich notes, tables, checklists, repeating notes and a calendar. Try both in the browser.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Alexandra Moldovan - Portfolio">
 <meta property="og:url" content="https://alexandra-moldovan.netlify.app/projects/note-organizer.html">
 <meta property="og:title" content="Note Organizer - Alexandra Moldovan">
-<meta property="og:description" content="An offline Windows notes app in Python and Tkinter - rich notes, tables, checklists, repeating notes and a calendar, tested with a 176-mutant mutation suite. Try the browser demo.">
+<meta property="og:description" content="An offline Windows notes app in Python and Tkinter, with an Android companion in Kotlin - rich notes, tables, checklists, repeating notes and a calendar. Try both in the browser.">
 <meta property="og:image" content="https://alexandra-moldovan.netlify.app/images/note-organizer.webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Note Organizer - Alexandra Moldovan">
-<meta name="twitter:description" content="An offline Windows notes app in Python and Tkinter - rich notes, tables, checklists, repeating notes and a calendar, tested with a 176-mutant mutation suite. Try the browser demo.">
+<meta name="twitter:description" content="An offline Windows notes app in Python and Tkinter, with an Android companion in Kotlin - rich notes, tables, checklists, repeating notes and a calendar. Try both in the browser.">
 <meta name="twitter:image" content="https://alexandra-moldovan.netlify.app/images/note-organizer.webp">
 <link rel="canonical" href="https://alexandra-moldovan.netlify.app/projects/note-organizer.html">
 
@@ -39,11 +39,12 @@
   <section class="detail-hero">
     <div class="wrap">
       <a href="../index.html#portfolio" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to portfolio</a>
-      <div class="eyebrow">Python · Tkinter · Windows desktop</div>
+      <div class="eyebrow">Python · Tkinter · Kotlin · Windows &amp; Android</div>
       <h1>Note Organizer</h1>
-      <p class="detail-pitch">An offline notes app for Windows - rich notes with tables and checklists, notes that repeat, and a calendar that shows them. No account, no cloud, no network calls: everything stays on your own computer.</p>
+      <p class="detail-pitch">An offline notes app for Windows, with an Android companion on the way - rich notes with tables and checklists, notes that repeat, and a calendar that shows them. No account, no cloud, no network calls: everything stays on your own device, and a share code is the only thing that ever moves between them.</p>
       <div class="detail-actions">
         <a href="https://note-organizer-8f7772.netlify.app/" class="btn btn-accent" target="_blank" rel="noopener">Live demo</a>
+        <a href="https://note-organizer-8f7772.netlify.app/android-demo/" class="btn btn-ghost" target="_blank" rel="noopener">Android demo</a>
         <a href="https://github.com/AlexandraMoldovan95/noteOrganizer" class="btn btn-ghost" target="_blank" rel="noopener">View on GitHub</a>
       </div>
 
@@ -54,7 +55,7 @@
       <div class="facts-grid">
         <div class="fact-block">
           <h3>What it does</h3>
-          <p>Rich text (bold, italic, colours, headings, lists), tables you edit in place, a checklist under every note, notes that repeat on a schedule, a calendar that shows them, search/sort/group, a Trash you can restore from, full backups, and copy-paste share codes between copies of the app. Eight light/dark themes.</p>
+          <p>Rich text (bold, italic, colours, headings, lists), tables you edit in place, a checklist under every note, notes that repeat on a schedule, a calendar that shows them, search/sort/group, a Trash you can restore from, full backups, and copy-paste share codes between copies of the app. Eight light/dark themes. An Android companion app is in progress, sharing the same eight themes and reading the same share codes and backups as the Windows app.</p>
         </div>
         <div class="fact-block">
           <h3>My role</h3>
@@ -62,11 +63,11 @@
         </div>
         <div class="fact-block">
           <h3>Quality</h3>
-          <p>~3,400 automated checks across 9 GUI suites and 7 unit suites, run on both Windows and Linux. 176 mutants (fixes deliberately removed to prove a check actually fails without them) and 533 manual test cases walked on the packaged app. Every colour pair in all eight themes is measured against WCAG AA; CI fails on any that isn't.</p>
+          <p>~3,400 automated checks across 9 GUI suites and 7 unit suites, run on both Windows and Linux. 176 mutants (fixes deliberately removed to prove a check actually fails without them) and 533 manual test cases walked on the packaged app. Every colour pair in all eight themes is measured against WCAG AA; CI fails on any that isn't. The Android companion has its own suite: about 1,100 unit tests and roughly 679 checks walked by hand on an emulator.</p>
         </div>
         <div class="fact-block">
           <h3>Status</h3>
-          <p>In active development, not yet a 1.0 release - the site, demo and source are all public now. The live link is a browser recreation of the interface; the real app is a Windows program in Python and Tkinter that a browser can't run.</p>
+          <p>In active development, not yet a 1.0 release - the site, demo and source are all public now, for both apps. The Android companion (v0.15.2) is public too, but not yet on Google Play. Both live links are browser recreations of the interface; the real apps are a Windows program in Python/Tkinter and an Android app in Kotlin that a browser can't run - though a share code moves a note between the two demos just like it does between the real apps.</p>
         </div>
       </div>
     </div>
@@ -102,6 +103,7 @@
         <li><strong>Nothing you type is lost to a wrong field.</strong> A date that can't be read, an import that overlaps what's already there, a note left half-written when you switch away - the app keeps what you wrote and asks, instead of guessing or discarding it.</li>
         <li><strong>Fixes are proved, not just believed.</strong> Every bug fix gets a regression test, and a mutation runner deletes the fix from a throwaway copy of the code to confirm the test actually fails without it - 176 of those on file today.</li>
         <li><strong>Speed measured, not assumed.</strong> With 5,000 notes the app starts in about two seconds and saves a note in about 42ms - benchmarked, with the pre-optimization numbers kept on record for comparison.</li>
+        <li><strong>Cross-platform by share code, not by account.</strong> A note, or a full backup, moves between the Windows app and the Android companion as a plain share code - no server, no account, no sync service sitting in between - and it's the desktop app's own code that reads an Android export back in, not a format the two just happen to agree on.</li>
       </ul>
     </div>
   </section>
@@ -123,6 +125,16 @@
           is public on the <a href="https://note-organizer-8f7772.netlify.app/how-its-built.html" target="_blank" rel="noopener">project site</a>,
           along with the <a href="https://note-organizer-8f7772.netlify.app/testing.html" target="_blank" rel="noopener">test plan and the numbers behind the Quality block above</a>.
         </p>
+        <p>
+          The Android companion is a separate app, written in Kotlin, with its
+          own repository and its own test suite - kept interoperable with the
+          desktop app only through a shared share-code and backup format, never
+          through a server. Its source is public at
+          <a href="https://github.com/AlexandraMoldovan95/noteOrganizerForAndroid" target="_blank" rel="noopener">noteOrganizerForAndroid</a>,
+          and there's a dedicated
+          <a href="https://note-organizer-8f7772.netlify.app/android-demo/" target="_blank" rel="noopener">Android demo</a>
+          you can try in the browser, right alongside the desktop one.
+        </p>
       </div>
       <div class="stack-row">
         <span class="chip">Python</span>
@@ -130,6 +142,7 @@
         <span class="chip">Pillow</span>
         <span class="chip">Local JSON storage</span>
         <span class="chip">PyInstaller</span>
+        <span class="chip">Kotlin</span>
       </div>
     </div>
   </section>
