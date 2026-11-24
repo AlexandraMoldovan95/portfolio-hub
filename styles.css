@@ -657,3 +657,9 @@ section + section { border-top: 1px solid var(--border); }
 .next-project .btn-ghost { white-space: nowrap; }
 .continue-row { display: flex; justify-content: flex-end; margin-bottom: 14px; }
 .continue-row .btn-ghost { white-space: nowrap; }
+/* On phones a long project name doesn't fit on one line ("← Back to the end: Halvorsen & Reyes
+   Builders" was 395 px wide on a 390 px screen): let the label wrap instead of widening the page. */
+@media (max-width: 480px) {
+  .next-project .btn-ghost,
+  .continue-row .btn-ghost { white-space: normal; max-width: 100%; }
+}
