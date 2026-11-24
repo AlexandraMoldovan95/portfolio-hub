@@ -54,7 +54,7 @@
       <div class="facts-grid">
         <div class="fact-block">
           <h2>What it does</h2>
-          <p>Auth (email/password), companies, applications with status tracking, a dashboard with response-rate and top-company stats, multi-version resumes exportable to a formatted HTML/PDF file, an installable PWA with a proper offline fallback, and a "Support the project" button that opens a Stripe checkout page in test mode, just to show the flow.</p>
+          <p>Auth (email/password), companies, applications with status tracking, a dashboard with response-rate and top-company stats, multi-version resumes exportable to a formatted HTML/PDF file, a self-service "Delete account" that removes the account and everything in it, an installable PWA with a proper offline fallback, and a "Support the project" button that opens a Stripe checkout page in test mode, just to show the flow.</p>
         </div>
         <div class="fact-block">
           <h2>My role</h2>
@@ -62,7 +62,7 @@
         </div>
         <div class="fact-block">
           <h2>Quality</h2>
-          <p>Data isolation was tested, not assumed: a second test account was created specifically to confirm it saw zero of the first account's data.</p>
+          <p>Data isolation was tested, not assumed: a second test account sees none of the first account's data, can't rename or delete it (0 rows affected), and can't save a row in someone else's name (HTTP 403) - re-checked on the live project in November 2026. Account deletion is tested end to end: 7 API checks and 13 UI checks.</p>
         </div>
         <div class="fact-block">
           <h2>Status</h2>
