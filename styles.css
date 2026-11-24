@@ -311,7 +311,8 @@ main > .wrap, .tab-panel { padding-top: 0; }
 }
 .about-card + .about-card { margin-top: 20px; }
 
-.about-card h3 {
+/* Card labels are h2 (next level after the About tab's h1); they only look small. */
+.about-card h2 {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.07em;
@@ -530,7 +531,7 @@ main > .wrap, .tab-panel { padding-top: 0; }
 }
 
 .project-row-body .chip-row { margin-bottom: 10px; }
-.project-row-body h3 { font-size: 1.25rem; margin-bottom: 8px; }
+.project-row-body h2 { font-size: 1.25rem; margin-bottom: 8px; } /* h2: next level after the Portfolio tab's h1 */
 .project-row-body p { color: var(--text-muted); font-size: 0.95rem; margin: 0; max-width: 56ch; }
 
 .project-row-arrow {
