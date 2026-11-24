@@ -1,0 +1,43 @@
+# Keeps the two Supabase projects behind the portfolio demos awake.
+# Free Supabase projects are paused after 1 week of inactivity (supabase.com/pricing),
+# which takes down the Halvorsen quote form and the Job Tracker login. A small read
+# every 3 days keeps them active. A failed read means a demo backend is down, and
+# GitHub emails the repo owner about the failed run - so this is an uptime check too.
+#
+# The keys are the public "publishable" keys already shipped in each site's own code.
+# Row Level Security decides what they may read; here that is nothing (an empty list),
+# which is still a real database request.
+
+name: Keep demo backends awake
+
+on:
+  schedule:
+    # 07:17 UTC on every 3rd day of the month (1, 4, 7 ... 31): never more than 3 days
+    # apart. Off the top of the hour, when GitHub delays or drops scheduled runs most.
+    - cron: "17 7 */3 * *"
+  workflow_dispatch: # adds a "Run workflow" button in the Actions tab
+
+permissions:
+  contents: read
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Halvorsen & Reyes Builders - leads table
+        run: |
+          code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 30 \
+            -H "apikey: sb_publishable_vXu1z9tpBI-99rvLttAqeA_tFYxUFIh" \
+            "https://isxacppagogxcpkftepz.supabase.co/rest/v1/leads?select=id&limit=1")
+          echo "HTTP $code"
+          test "$code" = "200"
+
+      - name: Job Tracker - aplicari table
+        if: always() # check this one even if the first backend is down
+        run: |
+          code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 30 \
+            -H "apikey: sb_publishable_VSrYIeBa3AaSmy3QsApwsw_spnYp2PW" \
+            "https://jenfjfhbhelpllkprygu.supabase.co/rest/v1/aplicari?select=id&limit=1")
+          echo "HTTP $code"
+          test "$code" = "200"
