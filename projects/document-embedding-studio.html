@@ -108,19 +108,19 @@
 
       <div class="facts-grid">
         <div class="fact-block">
-          <h3>What</h3>
+          <h2>What it does</h2>
           <p>Drop in PDF, DOCX, Markdown, or plain-text files → the app extracts the text, splits it into overlapping chunks, embeds every chunk with a local AI model, and stores vectors in a persistent ChromaDB collection. From there: semantic search, or a BYOK chatbot that answers grounded in what's indexed. A live panel shows CPU/memory for the app's own Docker containers.</p>
         </div>
         <div class="fact-block">
-          <h3>My role</h3>
+          <h2>My role</h2>
           <p>Built the ingestion pipeline, then layered on BYOK chat and the live container-monitoring panel; built in pair-programming with an AI assistant (Claude).</p>
         </div>
         <div class="fact-block">
-          <h3>Quality</h3>
+          <h2>Quality</h2>
           <p>70 tests covering chunking, document loaders, and the full ingest/search/chat/monitor API. Chat and container-monitor tests mock the outbound LLM call and the Docker socket, so the full suite runs offline.</p>
         </div>
         <div class="fact-block">
-          <h3>Status</h3>
+          <h2>Status</h2>
           <p>MIT · source on GitHub. The real backend has no hosted demo - it needs a long-running Python process and direct Docker-socket access that managed hosting platforms don't expose, so it runs locally via Docker. The "Live demo" button above is a separate, self-contained walkthrough with sample data: same screens and flow, but search/chat there is scored by simple word overlap, not a real embedding model or LLM call.</p>
         </div>
       </div>
