@@ -46,8 +46,6 @@
       <div class="detail-actions">
         <a href="https://note-organizer-8f7772.netlify.app/" class="btn btn-accent" target="_blank" rel="noopener">Live demo</a>
         <a href="https://github.com/AlexandraMoldovan95/noteOrganizer" class="btn btn-ghost" target="_blank" rel="noopener">View on GitHub</a>
-        <a href="https://note-organizer-8f7772.netlify.app/testing" class="btn btn-ghost" target="_blank" rel="noopener">How it's tested</a>
-        <a href="https://note-organizer-8f7772.netlify.app/bug-reports" class="btn btn-ghost" target="_blank" rel="noopener">Bug reports</a>
       </div>
 
       <div class="detail-media">
@@ -65,7 +63,7 @@
         </div>
         <div class="fact-block">
           <h2>Quality</h2>
-          <p>~5,000 automated checks across 9 GUI suites and 8 unit suites, <a href="https://github.com/AlexandraMoldovan95/noteOrganizer/actions/workflows/tests.yml" target="_blank" rel="noopener">run in CI on both Windows and Linux</a>. <a href="https://github.com/AlexandraMoldovan95/noteOrganizer/blob/main/tools/mutants.json" target="_blank" rel="noopener">1,455 mutants</a> (fixes deliberately removed to prove a check actually fails without them) and <a href="https://github.com/AlexandraMoldovan95/noteOrganizer/blob/main/qa/NoteOrganizer_TestPlan.xlsx" target="_blank" rel="noopener">992 manual test cases</a>, 604 of them passed by hand on the packaged app (the rest by scripts or still to do). Every colour pair in all eight themes is measured against WCAG AA; CI fails on any that isn't. The Android companion has its own suite: about 1,100 unit tests and roughly 679 checks walked by hand on an emulator.</p>
+          <p>~5,000 automated checks across 9 GUI suites and 8 unit suites, <a href="https://github.com/AlexandraMoldovan95/noteOrganizer/actions/workflows/tests.yml" target="_blank" rel="noopener">run in CI on both Windows and Linux</a>. <a href="https://github.com/AlexandraMoldovan95/noteOrganizer/blob/main/tools/mutants.json" target="_blank" rel="noopener">1,455 mutants</a> (fixes deliberately removed to prove a check actually fails without them) and <a href="https://github.com/AlexandraMoldovan95/noteOrganizer/blob/main/qa/NoteOrganizer_TestPlan.xlsx" target="_blank" rel="noopener">995 manual test cases</a>: 698 passed by hand on the packaged app, 296 by the scripted suites, and 1 still to walk (it needs the Microsoft Store listing). Every colour pair in all eight themes is measured against WCAG AA; CI fails on any that isn't. The Android companion has its own suite: about 1,100 unit tests and roughly 679 checks walked by hand on an emulator.</p>
         </div>
         <div class="fact-block">
           <h2>Status</h2>
@@ -113,6 +111,23 @@
   <section class="prose">
     <div class="wrap">
       <div class="section-head">
+        <h2>How it's tested</h2>
+        <p>
+          The QA work is public on the project site, next to the live demo.
+          <a href="https://note-organizer-8f7772.netlify.app/testing" target="_blank" rel="noopener">How it's tested</a>
+          shows how I use the 995-case manual test plan, what only a person can judge, and four
+          cases written out in the plan's template.
+          <a href="https://note-organizer-8f7772.netlify.app/bug-reports" target="_blank" rel="noopener">Bug reports</a>
+          lists bugs my manual testing found, three of them written out in full as examples of the
+          report format; every one is recorded in the test plan, in the case that found it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <div class="wrap">
+      <div class="section-head">
         <h2>How it was built</h2>
         <p>
           Python 3.13 and Tkinter, with exactly one runtime dependency
@@ -124,8 +139,7 @@
           file, saving an export) where the OS picker is genuinely better. The
           project's own working agreement with its AI coding agent - what
           runs without asking, what always needs a human decision, and why -
-          is public on the <a href="https://note-organizer-8f7772.netlify.app/how-its-built.html" target="_blank" rel="noopener">project site</a>,
-          along with the <a href="https://note-organizer-8f7772.netlify.app/testing.html" target="_blank" rel="noopener">test plan and the numbers behind the Quality block above</a>.
+          is public on the <a href="https://note-organizer-8f7772.netlify.app/how-its-built.html" target="_blank" rel="noopener">project site</a>.
         </p>
         <p>
           The Android companion is a separate app, written in Kotlin, with its
