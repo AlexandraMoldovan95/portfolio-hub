@@ -13,6 +13,9 @@
   --text: #121214;
   --text-muted: #65656c;
   --accent: #7c9a00;
+  /* The accent as TEXT (links, eyebrows, accent chips). #7c9a00 is fine as a button background
+     with dark text, but as text on the light page it measured 2.97:1; this darker olive passes AA. */
+  --accent-text: #556b00;
   --accent-bright: #a6d60d;
   --accent-ink: #0c0f05;
   --accent-soft: #eef6d2;
@@ -26,6 +29,7 @@
 }
 
 :root[data-theme="dark"] {
+  --accent-text: #c6ff4d;
   --bg: #0a0b0d;
   --surface: #15171a;
   --surface-2: #1d2023;
@@ -42,6 +46,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
+    --accent-text: #c6ff4d;
     --bg: #0a0b0d;
     --surface: #15171a;
     --surface-2: #1d2023;
@@ -85,9 +90,9 @@ h1, h2, h3, h4 {
 }
 
 p { margin: 0 0 1em; }
-a { color: var(--accent); text-decoration: none; }
+a { color: var(--accent-text); text-decoration: none; }
 :root[data-theme="dark"] a,
-@media (prefers-color-scheme: dark) { a { color: var(--accent); } }
+@media (prefers-color-scheme: dark) { a { color: var(--accent-text); } }
 a:hover { text-decoration: underline; }
 code { background: var(--surface-2); padding: 0.1em 0.4em; border-radius: 4px; font-size: 0.9em; }
 img { max-width: 100%; display: block; }
@@ -214,7 +219,7 @@ img { max-width: 100%; display: block; }
 .btn-accent:hover { opacity: 0.9; }
 
 .btn-ghost { background: transparent; color: var(--text); border-color: var(--border); }
-.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent-text); }
 
 .btn-disabled, .btn-disabled:hover {
   opacity: 0.5;
@@ -236,7 +241,7 @@ img { max-width: 100%; display: block; }
   font-weight: 500;
   border: 1px solid var(--border);
 }
-.chip-accent { background: var(--accent-soft); color: var(--accent); border-color: transparent; }
+.chip-accent { background: var(--accent-soft); color: var(--accent-text); border-color: transparent; }
 .chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
 
 /* ---------- Section scaffolding / tab-hero ---------- */
@@ -271,7 +276,7 @@ main > .wrap, .tab-panel { padding-top: 0; }
   align-items: center;
   justify-content: center;
   background: var(--accent-soft);
-  color: var(--accent);
+  color: var(--accent-text);
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
   font-size: 1.4rem;
@@ -283,7 +288,7 @@ main > .wrap, .tab-panel { padding-top: 0; }
   letter-spacing: 0.08em;
   font-size: 0.78rem;
   font-weight: 600;
-  color: var(--accent);
+  color: var(--accent-text);
   margin-bottom: 14px;
 }
 .tab-hero h1 { font-size: clamp(1.9rem, 4vw, 2.75rem); }
@@ -349,7 +354,7 @@ main > .wrap, .tab-panel { padding-top: 0; }
 
 .cv-section { padding-bottom: 48px; }
 .cv-section .section-head p + p { margin-top: 14px; }
-.cv-section .section-head a { color: var(--accent); font-weight: 600; }
+.cv-section .section-head a { color: var(--accent-text); font-weight: 600; }
 
 .cv-block { margin-top: 36px; }
 .cv-block > h3 {
@@ -598,7 +603,7 @@ main > .wrap, .tab-panel { padding-top: 0; }
 .site-footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; justify-content: space-between; }
 .footer-links { display: flex; gap: 20px; }
 .footer-links a { color: var(--text-muted); }
-.footer-links a:hover { color: var(--accent); }
+.footer-links a:hover { color: var(--accent-text); }
 
 /* ============================================================
    Project detail pages
@@ -614,7 +619,7 @@ main > .wrap, .tab-panel { padding-top: 0; }
   margin-bottom: 28px;
   transition: color 0.15s var(--ease);
 }
-.back-link:hover { color: var(--accent); text-decoration: none; }
+.back-link:hover { color: var(--accent-text); text-decoration: none; }
 .back-link svg { width: 14px; height: 14px; }
 
 .detail-hero { padding-top: 40px; padding-bottom: 40px; }
