@@ -1,0 +1,180 @@
+<!doctype html>
+<!-- The source of Alexandra-Moldovan-CV.pdf. To update the CV: edit this file, then print it
+     to PDF from Edge or Chrome (A4, margins "Default", background graphics on), or with the
+     headless print used on 25 Nov 2026. Rebuilt that day from the previous PDF, whose own
+     source had been lost; same layout, fonts (Arial / Liberation Sans), sizes and colours. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Alexandra Moldovan - CV</title>
+<meta name="robots" content="noindex">
+<style>
+  @page { size: A4; margin: 16mm 18mm; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    position: relative;   /* the photo is placed against the body, so the header stays first in the PDF's text */
+    margin: 0;
+    font-family: Arial, "Liberation Sans", Helvetica, sans-serif;
+    font-size: 9.5pt;
+    line-height: 17px;
+    color: #222;
+  }
+  @media screen {
+    body { max-width: 210mm; margin: 0 auto; padding: 16mm 18mm; background: #fff; }
+    body .photo { top: calc(16mm + 2px); right: 18mm; }
+  }
+
+  /* ---- header ---- */
+  header { padding: 0 84px 9px 0; }
+  .photo { position: absolute; top: 2px; right: 0; width: 68px; height: 68px; border-radius: 50%; object-fit: cover; }
+  h1 { margin: 0; font-size: 22pt; line-height: 1.35; letter-spacing: -0.01em; color: #161616; }
+  .subtitle { margin: 2px 0 10px; font-size: 11.2pt; font-weight: bold; line-height: 1.3; letter-spacing: -0.003em; color: #2e6e62; }
+  .contact { display: grid; grid-template-columns: 309px 1fr; row-gap: 2px; margin: 0; font-size: 8.8pt; line-height: 16px; }
+  .contact div { margin: 0; }
+  .label { margin-right: 5px; font-size: 7.8pt; line-height: 1; font-weight: bold; letter-spacing: 0.06em; color: #2e6e62; }
+
+  /* ---- sections ---- */
+  h2 {
+    margin: 11px 0 6px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #2e6e62;
+    font-size: 10.3pt;
+    line-height: 1.3;
+    letter-spacing: 0.033em;
+    color: #161616;
+  }
+  p { margin: 0; }
+  .summary-link { margin-top: 4px; font-size: 8.9pt; }
+  .summary-link b, .skills b, .edu b { color: #161616; }
+  .skills { margin-top: -2px; }
+  .skills p { margin-bottom: 4px; }
+
+  /* ---- entries ---- */
+  .entry { margin-bottom: 7.5px; break-inside: avoid; }
+  .entry-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .entry-head strong { font-size: 9.8pt; color: #161616; }
+  .date { font-size: 8.3pt; color: #666; white-space: nowrap; }
+  ul { margin: 2px 0 0; padding-left: 15px; }
+  li { margin: 0 0 1px; }
+  .tags { margin-top: 3.5px; font-size: 8.2pt; line-height: 14px; color: #2e6e62; }
+  .edu { padding-top: 3px; margin-bottom: 13px; }
+  .edu .row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+  .muted { margin-top: 3px; color: #333; }
+</style>
+</head>
+<body>
+
+<header>
+  <img class="photo" src="Alexandra-Moldovan-photo.jpg" alt="Alexandra Moldovan">
+  <h1>Alexandra Moldovan</h1>
+  <p class="subtitle">Transitioning into QA, UI Design &amp; AI-Assisted Development</p>
+  <div class="contact">
+    <div><span class="label">PHONE</span>+40 724 450 205</div>
+    <div><span class="label">EMAIL</span>alexandra.moldovan2026@gmail.com</div>
+    <div><span class="label">LOCATION</span>Bucharest, Romania</div>
+    <div><span class="label">LINKEDIN</span>linkedin.com/in/alexandra-moldovan-528152102</div>
+    <div><span class="label">PORTFOLIO</span>alexandra-moldovan.netlify.app</div>
+    <div><span class="label">GITHUB</span>github.com/AlexandraMoldovan95</div>
+  </div>
+</header>
+
+<h2>SUMMARY</h2>
+<p>Technical support engineer (3 years at HP, EMEA Level 1) transitioning into QA, UI design and AI-assisted development. Years of troubleshooting, documentation, and cross-team escalation translate directly into a QA mindset. Since June 2026 I've been on a focused career break: completing a certification program in AI-assisted application development (Step IT Academy) and shipping nine real, end-to-end projects to prove the skills rather than just claim them, while studying toward ISTQB Foundation Level on my own.</p>
+<p class="summary-link">Full write-ups, live demos, and source for all nine projects: <b>alexandra-moldovan.netlify.app</b></p>
+
+<h2>SKILLS</h2>
+<div class="skills">
+  <p><b>QA &amp; Testing:</b> Manual &amp; exploratory testing, test case design &amp; planning, bug reporting &amp; reproduction, mutation testing, pytest, WCAG accessibility testing, ISTQB (Foundation, in progress)</p>
+  <p><b>Development &amp; AI:</b> Python, TypeScript, JavaScript, Next.js, Supabase (Postgres, RLS), PostgreSQL, Docker, Electron, RAG &amp; vector search (ChromaDB), AI-assisted development (Claude Code)</p>
+  <p><b>Process &amp; Tools:</b> Git &amp; GitHub, GitHub Actions (CI/CD), Jira &amp; ServiceNow, SLA-bound incident triage, root cause analysis, technical documentation, data analysis (Power BI)</p>
+</div>
+
+<h2>EXPERIENCE</h2>
+
+<div class="entry">
+  <div class="entry-head"><strong>Career Break — Career Transition (QA / UI Design / AI Development)</strong><span class="date">June 2026 – Present</span></div>
+  <ul>
+    <li>Stepped away from full-time technical support in June 2026 for a focused, self-funded transition into QA and AI-assisted development.</li>
+    <li>Completed Step IT Academy's "Vibe Coding" course, shipping eight apps as coursework plus Note Organizer as a self-directed project — nine projects in total.</li>
+    <li>Ran the full product workflow on every project: scoped features, made UX calls, reviewed AI-written code, tested it, and shipped it live.</li>
+    <li>Built real automated testing and quality checks across every project, catching bugs before they reached users.</li>
+    <li>Continued self-study toward ISTQB Foundation Level certification alongside the coursework.</li>
+  </ul>
+  <p class="tags">Career transition · Self-directed learning · AI-assisted development · Portfolio building</p>
+</div>
+
+<div class="entry">
+  <div class="entry-head"><strong>HP — EMEA Level 1 Technical Support Engineer</strong><span class="date">June 2023 – June 2026 (3 yrs)</span></div>
+  <ul>
+    <li>First point of contact for internal users, partners and customers across EMEA — triaged, resolved, or escalated issues within SLA.</li>
+    <li>Managed Jira tickets per SLA, and used ServiceNow daily as the reference system for product information — looking up printer/accessory order details and serial-number records while troubleshooting.</li>
+    <li>Collaborated directly with engineering to resolve defects traced into SQL databases, and ran root cause analysis on recurring issues.</li>
+    <li>Took notes in team meetings to track what was discussed and decided.</li>
+    <li>Took on extra tasks proactively to keep the team's workload from piling up.</li>
+    <li>Wrote and maintained documentation and knowledge-base articles for the wider team.</li>
+    <li>Provided technical training and mentorship to junior teammates.</li>
+    <li>Stepped in as acting team lead during the supervisor's absence.</li>
+    <li>Stayed current on industry trends and technologies relevant to support.</li>
+  </ul>
+  <p class="tags">Jira · ServiceNow · SLA triage &amp; escalation · Root cause analysis · SQL debugging · Documentation · Mentorship · Acting team leadership</p>
+</div>
+
+<div class="entry">
+  <div class="entry-head"><strong>uTest — Freelance Software Tester</strong><span class="date">February 2023 – May 2024 (1 yr 3 mo)</span></div>
+  <ul>
+    <li>Learned the fundamentals of manual testing: ran structured test cycles against client test cases and reported bugs with enough detail to reproduce.</li>
+  </ul>
+  <p class="tags">Manual testing · Bug reporting · Test execution</p>
+</div>
+
+<div class="entry">
+  <div class="entry-head"><strong>Playtika — Customer Service Specialist</strong><span class="date">January 2022 – June 2023 (1 yr 5 mo)</span></div>
+  <ul>
+    <li>Handled customer complaints for a mobile gaming company, tracked through ServiceNow as the ticketing system, resolving them within strict SLA limits.</li>
+    <li>Followed up until each case was actually resolved, not just closed.</li>
+    <li>Took on informal team-coordination duties, organizing daily tasks and case assignments.</li>
+    <li>Judged which complaints were beyond front-line scope and escalated them to the right department.</li>
+  </ul>
+  <p class="tags">ServiceNow · SLA-bound case handling · Triage &amp; escalation · Team coordination</p>
+</div>
+
+<div class="entry">
+  <div class="entry-head"><strong>Teleperformance — Technical Support Advisor</strong><span class="date">May 2020 – December 2021 (1 yr 8 mo)</span></div>
+  <ul>
+    <li>Provided technical support for EA Games' player base across AAA titles (Star Wars, FIFA, The Sims).</li>
+    <li>Troubleshot across three platform families — PC, console, and mobile — each with its own playbook.</li>
+    <li>Monitored player behavior for rule violations, including cheating, and applied sanctions.</li>
+    <li>Kept a customer-service tone under high ticket volume.</li>
+  </ul>
+  <p class="tags">Multi-platform troubleshooting · Policy enforcement</p>
+</div>
+
+<h2>EDUCATION</h2>
+<div class="edu">
+  <div class="row"><span><b>Master's Degree, Environmental Management</b> - Hyperion University, Bucharest</span><span class="date">2019–2021</span></div>
+  <div class="row"><span><b>Master's Degree, Tourism</b> - University of Bucharest</span><span class="date">2017–2019</span></div>
+  <div class="row"><span><b>Master's Degree, Geography and Cartography</b> - University of Bucharest</span><span class="date">2017–2019</span></div>
+  <div class="row"><span><b>Bachelor's Degree, Geography–Tourism</b> - University of Bucharest</span><span class="date">2014–2017</span></div>
+  <div class="row"><span><b>High School, Philology</b> - Miguel de Cervantes</span><span class="date">2010–2014</span></div>
+</div>
+
+<h2>CERTIFICATIONS</h2>
+
+<div class="entry">
+  <div class="entry-head"><strong>Step IT Academy — "Vibe Coding" course</strong><span class="date">June – October 2026</span></div>
+  <ul>
+    <li>Hands-on certification in AI-assisted application development, from a written spec to a shipped app.</li>
+    <li>Built eight real, end-to-end applications as coursework — product scoping, UX decisions, AI-assisted coding, testing, and deployment.</li>
+    <li>Extended two of them afterward on my own initiative, past the course spec.</li>
+    <li>Concluded with a diploma from Step IT Academy.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="entry-head"><strong>ISTQB Foundation Level</strong><span class="date">In progress</span></div>
+  <p class="muted">Studied independently toward certification, in parallel with the portfolio work above.</p>
+</div>
+
+</body>
+</html>
