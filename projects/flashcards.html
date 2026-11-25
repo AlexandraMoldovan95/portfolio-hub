@@ -91,6 +91,112 @@
     </div>
   </section>
 
+  <section class="case-study">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Design case study: three passes to a calm study tool</h2>
+        <p>
+          A flashcards app lives or dies on one loop: see a question, try to recall the answer,
+          grade yourself honestly. For students revising for exams, the interface has two jobs that
+          pull against each other: make that loop inviting enough to come back to every day, and
+          stay quiet enough that the card itself is the only thing that matters.
+        </p>
+      </div>
+
+      <div class="case-step">
+        <h3>Pass 1: remove the default look</h3>
+        <p>
+          The first version used indigo (#4f46e5): the color nearly every AI-generated interface
+          starts with. A UI audit flagged it, and I chose a direction that looks like studying rather
+          than software: a warm paper background and one dark teal "ink" accent. For type I compared
+          three options and picked the one with no cost at all: Georgia for headings and the system
+          font for everything else, instead of an embedded font or Google Fonts.
+        </p>
+        <p>
+          The audit also found a real accessibility bug: white text on the Ok and Easy buttons was
+          under the WCAG AA minimum, some of it under 2:1. The cause was one color doing two jobs,
+          text and button background. I split them into two sets of variables and checked every pair
+          by calculation, not by eye.
+        </p>
+        <figure class="case-figure">
+          <img src="../images/flashcards-case/1-paper-and-ink.webp" width="440" height="296" loading="lazy"
+               alt="A flashcard on a warm paper background with red, amber and green grade buttons and a dark teal button">
+          <figcaption>Pass 1: paper, teal ink, grade buttons that pass AA. The app was in Romanian at the time.</figcaption>
+        </figure>
+      </div>
+
+      <div class="case-step">
+        <h3>Pass 2: "too monotone", so color gets a job</h3>
+        <p>
+          In use, the single accent fixed the "AI look" but felt flat, with nothing inviting and
+          nothing to tell subjects apart at a glance. So color got a job: a 7-color "highlighter"
+          palette, one color per category. The color comes from a hash of the category name, so the
+          same subject always gets the same color and nothing extra is stored in the data. Badges use
+          soft tints with normal text on top (6.7 to 13.7:1 contrast); the vivid colors appear only
+          as decoration, never behind text.
+        </p>
+        <p>
+          I also tried a "student notebook" theme: ruled paper drawn in CSS, washi tape, rotated
+          sticky-note chips and a handwriting font. I compared three handwriting fonts by size and
+          chose Kalam (11.3 KB embedded) over Patrick Hand (18.6 KB) and Caveat (65 KB).
+        </p>
+        <figure class="case-figure">
+          <img src="../images/flashcards-case/2-notebook-theme.webp" width="990" height="395" loading="lazy"
+               alt="The notebook experiment: ruled paper, a strip of washi tape, rotated sticky notes for subjects, handwriting font">
+          <figcaption>Pass 2: the skeuomorphic notebook experiment.</figcaption>
+        </figure>
+      </div>
+
+      <div class="case-step">
+        <h3>Pass 3: keep the system, cut the costume</h3>
+        <p>
+          Before publishing it, I asked for an audit from an employer's point of view, and it was
+          clear: the notebook theme read as a student demo, not a product. I kept everything that
+          carried meaning: the category palette, paper and ink, the type pairing, the radius and
+          shadow scales. I removed everything that was only costume: the textures, the tape, the
+          margin line, the rotations, the "Do your best!" decorations and the handwriting font
+          (11.3 KB lighter). Emoji became one consistent set of 12 line icons, and motion stayed
+          small and purposeful: the answer fades in, tabs fade, buttons give press feedback, and a
+          progress bar shows where you are in the quiz.
+        </p>
+        <p>
+          One idea I deliberately rejected: a "pulse, then move to the next card" animation on the
+          grade buttons. It would have put a timer into the grading step that drives the
+          spaced-repetition schedule, and that risk wasn't worth the polish.
+        </p>
+        <div class="case-pair">
+          <figure class="case-figure">
+            <img src="../images/flashcards-case/3-flat-card-list.webp" width="640" height="760" loading="lazy"
+                 alt="Today's card list: flat cards with a category color on the left edge and a soft category badge">
+          </figure>
+          <figure class="case-figure">
+            <img src="../images/flashcards-case/3-flat-quiz.webp" width="640" height="420" loading="lazy"
+                 alt="Today's quiz: a progress bar, the question and revealed answer on one card, Hard, Ok and Easy buttons">
+          </figure>
+        </div>
+        <p class="case-caption">Pass 3: today's app, the card list and the quiz.</p>
+      </div>
+
+      <div class="case-step">
+        <h3>After the reviews (November 2026)</h3>
+        <p>
+          A design review of the whole portfolio pointed at three things, all fixed: the first screen
+          was an empty form, so the empty state now offers a one-click sample deck under a one-line
+          subtitle; two inputs cut off their placeholders ("Category (default: G…"), so the inputs
+          now sit two per row; and the headings skipped a level for screen readers.
+        </p>
+      </div>
+
+      <div class="case-step">
+        <h3>What I haven't done yet</h3>
+        <ul class="case-list">
+          <li>No usability testing with other people. Every decision above came from my own use, audits and reviews. The next step is to watch two or three students use it for a week.</li>
+          <li>The app doesn't yet respect the system "reduce motion" setting.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <section>
     <div class="wrap">
       <div class="section-head"><h2>Highlights</h2></div>
