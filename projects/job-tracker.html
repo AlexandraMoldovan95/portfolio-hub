@@ -89,6 +89,68 @@
     </div>
   </section>
 
+  <section class="case-study" id="case-study">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Design case study: a neon theme that still reads like a tool</h2>
+        <p>
+          A job tracker is a plain data app, the kind that usually looks generic. I wanted this one
+          to be memorable, but it's also a tool you open every day to read your own data, so the
+          look can't get in the way of reading.
+        </p>
+      </div>
+
+      <div class="case-step">
+        <h3>Start from a style, then tone it down</h3>
+        <p>
+          I started from an existing vaporwave/outrun style direction - near-black purple, neon cyan,
+          magenta and orange, skewed buttons, CRT scanlines, Orbitron and Share Tech Mono - and
+          translated it into plain CSS to match the no-framework app. Then I adjusted it for real
+          data: the scanlines are subtler than in the original spec, because the list text got hard
+          to read; the button slant went from 12° to 6° (3° on the small list buttons), because a
+          strong slant broke small buttons visually; status badges became neon outlines instead of
+          filled pills; and error messages moved from light grey on neon red to a black background.
+        </p>
+        <p>
+          One thing I deliberately kept out of the theme: the CV export. It stays plain and
+          professional, because that file goes to real employers.
+        </p>
+      </div>
+
+      <div class="case-step">
+        <h3>After the reviews (November 2026)</h3>
+        <p>
+          Reviewers pointed at the login screen. A visitor without an account had to find
+          "Login demo" under the real login, with the same weight; the demo is now the first, filled
+          button, with the real login below "or use your account". The inputs were pure black boxes
+          on the purple card ("black holes", one reviewer said); they now sit on the purple surface
+          with a thin outline and keep the magenta neon underline. Placeholder text went from 1.97:1
+          to 6.56:1 contrast; typed text stays at 13.8:1.
+        </p>
+        <div class="case-pair">
+          <figure class="case-figure">
+            <img src="../images/job-tracker-case/login-before.webp" width="456" height="653" loading="lazy"
+                 alt="The old login screen: Login and Register tabs, two pure black input fields, a Login button, and the Login demo button at the bottom">
+            <figcaption>Before: the real login first, black inputs, the demo at the bottom.</figcaption>
+          </figure>
+          <figure class="case-figure">
+            <img src="../images/job-tracker-case/login-after.webp" width="456" height="712" loading="lazy"
+                 alt="The new login screen: a filled cyan Login demo button first, then the real login with purple input fields">
+            <figcaption>After: the demo first, inputs on the purple surface.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="case-step">
+        <h3>What I haven't done yet</h3>
+        <ul class="case-list">
+          <li>No usability testing with job seekers. The changes above came from my own use and from reviews.</li>
+          <li>Some labels on phones are still small (about 11 px).</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <section>
     <div class="wrap">
       <div class="section-head"><h2>Highlights</h2></div>

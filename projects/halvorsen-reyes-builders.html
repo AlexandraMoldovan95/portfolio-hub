@@ -94,6 +94,79 @@
     </div>
   </section>
 
+  <section class="case-study" id="case-study">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Design case study: a builder's site that looks precise, not trendy</h2>
+        <p>
+          The client is a fictional construction company in Denver, in business since 2011. Its site
+          has to make a small company look serious and trustworthy to people planning a renovation
+          or a new home, and stay fast and accessible on a phone.
+        </p>
+      </div>
+
+      <div class="case-step">
+        <h3>Pick a direction that fits a builder</h3>
+        <p>
+          I started from an existing editorial "Newsprint" style direction and adapted it into what I
+          called Blueprint Editorial: a grid with visible borders and square corners everywhere, black
+          and white with a single red used sparingly, a warm off-white background like paper, and
+          typography carrying the hierarchy (Playfair Display, Lora and Inter). The grid and square
+          corners suggest blueprints and job-site precision; the serif headlines give it the
+          authority of a serious company without looking like a media agency. The project photos
+          stay in full color, because they sell the craftsmanship.
+        </p>
+        <figure class="case-figure">
+          <img src="../images/halvorsen-case/hero.webp" width="1440" height="820" loading="lazy"
+               alt="The site's first screen: a large white serif headline, Turnkey homes, built to last, over a photo of a renovated living room, with two square black buttons">
+          <figcaption>The first screen: serif headline, square buttons, the photo in full color.</figcaption>
+        </figure>
+      </div>
+
+      <div class="case-step">
+        <h3>Cut what didn't serve a construction company</h3>
+        <p>
+          The source style came with newspaper features: a scrolling marquee ticker, a "Vol. 1
+          Edition" label and drop caps everywhere. I removed them, because they made the site look
+          like a design experiment instead of a professional business. I also changed the portfolio
+          from a horizontal scroll to an arrow carousel, so nothing on the page takes over the
+          visitor's scrolling.
+        </p>
+        <figure class="case-figure">
+          <img src="../images/halvorsen-case/portfolio.webp" width="1440" height="1100" loading="lazy"
+               alt="The portfolio section: one project at a time in a bordered box, a large color photo with thumbnails, a red outlined tag, and arrow buttons on both sides">
+          <figcaption>The portfolio as an arrow carousel: one project at a time, the single red as a tag.</figcaption>
+        </figure>
+      </div>
+
+      <div class="case-step">
+        <h3>Review passes</h3>
+        <p>
+          I ran automated design and accessibility reviews (the frontend-design and impeccable
+          plugins) against my written design spec, and fixed what they found over five rounds at
+          1440 and 375 px; the impeccable score went from 14 to 20 out of 20. Among the findings:
+          form focus that was practically invisible (#F0F0F0 on #F9F9F7, about 1.05:1), a skip link
+          that never appeared, tap targets under 44 px, and a round chat avatar that broke the
+          "square corners everywhere" rule.
+        </p>
+        <p>
+          Speed was part of the design too. Self-hosting only the font weights in use cut the fonts
+          from about 296 KB to 145 KB and brought first paint on mobile from 3.8 s to 2.0 s
+          (Lighthouse); giving the headline a width that doesn't depend on the font took the desktop
+          layout shift from 0.32 to 0.002.
+        </p>
+      </div>
+
+      <div class="case-step">
+        <h3>What I haven't done yet</h3>
+        <ul class="case-list">
+          <li>No feedback from real clients or visitors: the company is fictional, and the reviews above are automated tools plus my own checks.</li>
+          <li>I didn't keep the earlier versions, so there are no before images here.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <section>
     <div class="wrap">
       <div class="section-head"><h2>Highlights</h2></div>

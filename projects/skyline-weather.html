@@ -49,7 +49,7 @@
       </div>
 
       <div class="detail-media">
-        <img src="../images/skyline-weather.png" alt="Skyline Weather app screenshot">
+        <img src="../images/skyline-weather.webp" alt="Skyline Weather app screenshot">
       </div>
 
       <div class="facts-grid">
@@ -85,6 +85,56 @@
           in between and no key ever shared across users, a trade-off stated
           plainly in the app rather than glossed over.
         </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-study" id="case-study">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Design case study: a sky you can read</h2>
+        <p>
+          Skyline's first screen asks a visitor for their own API key before they've seen anything.
+          The look is a sky: frosted-glass cards over an animated CSS sky with a sun and drifting
+          clouds, and a sunset orange used sparingly for the one main action. The catch with glass is
+          that the CSS alone doesn't tell you the contrast: what shows through the card changes it.
+        </p>
+      </div>
+
+      <div class="case-step">
+        <h3>After the reviews (November 2026)</h3>
+        <p>
+          Two problems: a visitor without a key met a form first, and several texts were too faint on
+          the glass. I measured contrast on the real pixels of the screen, not from the CSS values,
+          then fixed it at the cause:
+        </p>
+        <ul class="case-list">
+          <li>The demo comes first, as the orange main button, with "or use your own key" and the key form below it.</li>
+          <li>Secondary and tertiary text got darker: from 2-3.5:1 to about 4.8:1 or more.</li>
+          <li>The orange buttons got dark text instead of white, which measured about 2.3:1.</li>
+          <li>The "Sample data" tag became an orange pill with dark text; orange text on the glass was about 1.2:1.</li>
+          <li>Error text became a darker red: from about 3.4:1 to 5.1-6.3:1.</li>
+        </ul>
+        <div class="case-pair">
+          <figure class="case-figure">
+            <img src="../images/skyline-case/login-before.webp" width="496" height="614" loading="lazy"
+                 alt="The old first screen: the API key field and an orange Continue button with white text, the demo as a pale button at the bottom">
+            <figcaption>Before: the key form first, white text on orange, the demo last.</figcaption>
+          </figure>
+          <figure class="case-figure">
+            <img src="../images/skyline-case/login-after.webp" width="496" height="623" loading="lazy"
+                 alt="The new first screen: an orange Try the demo button with dark text first, then the key form with a quieter Continue button">
+            <figcaption>After: the demo first, dark text on orange, darker secondary text.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="case-step">
+        <h3>What I haven't done yet</h3>
+        <ul class="case-list">
+          <li>No usability testing with other people.</li>
+          <li>The sky is animated, so contrast was measured on screenshots, not on every moment of the animation.</li>
+        </ul>
       </div>
     </div>
   </section>

@@ -134,6 +134,75 @@
     </div>
   </section>
 
+  <section class="case-study" id="case-study">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Design case study: calm dashboards where the numbers lead</h2>
+        <p>
+          Claritate is for someone with a sales export and no time to build a pivot table: open a
+          link, upload the file, see the dashboard, on a laptop or a phone. The screen has to stay
+          calm enough that the numbers and charts are always the most visible thing on it.
+        </p>
+      </div>
+
+      <div class="case-step">
+        <h3>Adapt a business style for a data app</h3>
+        <p>
+          I started from an existing "Corporate Trust" design system, written for a React and
+          Tailwind landing page, translated it into plain CSS and adapted it for a data app. I kept
+          the system's indigo-and-violet palette. The decoration (gradients, colored shadows) stays
+          mostly in the header and the upload area; the dashboards use calm white cards, large
+          numbers set in tabular figures so they don't jump when values change, and no animation
+          that pulls attention from the figures.
+        </p>
+        <p>
+          I added what the system didn't have: a color for negative values, and a darker green
+          (#047857) for text, for contrast. Color is never the only signal: changes also get an arrow
+          or a sign, and the chart colors were checked for contrast and for color blindness.
+        </p>
+      </div>
+
+      <div class="case-step">
+        <h3>A dark theme that switches everything together</h3>
+        <p>
+          Later I added a dark theme. Every hard-coded color moved into a variable, so the dashboards,
+          charts, pivot table, comparison and report all switch together without redrawing. It
+          follows the device setting by default, a small script that runs before the page is drawn
+          prevents a white flash, and printing or saving as PDF always uses the light theme.
+        </p>
+        <div class="case-pair">
+          <figure class="case-figure">
+            <img src="../images/claritate-case/dashboard-light.webp" width="640" height="380" loading="lazy"
+                 alt="The summary dashboard in the light theme: four number cards, an orders-by-status bar and a file summary, on white cards">
+          </figure>
+          <figure class="case-figure">
+            <img src="../images/claritate-case/dashboard-dark.webp" width="640" height="380" loading="lazy"
+                 alt="The same summary dashboard in the dark theme, on dark navy cards">
+          </figure>
+        </div>
+        <p class="case-caption">The same dashboard in both themes (the app is in Romanian on purpose).</p>
+      </div>
+
+      <div class="case-step">
+        <h3>After the audit</h3>
+        <p>
+          An automated accessibility audit (impeccable, at 1280 and 375 px) scored the first version
+          15 out of 20. I fixed tap targets under 44 px, text contrast below AA, a long file name
+          that wrapped badly on phones, and the heading order. After a review in November 2026, the
+          upload card also moved up on phones: it used to sit below the first screen, after three
+          feature bullets, and now comes right after the intro.
+        </p>
+      </div>
+
+      <div class="case-step">
+        <h3>What I haven't done yet</h3>
+        <ul class="case-list">
+          <li>No usability testing with people using their own sales files.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <section>
     <div class="wrap">
       <div class="section-head"><h2>Highlights</h2></div>
