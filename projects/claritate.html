@@ -63,7 +63,7 @@
         </div>
         <div class="fact-block">
           <h2>Quality</h2>
-          <p>~80 question phrasings tested against independently-calculated figures, dedicated tests for template-independence and real multi-sheet Excel files (two real bugs caught this way, both fixed), the original 10 automated tests re-verified after the migration and now <a href="https://github.com/AlexandraMoldovan95/claritate/actions/workflows/tests.yml" target="_blank" rel="noopener">run in CI on every push</a>, and manual verification live on production. Accessibility audit (Impeccable, desktop + mobile): taken from 15/20 to a clean score on the original build; the pivot, comparison and dark-mode additions since then were checked manually, not re-audited.</p>
+          <p>About 80 questions asked by hand during development, on realistic spreadsheets and the demo files, with each answer checked against figures calculated separately; dedicated tests for template-independence and real multi-sheet Excel files (two real bugs caught this way, both fixed), the original 10 automated tests re-verified after the migration and now <a href="https://github.com/AlexandraMoldovan95/claritate/actions/workflows/tests.yml" target="_blank" rel="noopener">run in CI on every push</a>, and manual verification live on production. Accessibility audit (Impeccable, desktop + mobile): taken from 15/20 to a clean score on the original build; the pivot, comparison and dark-mode additions since then were checked manually, not re-audited.</p>
         </div>
         <div class="fact-block">
           <h2>Status</h2>
@@ -250,7 +250,7 @@
         <li><strong>Only one Excel sheet is read</strong> - whichever has the most data; a cover sheet or a second sheet is skipped automatically, never merged in.</li>
         <li><strong>Currencies aren't converted.</strong> RON and EUR each get their own figures, calculated separately - no invented exchange rate.</li>
         <li><strong>A dashboard's link is public to anyone who has it</strong> (there's no login) - the page explicitly says not to upload confidential data.</li>
-        <li><strong>The rule-based planner understands a tested set of phrasings</strong> (~80 question types, cross-checked against independently-calculated figures) - partial names, synonyms, date ranges, numeric filters, top-N, rates - but it isn't a language model: a phrasing genuinely outside that set gets a clear refusal, not a best-effort guess.</li>
+        <li><strong>The rule-based planner understands a tested set of phrasings</strong> (about 80 questions tried by hand during development, answers checked against figures calculated separately) - partial names, synonyms, date ranges, numeric filters, top-N, rates - but it isn't a language model: a phrasing genuinely outside that set gets a clear refusal, not a best-effort guess.</li>
         <li><strong>Uploaded files expire after 90 days</strong> in storage; the built-in examples are unaffected since they're static, not stored.</li>
       </ul>
     </div>
