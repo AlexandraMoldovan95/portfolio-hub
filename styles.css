@@ -94,7 +94,10 @@ a { color: var(--accent-text); text-decoration: none; }
 :root[data-theme="dark"] a,
 @media (prefers-color-scheme: dark) { a { color: var(--accent-text); } }
 a:hover { text-decoration: underline; }
-code { background: var(--surface-2); padding: 0.1em 0.4em; border-radius: 4px; font-size: 0.9em; }
+/* Inline code: a little more room inside the pill, and when one wraps onto the next line each
+   piece keeps its own padding and rounded corners (it used to end flush against the cut). */
+code { background: var(--surface-2); padding: 0.15em 0.45em; border-radius: 4px; font-size: 0.9em;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 img { max-width: 100%; display: block; }
 
 .wrap {
