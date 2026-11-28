@@ -31,7 +31,38 @@
 
     initTabs();
     initScrollReveal();
+    initBackToTop();
   });
+
+  // ---------- Back to top ----------
+  // Shown only on a page at least two screens tall, after half a screen of scrolling (at the top,
+  // or on a short page, it would only be in the way). Checked again on scroll, resize and any
+  // change in the page's height (switching between About me and Portfolio changes it). A click
+  // scrolls up (instantly with reduced motion), without touching the address, so the tab stays,
+  // and puts keyboard focus on the first link in the header.
+  function initBackToTop() {
+    var btn = document.getElementById('toTop');
+    if (!btn) return;
+    function shouldShow(y, vh, ph) { return ph >= vh * 2 && y >= vh / 2; }
+    var queued = false;
+    function update() {
+      queued = false;
+      btn.classList.toggle('is-shown', shouldShow(window.scrollY, window.innerHeight, document.documentElement.scrollHeight));
+    }
+    function queue() {
+      if (!queued) { queued = true; window.requestAnimationFrame(update); }
+    }
+    window.addEventListener('scroll', queue, { passive: true });
+    window.addEventListener('resize', queue);
+    if ('ResizeObserver' in window) new ResizeObserver(queue).observe(document.body);
+    btn.addEventListener('click', function () {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+      var first = document.querySelector('.site-header a');
+      if (first) first.focus({ preventScroll: true });
+    });
+    update();
+  }
 
   // ---------- Tabs (About me / Portfolio) ----------
   function initTabs() {

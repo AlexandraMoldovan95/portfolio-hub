@@ -591,6 +591,25 @@ main > .wrap, .tab-panel { padding-top: 0; }
   .project-row:hover .arrow-circle { transform: rotate(90deg) translateX(4px); }
 }
 
+/* ---------- Back to top ---------- */
+/* A round button in the bottom-right corner, by the scrollbar, 100px up so Netlify's badge
+   (up to 92px tall, bottom right) never covers it; the same place as in every portfolio app.
+   script.js shows it only on a page at least two screens tall, after half a screen of scrolling. */
+.to-top {
+  position: fixed; right: 16px; bottom: 100px; z-index: 25;
+  width: 44px; height: 44px; padding: 0;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%; cursor: pointer;
+  background: var(--surface); color: var(--text); border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  opacity: 0; visibility: hidden; transform: translateY(6px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s, border-color 0.2s ease, color 0.2s ease;
+}
+.to-top.is-shown { opacity: 1; visibility: visible; transform: none; }
+.to-top:hover { border-color: var(--accent); color: var(--accent-text); }
+.to-top svg { width: 20px; height: 20px; }
+@media (prefers-reduced-motion: reduce) { .to-top { transition: none; transform: none; } }
+
 /* ---------- Footer ---------- */
 
 .site-footer {
