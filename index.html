@@ -59,9 +59,9 @@
           <h1 style="margin:0;">Hi, I'm Alexandra (Ada).</h1>
         </div>
         <p class="hero-lede">
-          Based in Bucharest, repositioning from technical support into AI-assisted
-          development, product design, and QA - building real projects to prove it,
-          not just claim it.
+          Six years in technical support and testing (HP, uTest, Playtika, Teleperformance),
+          now building and testing software with AI. Based in Bucharest, open to junior roles
+          in QA, UI and product design, AI development or AI engineering.
         </p>
       </div>
 
@@ -91,7 +91,7 @@
             like the work: I kept building past what the course required, and
             I stay open to learning whatever the next project demands.
           </p>
-          <p class="muted">
+          <p>
             I'm upfront about how these were built: the product decisions, UX,
             specs, and testing are mine; the code was written in
             pair-programming with an AI assistant (Claude). Several projects
@@ -118,12 +118,16 @@
           <div class="about-card">
             <h2>Skills</h2>
             <div class="chip-row">
+              <span class="chip">Manual Testing</span>
+              <span class="chip">Exploratory Testing</span>
+              <span class="chip">Test Cases &amp; Test Plans</span>
+              <span class="chip">Bug Reporting</span>
+              <span class="chip">ISTQB Foundation (in progress)</span>
+              <span class="chip">UI &amp; UX Design</span>
+              <span class="chip">Accessibility (WCAG AA)</span>
+              <span class="chip">Responsive Design</span>
               <span class="chip">AI-Assisted Development</span>
               <span class="chip">Technical Support (HP)</span>
-              <span class="chip">QA Testing (uTest)</span>
-              <span class="chip">ISTQB (in progress)</span>
-              <span class="chip">Manual Testing</span>
-              <span class="chip">Bug Reporting</span>
               <span class="chip">Jira &amp; ServiceNow</span>
               <span class="chip">Troubleshooting</span>
               <span class="chip">Technical Documentation</span>
@@ -136,6 +140,19 @@
             <h2>CV</h2>
             <a href="cv/Alexandra-Moldovan-CV.pdf" class="btn btn-ghost" download>Download CV (PDF)</a>
             <p class="cv-note">Also on <a href="https://www.linkedin.com/in/alexandra-moldovan-528152102/" target="_blank" rel="noopener">LinkedIn</a>.</p>
+          </div>
+          <div class="about-card">
+            <h2>Built with</h2>
+            <div class="chip-row">
+              <span class="chip">JavaScript</span>
+              <span class="chip">Python</span>
+              <span class="chip">HTML &amp; CSS</span>
+              <span class="chip">Supabase (Postgres, Auth)</span>
+              <span class="chip">Claude API</span>
+              <span class="chip">Docker</span>
+              <span class="chip">Git &amp; GitHub</span>
+              <span class="chip">Netlify &amp; Vercel</span>
+            </div>
           </div>
         </div>
       </div>
@@ -153,35 +170,44 @@
             understanding how the software gets built in the first place.
             The <a href="#portfolio">Portfolio tab</a> shows what came out of it.
           </p>
+          <p><strong>How I test.</strong> In three steps:</p>
+          <ul class="bg-list">
+            <li><strong>Explore like the user.</strong> I start from the person who will use the app:
+              what they would try, which buttons they would press, which combinations are worth
+              trying. I walk through the whole interface, in the light and the dark theme side by
+              side where an app has both, and I check that things look and feel right, not only that
+              they work, because a test can pass and still miss what the user expects.</li>
+            <li><strong>Report what breaks.</strong> When something breaks, I narrow it down before I
+              report it and write exact steps, so the fix goes to the real cause.</li>
+            <li><strong>Retest after the fix.</strong> I retest every place the same thing appears,
+              then run a short smoke test; where I can, a bug I found by hand gets an automated check,
+              so it can't quietly come back. And finding no more bugs doesn't mean there are none.</li>
+          </ul>
+          <p><strong>Written examples:</strong></p>
+          <ul class="bg-list">
+            <li>Note Organizer: a
+              <a href="https://github.com/AlexandraMoldovan95/noteOrganizer/blob/main/qa/NoteOrganizer_TestPlan.xlsx" target="_blank" rel="noopener">test plan with 996 cases</a>,
+              <a href="https://note-organizer-8f7772.netlify.app/bug-reports" target="_blank" rel="noopener">bug reports</a>
+              from my manual testing, and
+              <a href="https://note-organizer-8f7772.netlify.app/testing" target="_blank" rel="noopener">how the plan is used</a>.</li>
+            <li>Desktop Buddy:
+              <a href="https://github.com/AlexandraMoldovan95/desktop-buddy/blob/main/docs/qa/Desktop-Buddy-Test-Cases.xlsx" target="_blank" rel="noopener">72 test cases with a defect log</a>,
+              48 run by hand on Windows and 24 automated.</li>
+            <li>Job Tracker:
+              <a href="projects/job-tracker.html#testing">data-privacy checks from a second account</a>,
+              each with its expected and actual result.</li>
+          </ul>
           <p>
             <strong>How I design.</strong> Each app has its own look because each one has a
             different job, and it has to be practical and easy to use, not just good-looking. I
-            usually start from an existing style direction that fits the people who will use it,
-            then adapt it until it works with real content. For a fictional construction company
-            (Halvorsen &amp; Reyes), an editorial black-and-white style with square corners and a
-            single red, to feel precise and trustworthy; I kept the project photos in color because
-            they sell the work, and removed decoration (a scrolling ticker, drop caps everywhere)
-            that made it look like a design experiment. For Claritate, a calm business style where
-            the numbers stay the most visible thing on screen. For Job Tracker, a neon theme to make
-            an everyday tool memorable, toned down so the data stays readable: softer scanlines,
-            button slant cut from 12° to 6°, and the exported CV left plain, because it goes to real
-            employers. Each project's page has a short design case study:
+            start from an existing style direction that fits the people who will use it, then
+            adapt it to real content and remove what doesn't help. Each project's page has a short
+            design case study:
             <a href="projects/flashcards.html#case-study">Flashcards</a>,
             <a href="projects/job-tracker.html#case-study">Job Tracker</a>,
             <a href="projects/skyline-weather.html#case-study">Skyline Weather</a>,
             <a href="projects/halvorsen-reyes-builders.html#case-study">Halvorsen &amp; Reyes</a> and
             <a href="projects/claritate.html#case-study">Claritate</a>.
-          </p>
-          <p>
-            <strong>How I test.</strong> My written test plans and test cases so far are for two of
-            my own apps. For Note Organizer: a
-            <a href="https://github.com/AlexandraMoldovan95/noteOrganizer/blob/main/qa/NoteOrganizer_TestPlan.xlsx" target="_blank" rel="noopener">test plan with 996 cases</a>,
-            <a href="https://note-organizer-8f7772.netlify.app/bug-reports" target="_blank" rel="noopener">bug reports</a>
-            from my manual testing, and
-            <a href="https://note-organizer-8f7772.netlify.app/testing" target="_blank" rel="noopener">how I test it</a>.
-            For Desktop Buddy:
-            <a href="https://github.com/AlexandraMoldovan95/desktop-buddy/blob/main/docs/qa/Desktop-Buddy-Test-Cases.xlsx" target="_blank" rel="noopener">72 test cases with a defect log</a>:
-            48 run by hand on Windows, 24 automated.
           </p>
         </div>
 
@@ -197,14 +223,7 @@
               <li>I stepped away from full-time technical support in June 2026 to pursue a focused, educational transition into QA and AI-assisted development.</li>
               <li>I completed the "Vibe Coding" course at Step&nbsp;IT Academy and shipped nine projects (details under Certifications, below).</li>
               <li>I practice a complete product workflow on every project: scoping what to build, making UX decisions, writing and reviewing code with an AI coding agent, testing it, and shipping it to a live environment.</li>
-              <li>I treat the break as a structured, outcome-driven investment in the career switch rather than time off.</li>
             </ul>
-            <div class="chip-row">
-              <span class="chip">Career transition</span>
-              <span class="chip">Self-directed learning</span>
-              <span class="chip">AI-assisted development</span>
-              <span class="chip">Portfolio building</span>
-            </div>
           </article>
 
           <article class="cv-entry">
@@ -216,25 +235,11 @@
               <li>Served as the first point of contact for internal users, partners and customers across EMEA, identifying and prioritizing issues before resolving them directly or escalating to higher levels and other departments within the company's SLA.</li>
               <li>Managed Jira tickets per the company's SLA, and used ServiceNow daily as the reference system for product information - looking up printer and accessory order details and serial-number records while troubleshooting.</li>
               <li>Collaborated directly with engineering teams to escalate and resolve product defects traced into the company's SQL databases, and conducted root cause analysis on recurring technical problems.</li>
-              <li>Participated actively in team meetings, taking notes to keep track of what was discussed and decided.</li>
               <li>Took on extra tasks proactively to keep the team's workload from piling up, alongside day-to-day ticket work.</li>
               <li>Wrote and maintained technical documentation and knowledge-base articles used by the wider support team.</li>
               <li>Provided technical training and mentorship to junior teammates.</li>
               <li>Stepped in as acting team lead, running operations during the supervisor's absence.</li>
-              <li>Stayed current on industry trends and emerging technologies relevant to the support function.</li>
             </ul>
-            <div class="chip-row">
-              <span class="chip">Jira</span>
-              <span class="chip">ServiceNow</span>
-              <span class="chip">SLA-bound incident triage &amp; escalation</span>
-              <span class="chip">Root cause analysis</span>
-              <span class="chip">SQL-adjacent debugging</span>
-              <span class="chip">Technical documentation</span>
-              <span class="chip">Mentorship &amp; training</span>
-              <span class="chip">Acting team leadership</span>
-              <span class="chip">Working under pressure</span>
-              <span class="chip">Partner &amp; customer communication</span>
-            </div>
           </article>
 
           <article class="cv-entry">
@@ -247,13 +252,6 @@
               <li>Switched context fast between unfamiliar applications on each new engagement, alongside the start of full-time support work at HP.</li>
               <li>Went beyond the scripted test cases to actively probe for issues they didn't cover, reporting findings with enough detail to reproduce.</li>
             </ul>
-            <div class="chip-row">
-              <span class="chip">Manual test case execution</span>
-              <span class="chip">Exploratory testing</span>
-              <span class="chip">Bug reporting &amp; reproduction steps</span>
-              <span class="chip">Working from acceptance criteria</span>
-              <span class="chip">Remote freelance QA workflow</span>
-            </div>
           </article>
 
           <article class="cv-entry">
@@ -267,13 +265,6 @@
               <li>Took on informal team-coordination duties - organizing the day's tasks and deciding who on the team handled which case.</li>
               <li>Judged which complaints were beyond front-line scope and escalated them to the right specialized department instead of attempting a workaround.</li>
             </ul>
-            <div class="chip-row">
-              <span class="chip">ServiceNow</span>
-              <span class="chip">SLA-bound case handling</span>
-              <span class="chip">Case triage &amp; escalation judgment</span>
-              <span class="chip">Informal team coordination</span>
-              <span class="chip">Follow-through to resolution</span>
-            </div>
           </article>
 
           <article class="cv-entry">
@@ -287,12 +278,6 @@
               <li>Monitored player behavior for rule violations, including cheating, and applied sanctions per policy.</li>
               <li>Kept a customer-service tone under high ticket volume.</li>
             </ul>
-            <div class="chip-row">
-              <span class="chip">Multi-platform troubleshooting</span>
-              <span class="chip">Game support</span>
-              <span class="chip">Policy enforcement</span>
-              <span class="chip">High-volume player-facing communication</span>
-            </div>
           </article>
         </div>
 
@@ -349,14 +334,6 @@
               <li>Extended Desktop Buddy past the course deliverable: added its per-app screen recording, its level-up/skins reward system, and its screenshot/clip editing tools.</li>
               <li>Concluded with a diploma from Step IT Academy.</li>
             </ul>
-            <div class="chip-row">
-              <span class="chip">AI-assisted development</span>
-              <span class="chip">Product scoping &amp; UX decisions</span>
-              <span class="chip">Vanilla JS · Supabase · Python · TypeScript</span>
-              <span class="chip">Security fundamentals (RLS, key handling, rate limiting)</span>
-              <span class="chip">Shipping to production (Netlify, Vercel)</span>
-              <span class="chip">Self-directed initiative</span>
-            </div>
           </article>
 
           <article class="cv-entry">
@@ -550,7 +527,7 @@
               <span class="chip">Your own AI key</span>
             </div>
             <h2>Document Embedding Studio</h2>
-            <p>Drop in your own documents (PDF, Word, notes), then search them or ask an AI questions that it answers from those files. Everything is prepared on your own computer (the first half of a RAG pipeline). The full app runs locally in Docker; a walkthrough with sample data is on Netlify.</p>
+            <p>Drop in your own documents (PDF, Word, notes), then search them or ask an AI questions that it answers from those files. Everything is prepared on your own computer.The full app runs locally in Docker; a walkthrough with sample data is on Netlify.</p>
           </div>
           <div class="project-row-arrow"><span class="arrow-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
         </a>

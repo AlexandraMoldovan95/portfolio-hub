@@ -313,6 +313,16 @@ main > .wrap, .tab-panel { padding-top: 0; }
 .tab-hero h1 { font-size: clamp(1.9rem, 4vw, 2.75rem); }
 .hero-lede { font-size: 1.1rem; color: var(--text-muted); }
 
+/* One text width for every block of running text (intros, section text, case steps, lists,
+   tables), so paragraphs on a page end at the same place instead of some spanning the whole
+   page and others stopping short. In rem, not ch: ch grows with each block's own font size. */
+:root { --measure: 46rem; }
+.hero-lede, .detail-pitch, .section-head p, .case-step, .highlight-list, .case-list { max-width: var(--measure); }
+/* Test tables are the exception: they span the whole column, like the big app pictures (short
+   cells read better wide). The step that holds one keeps its own text at the text width. */
+.case-step:has(> .table-wrap) { max-width: none; }
+.case-step:has(> .table-wrap) > :not(.table-wrap) { max-width: var(--measure); }
+
 
 /* ---------- About ---------- */
 
@@ -365,6 +375,14 @@ main > .wrap, .tab-panel { padding-top: 0; }
 
 .cv-section { padding-bottom: 48px; }
 .cv-section .section-head p + p { margin-top: 14px; }
+/* The Background text on About spans the same width as the Experience boxes below it. */
+.cv-section .section-head p { max-width: none; }
+/* Lists inside the Background text (how I test, written examples): the Experience bullets' dot,
+   the Background text's size and color. */
+.bg-list { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 8px; }
+.bg-list li { position: relative; padding-left: 16px; color: var(--text-muted); font-size: 1.02rem; }
+.bg-list li::before { content: ''; position: absolute; left: 0; top: 0.65em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.cv-section .section-head .bg-list + p { margin-top: 18px; }
 .cv-section .section-head a { color: var(--accent-text); font-weight: 600; }
 
 .cv-block { margin-top: 36px; }
@@ -700,12 +718,24 @@ section + section { border-top: 1px solid var(--border); }
 /* Design case study on a project write-up: short steps, each with its before/after image. */
 /* Links to #case-study land with the heading below the sticky header (71px), not under it. */
 .case-study { scroll-margin-top: 72px; }
-.case-step { max-width: 74ch; margin-top: 44px; }
+.case-step { margin-top: 44px; }
 .section-head + .case-step { margin-top: 0; }
 .case-step h3 { font-size: 1.2rem; margin: 0 0 10px; }
 .case-step p, .case-list { color: var(--text-muted); font-size: 1rem; margin: 0 0 12px; }
 .case-list { padding-left: 20px; }
 .case-list li { margin-bottom: 6px; }
+
+/* A test table on a project page (what was tried, expected, actual). Narrow screens scroll it
+   sideways inside its own box instead of widening the page. */
+.table-wrap { overflow-x: auto; margin: 4px 0 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); }
+.check-table { width: 100%; border-collapse: collapse; font-size: 0.93rem; }
+.check-table th, .check-table td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.check-table th { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); background: var(--surface); }
+.check-table td { color: var(--text); }
+.check-table tbody tr:last-child td { border-bottom: 0; }
+.check-table tfoot td { border-top: 1px solid var(--border); border-bottom: 0; font-weight: 600; background: var(--surface); }
+.check-table td:last-child { white-space: nowrap; }
+@media (max-width: 480px) { .check-table th, .check-table td { padding: 8px 10px; } }
 .case-figure { margin: 20px 0 0; }
 .case-figure img { display: block; max-width: 100%; height: auto; border-radius: var(--radius-sm); border: 1px solid var(--border); box-shadow: var(--shadow); }
 .case-figure figcaption, .case-caption { font-size: 0.85rem; color: var(--text-muted); margin-top: 8px; }

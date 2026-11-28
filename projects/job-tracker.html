@@ -4,18 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Job Tracker - Alexandra Moldovan</title>
-<meta name="description" content="A job application tracker with real multi-user data isolation, enforced via Supabase Row Level Security.">
+<meta name="description" content="A job application tracker where each account sees only its own data, tested from a second account: 10 of 10 isolation checks passed.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Alexandra Moldovan - Portfolio">
 <meta property="og:url" content="https://alexandra-moldovan.netlify.app/projects/job-tracker.html">
 <meta property="og:title" content="Job Tracker - Alexandra Moldovan">
-<meta property="og:description" content="A job application tracker with real multi-user data isolation, enforced via Supabase Row Level Security.">
+<meta property="og:description" content="A job application tracker where each account sees only its own data, tested from a second account: 10 of 10 isolation checks passed.">
 <meta property="og:image" content="https://job-tracker-69cc42.netlify.app/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Job Tracker - Alexandra Moldovan">
-<meta name="twitter:description" content="A job application tracker with real multi-user data isolation, enforced via Supabase Row Level Security.">
+<meta name="twitter:description" content="A job application tracker where each account sees only its own data, tested from a second account: 10 of 10 isolation checks passed.">
 <meta name="twitter:image" content="https://job-tracker-69cc42.netlify.app/og-cover.jpg">
 <link rel="canonical" href="https://alexandra-moldovan.netlify.app/projects/job-tracker.html">
 
@@ -41,31 +41,32 @@
   <section class="detail-hero">
     <div class="wrap">
       <a href="../index.html#portfolio" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to portfolio</a>
-      <div class="eyebrow">PWA · Supabase</div>
+      <div class="eyebrow">Web app · Supabase · Security testing</div>
       <h1>Job Tracker</h1>
-      <p class="detail-pitch">A job application tracker where every user's data stays completely private from every other user - not hidden by the interface, but actually walled off at the database level, so even a buggy or tampered client couldn't see someone else's applications. That protection comes from a Postgres/Supabase feature called Row Level Security. It runs on plain HTML/CSS/JS with real authentication, no framework, no build step.</p>
+      <p class="detail-pitch">Track the companies you apply to, where each application stands, and your resume versions. Each account sees only its own data, and I tested that from the outside: a second account couldn't read, change or delete anything in mine. Try it without an account: the "Login demo" button opens it with sample data.</p>
       <div class="detail-actions">
         <a href="https://job-tracker-69cc42.netlify.app/" class="btn btn-accent" target="_blank" rel="noopener">Live demo</a>
         <a href="https://github.com/AlexandraMoldovan95/job-tracker" class="btn btn-ghost" target="_blank" rel="noopener">View on GitHub</a>
+        <a href="#case-study" class="btn btn-ghost">Design case study</a>
       </div>
 
       <div class="detail-media">
-        <img class="shot-light" src="../images/job-tracker.webp" width="1440" height="984" loading="lazy" alt="Job Tracker app screenshot">
-        <img class="shot-dark" src="../images/job-tracker-dark.webp" width="1440" height="984" loading="lazy" alt="Job Tracker app screenshot">
+        <img class="shot-light" src="../images/job-tracker.webp" width="1440" height="984" loading="lazy" alt="Job Tracker's dashboard by day, in demo mode: total applications, response rate, applications by status and the top companies">
+        <img class="shot-dark" src="../images/job-tracker-dark.webp" width="1440" height="984" loading="lazy" alt="Job Tracker's dashboard at night, in demo mode: total applications, response rate, applications by status and the top companies, in neon on near-black purple">
       </div>
 
       <div class="facts-grid">
         <div class="fact-block">
           <h2>What it does</h2>
-          <p>Auth (email/password), companies, applications with status tracking, a dashboard with response-rate and top-company stats, multi-version resumes exportable to a formatted HTML/PDF file, a self-service "Delete account" that removes the account and everything in it, an installable PWA with a proper offline fallback, and a "Support the project" button that opens a Stripe checkout page in test mode, just to show the flow.</p>
+          <p>Companies, applications with their status, a dashboard (response rate, top companies), resume versions you can export, and deleting your account with everything in it.</p>
         </div>
         <div class="fact-block">
           <h2>My role</h2>
-          <p>Product idea, UX, and the security model (RLS policy design); built in pair-programming with an AI assistant (Claude).</p>
+          <p>Product idea, UX, the privacy rules (which account may read or change which rows) and the testing below. The code was written with an AI assistant (Claude).</p>
         </div>
         <div class="fact-block">
-          <h2>Quality</h2>
-          <p>Data isolation was tested, not assumed: a second test account sees none of the first account's data, can't rename or delete it (0 rows affected), and can't save a row in someone else's name (HTTP 403) - re-checked on the live project in November 2026. Account deletion is tested end to end: 7 API checks and 13 UI checks. <a href="https://github.com/AlexandraMoldovan95/job-tracker/blob/main/docs/security-checks.md" target="_blank" rel="noopener">Every check and its result</a>. <a href="https://github.com/AlexandraMoldovan95/job-tracker/blob/main/tests/logic.test.js" target="_blank" rel="noopener">19 unit tests</a> cover the logic with no page or database behind it (escaping user text, the dashboard numbers, the exported resume, when "Back to top" shows, the theme choice) and run on every push. It has a light theme too, the same synthwave look in daylight, with every text measured against WCAG AA in both themes.</p>
+          <h2>Proof</h2>
+          <p>10 of 10 data-isolation checks · 7 + 13 delete-account checks · <a href="https://github.com/AlexandraMoldovan95/job-tracker/blob/main/tests/logic.test.js" target="_blank" rel="noopener">19 unit tests</a> on every push.</p>
         </div>
         <div class="fact-block">
           <h2>Status</h2>
@@ -75,18 +76,59 @@
     </div>
   </section>
 
-  <section class="prose">
+  <section class="case-study" id="testing">
     <div class="wrap">
       <div class="section-head">
-        <h2>Why this exists</h2>
+        <h2>How I tested it</h2>
         <p>
-          A job tracker looks like a simple CRUD problem, but it's a good vehicle
-          to demonstrate something that's easy to get wrong: real multi-user data
-          isolation, enforced where it actually matters - the database - not just
-          hidden in the UI. Every row a user creates is tied to their own
-          <code>auth.uid()</code> through Postgres Row Level Security policies, so
-          even a broken or malicious client can't read another user's data.
+          The biggest risk in an app with accounts is one person seeing someone else's data. Hiding
+          it in the interface isn't enough, so the rules live in the database (Supabase Row Level
+          Security). I tested them from outside the app: direct database calls from a second,
+          throwaway account (B), against a company I had created with my own account (A).
         </p>
+      </div>
+
+      <div class="case-step">
+        <h3>Data isolation: 10 of 10 checks passed</h3>
+        <p>
+          In plain words: account B tried to read, change and delete my data and was refused every
+          time, while it could still save and delete its own.
+        </p>
+        <div class="table-wrap">
+          <table class="check-table">
+            <thead>
+              <tr><th scope="col">What account B tried</th><th scope="col">Expected</th><th scope="col">Result</th><th scope="col">Checks</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Read A's companies, applications and resume versions</td><td>nothing</td><td>empty</td><td>3</td></tr>
+              <tr><td>Find A's company by its name</td><td>not found</td><td>empty</td><td>1</td></tr>
+              <tr><td>Rename or delete A's company</td><td>0 rows changed</td><td>0 rows</td><td>2</td></tr>
+              <tr><td>Save a company in A's name</td><td>refused</td><td>refused (HTTP 403)</td><td>1</td></tr>
+              <tr><td>Control: save and delete a company of its own</td><td>allowed</td><td>1 row each</td><td>2</td></tr>
+              <tr><td>Read companies with no login at all</td><td>nothing</td><td>empty</td><td>1</td></tr>
+            </tbody>
+            <tfoot>
+              <tr><td colspan="3">All passed</td><td>10</td></tr>
+            </tfoot>
+          </table>
+        </div>
+        <p>
+          Run on the live project on 24 November 2026. The control row matters: it shows the
+          refusals come from who owns the row, not from a setup that refuses everything. Deleting
+          an account was tested the same way, with 7 checks through the API and 13 in the browser,
+          all passed, including that the deleted account can't log in again and that its rows are
+          really gone, not just hidden.
+          <a href="https://github.com/AlexandraMoldovan95/job-tracker/blob/main/docs/security-checks.md" target="_blank" rel="noopener">Every check and its result</a>.
+        </p>
+      </div>
+
+      <div class="case-step">
+        <h3>What testing and reviews found</h3>
+        <ul class="case-list">
+          <li><strong>A gap in the database rules, found in an AI code review I asked for.</strong> An application could be attached to another user's company through a direct API call. The rule now also checks that the company is yours (25 November 2026). Checked by reading the rule; not yet re-tested with two accounts on the live project.</li>
+          <li><strong>A bug found while writing the unit tests.</strong> A resume named with spaces only was exported as ".html", with no name. Fixed.</li>
+          <li><strong>A form that could lose your typing.</strong> A click outside a form closed it, so selecting text with the mouse could throw away what you had typed. Clicking outside no longer closes it, and unsaved changes are marked.</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -96,38 +138,30 @@
       <div class="section-head">
         <h2>Design case study: a neon theme that still reads like a tool</h2>
         <p>
-          A job tracker is a plain data app, the kind that usually looks generic. I wanted this one
-          to be memorable, but it's also a tool you open every day to read your own data, so the
-          look can't get in the way of reading.
+          A job tracker usually looks generic. I wanted this one to be memorable, but it's a tool you
+          open every day to read your own data, so the look can't get in the way of reading.
         </p>
       </div>
 
       <div class="case-step">
         <h3>Start from a style, then tone it down</h3>
         <p>
-          I started from an existing vaporwave/outrun style direction - near-black purple, neon cyan,
-          magenta and orange, skewed buttons, CRT scanlines, Orbitron and Share Tech Mono - and
-          translated it into plain CSS to match the no-framework app. Then I adjusted it for real
-          data: the scanlines are subtler than in the original spec, because the list text got hard
-          to read; the button slant went from 12° to 6° (3° on the small list buttons), because a
-          strong slant broke small buttons visually; status badges became neon outlines instead of
-          filled pills; and error messages moved from light grey on neon red to a black background.
-        </p>
-        <p>
-          One thing I deliberately kept out of the theme: the CV export. It stays plain and
-          professional, because that file goes to real employers.
+          I started from a vaporwave/outrun style (near-black purple, neon cyan and magenta, slanted
+          buttons, CRT scanlines) and toned it down for real data: subtler scanlines, the button
+          slant cut from 12° to 6°, status badges as neon outlines instead of filled pills, and error
+          messages on black instead of light grey on neon red. The exported resume stays plain,
+          because it goes to real employers. Later came a daytime version of the same look, with
+          every text meeting WCAG AA contrast in both themes.
         </p>
       </div>
 
       <div class="case-step">
         <h3>Design iteration (November 2026)</h3>
         <p>
-          A design review pointed at the login screen. A visitor without an account had to find
-          "Login demo" under the real login, with the same weight; the demo is now the first, filled
-          button, with the real login below "or use your account". The inputs were pure black boxes
-          on the purple card; they now sit on the purple surface
-          with a thin outline and keep the magenta neon underline. Placeholder text went from 1.97:1
-          to 6.56:1 contrast; typed text stays at 13.8:1.
+          A design review pointed at the login screen: a visitor without an account had to find
+          "Login demo" under the real login. The demo is now the first, filled button. The inputs
+          moved from pure black boxes onto the card's surface, and placeholder text went from 1.97:1
+          to 6.56:1 contrast.
         </p>
         <figure class="case-figure">
           <img class="shot-light" src="../images/job-tracker-case/login-after.webp" width="456" height="734" loading="lazy"
@@ -137,52 +171,41 @@
           <figcaption>The login screen now: the demo first, the inputs on the card's surface.</figcaption>
         </figure>
       </div>
-
-      <div class="case-step">
-        <h3>What I haven't done yet</h3>
-        <ul class="case-list">
-          <li>No usability testing with job seekers. The changes above came from my own use and from reviews.</li>
-          <li>Some labels on phones are still small (about 11 px).</li>
-        </ul>
-      </div>
     </div>
   </section>
 
   <section>
     <div class="wrap">
-      <div class="section-head"><h2>Highlights</h2></div>
-      <ul class="highlight-list">
-        <li><strong>A modal UX bug fixed properly.</strong> Modals used to close on any click outside them, so selecting text inside a field (a drag that ends over the backdrop) could silently discard unsaved input. Fixed by removing backdrop-close entirely, with a visual cue when changes are unsaved.</li>
-        <li><strong>Isolation verified with a second account, not assumed.</strong> A dedicated test account confirmed it saw zero companies and zero applications from the first account.</li>
-        <li><strong>A payment flow that's demonstrated, not faked.</strong> "Support the project" opens a real Stripe Payment Link in test mode, so a reviewer sees an actual Stripe checkout screen rather than a mockup - but it's clearly scoped as a demo: test mode only, no live key anywhere in the code, no backend order record, and no webhook, so no real charge ever happens.</li>
-        <li><strong>Database-level protection on every table, not just app-level checks.</strong> Enforced by Postgres itself through a feature called Row Level Security, so a user can only select, insert, update, or delete their own rows - even if the app code were buggy or bypassed.</li>
-        <li><strong>Extra browser-side security headers, not just HTTPS.</strong> A real HTTP Content-Security-Policy header - via Netlify's <code>_headers</code> file, not just a meta tag, which can't carry <code>frame-ancestors</code> - plus X-Frame-Options and a locked-down Referrer-Policy, guarding against clickjacking and script-injection attacks.</li>
-        <li><strong>An honest PWA (installable app) that doesn't fake offline support.</strong> The service worker - the background script that makes a web page installable like a native app - gives it a proper offline fallback screen, but deliberately doesn't cache the app shell itself: since the app is live-data-dependent anyway, caching it would just produce the classic bug of users stuck on a stale version after a deploy.</li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="prose">
-    <div class="wrap">
       <div class="section-head">
-        <h2>How it was built</h2>
+        <h2>How it's built</h2>
         <p>
-          No framework, no bundler - HTML5/CSS3/vanilla JavaScript talking
-          directly to Supabase (Postgres + Auth + Row Level Security), loaded from
-          a pinned CDN URL with Subresource Integrity. The Supabase key shipped to
-          the client is the publishable key, designed to be public - the real
-          access control is the RLS policies, not key secrecy. The visual
-          direction (vaporwave/outrun - cyan and magenta on near-black, a CRT
-          scanline overlay) was a deliberate choice to make a CRUD app memorable
-          rather than generic.
+          Plain HTML, CSS and JavaScript, with no framework or build step, talking directly to
+          Supabase (a hosted Postgres database with login).
         </p>
       </div>
+      <ul class="highlight-list">
+        <li><strong>The key in the page is public by design.</strong> Supabase's publishable key is meant to be seen; what protects the data is the database rules tested above.</li>
+        <li><strong>A payment flow shown, not faked.</strong> "Support the project" opens a real Stripe checkout in test mode: no live key anywhere, so no real charge can happen.</li>
+        <li><strong>Security headers from the server.</strong> A Content-Security-Policy sent by Netlify, with no inline scripts or styles allowed, against injected scripts and clickjacking.</li>
+        <li><strong>Installable, without a stale copy.</strong> It installs like an app and shows an offline screen, but doesn't keep a cached copy of the app, so nobody gets stuck on an old version after an update.</li>
+      </ul>
       <div class="stack-row">
         <span class="chip">Supabase (Postgres + Auth + RLS)</span>
         <span class="chip">Vanilla JavaScript</span>
         <span class="chip">PWA / Service Worker</span>
         <span class="chip">Netlify</span>
       </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head"><h2>What I haven't done yet</h2></div>
+      <ul class="case-list">
+        <li>No usability testing with job seekers. The changes above came from my own use and from reviews.</li>
+        <li>The isolation and delete-account checks ran once; nothing re-runs them after a change to the rules. Next step: save them as a script that runs after every change to the rules, and run it first for the rule fixed on 25 November.</li>
+        <li>Some labels on phones are still small (about 11 px).</li>
+      </ul>
     </div>
   </section>
 
