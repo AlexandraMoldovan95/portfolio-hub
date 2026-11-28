@@ -19,6 +19,7 @@
 <meta name="twitter:image" content="https://job-tracker-69cc42.netlify.app/og-cover.jpg">
 <link rel="canonical" href="https://alexandra-moldovan.netlify.app/projects/job-tracker.html">
 
+<script src="../theme-init.js"></script>
 <link rel="stylesheet" href="../styles.css">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 </head>
@@ -49,7 +50,8 @@
       </div>
 
       <div class="detail-media">
-        <img src="../images/job-tracker.webp" alt="Job Tracker app screenshot">
+        <img class="shot-light" src="../images/job-tracker.webp" width="1440" height="984" loading="lazy" alt="Job Tracker app screenshot">
+        <img class="shot-dark" src="../images/job-tracker-dark.webp" width="1440" height="984" loading="lazy" alt="Job Tracker app screenshot">
       </div>
 
       <div class="facts-grid">
@@ -63,7 +65,7 @@
         </div>
         <div class="fact-block">
           <h2>Quality</h2>
-          <p>Data isolation was tested, not assumed: a second test account sees none of the first account's data, can't rename or delete it (0 rows affected), and can't save a row in someone else's name (HTTP 403) - re-checked on the live project in November 2026. Account deletion is tested end to end: 7 API checks and 13 UI checks. <a href="https://github.com/AlexandraMoldovan95/job-tracker/blob/main/docs/security-checks.md" target="_blank" rel="noopener">Every check and its result</a>. <a href="https://github.com/AlexandraMoldovan95/job-tracker/blob/main/tests/logic.test.js" target="_blank" rel="noopener">17 unit tests</a> cover the logic with no page or database behind it (escaping user text, the dashboard numbers, the exported resume, when "Back to top" shows) and run on every push.</p>
+          <p>Data isolation was tested, not assumed: a second test account sees none of the first account's data, can't rename or delete it (0 rows affected), and can't save a row in someone else's name (HTTP 403) - re-checked on the live project in November 2026. Account deletion is tested end to end: 7 API checks and 13 UI checks. <a href="https://github.com/AlexandraMoldovan95/job-tracker/blob/main/docs/security-checks.md" target="_blank" rel="noopener">Every check and its result</a>. <a href="https://github.com/AlexandraMoldovan95/job-tracker/blob/main/tests/logic.test.js" target="_blank" rel="noopener">19 unit tests</a> cover the logic with no page or database behind it (escaping user text, the dashboard numbers, the exported resume, when "Back to top" shows, the theme choice) and run on every push. It has a light theme too, the same synthwave look in daylight, with every text measured against WCAG AA in both themes.</p>
         </div>
         <div class="fact-block">
           <h2>Status</h2>

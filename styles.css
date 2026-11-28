@@ -655,7 +655,16 @@ main > .wrap, .tab-panel { padding-top: 0; }
   margin: 32px 0 8px;
   background: var(--surface-2);
 }
-.detail-media img { width: 100%; }
+.detail-media img { width: 100%; height: auto; display: block; }
+
+/* App pictures that follow the theme: each has a light file (.shot-light) and a dark one
+   (.shot-dark). Only the one that doesn't match is hidden (whatever display the picture
+   normally has stays), and with loading="lazy" a hidden picture is never downloaded. The
+   theme is the saved choice (data-theme) or, with nothing saved, the system setting. */
+:root[data-theme="light"] .shot-dark,
+:root[data-theme="dark"] .shot-light { display: none; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme]) .shot-light { display: none; } }
+@media not (prefers-color-scheme: dark) { :root:not([data-theme]) .shot-dark { display: none; } }
 .detail-media .media-placeholder { aspect-ratio: 16/9; font-size: 1.1rem; font-weight: 500; flex-direction: column; gap: 10px; color: var(--text-muted); }
 
 .facts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin: 8px 0 0; }
