@@ -4,18 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Claritate - Alexandra Moldovan</title>
-<meta name="description" content="Upload a sales CSV/Excel file for dashboards, a pivot table, a two-file comparison, and a rule-based Romanian Q&A layer.">
+<meta name="description" content="Upload a messy sales spreadsheet and get dashboards, a pivot table and a PDF report, with every cleaning step shown. Designed to keep the numbers calm and readable, in light and dark.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Alexandra Moldovan - Portfolio">
 <meta property="og:url" content="https://alexandra-moldovan.netlify.app/projects/claritate.html">
 <meta property="og:title" content="Claritate - Alexandra Moldovan">
-<meta property="og:description" content="Upload a sales CSV/Excel file for dashboards, a pivot table, a two-file comparison, and a rule-based Romanian Q&A layer.">
+<meta property="og:description" content="Upload a messy sales spreadsheet and get dashboards, a pivot table and a PDF report, with every cleaning step shown. Designed to keep the numbers calm and readable, in light and dark.">
 <meta property="og:image" content="https://claritate.vercel.app/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Claritate - Alexandra Moldovan">
-<meta name="twitter:description" content="Upload a sales CSV/Excel file for dashboards, a pivot table, a two-file comparison, and a rule-based Romanian Q&A layer.">
+<meta name="twitter:description" content="Upload a messy sales spreadsheet and get dashboards, a pivot table and a PDF report, with every cleaning step shown. Designed to keep the numbers calm and readable, in light and dark.">
 <meta name="twitter:image" content="https://claritate.vercel.app/og.jpg">
 <link rel="canonical" href="https://alexandra-moldovan.netlify.app/projects/claritate.html">
 
@@ -41,98 +41,38 @@
   <section class="detail-hero">
     <div class="wrap">
       <a href="../index.html#portfolio" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to portfolio</a>
-      <div class="eyebrow">CSV/Excel-to-dashboard</div>
+      <div class="eyebrow">Data app · UI design</div>
       <h1>Claritate</h1>
-      <p class="detail-pitch">Upload a sales CSV or Excel file and the app reads it, detects its columns, cleans it, and shows six dashboards plus a configurable pivot table - figures, charts, and tables. You can also ask questions about the data in natural language, in Romanian: a rule-based planner in code turns the question into a calculation plan, and the code does the arithmetic itself. No AI model and no API key run on the live site - a deliberate choice, not a missing feature (an optional AI-planner mode is already scaffolded in the code; see Highlights for why it's off).</p>
+      <p class="detail-pitch">Upload a sales spreadsheet (CSV or Excel) and get dashboards, a pivot table and a PDF report, without building any of it yourself. Real exports are messy, so the app shows what it found and fixed instead of hiding it. You can also ask questions about the data; the answers are calculated by code, not by an AI. The app is in Romanian on purpose (it was built for a Romanian course brief). To try it, use an example file on the start screen.</p>
       <div class="detail-actions">
         <a href="https://claritate.vercel.app" class="btn btn-accent" target="_blank" rel="noopener">Live demo</a>
         <a href="https://github.com/AlexandraMoldovan95/claritate" class="btn btn-ghost" target="_blank" rel="noopener">View on GitHub</a>
+        <a href="#case-study" class="btn btn-ghost">Design case study</a>
       </div>
 
       <div class="detail-media">
-        <img class="shot-light" src="../images/claritate.jpg" width="2172" height="1240" loading="lazy" alt="Screenshot of the Claritate app's upload screen, with the non-conforming example files and the two-file comparison option">
-        <img class="shot-dark" src="../images/claritate-dark.jpg" width="2172" height="1240" loading="lazy" alt="Screenshot of the Claritate app's upload screen, with the non-conforming example files and the two-file comparison option">
+        <img class="shot-light" src="../images/claritate.jpg" width="2172" height="1240" loading="lazy" alt="Claritate's start screen by day: a headline, an upload box for a CSV or Excel file, and four example files to try">
+        <img class="shot-dark" src="../images/claritate-dark.jpg" width="2172" height="1240" loading="lazy" alt="Claritate's start screen at night: a headline, an upload box for a CSV or Excel file, and four example files to try">
       </div>
 
       <div class="facts-grid">
         <div class="fact-block">
           <h2>What it does</h2>
-          <p>Six dashboards (general summary, delivered revenue, lost revenue, best/worst month, top customers and products, order health) plus a configurable pivot table, automatic column detection, data cleaning that's shown and explained rather than hidden, a printable PDF report, comparison between two files, and a natural-language Q&amp;A layer - in Romanian by design (see the note below), answered entirely by code.</p>
+          <p>Six dashboards (summary, delivered and lost revenue, best and worst month, top customers and products, order health), a pivot table, a PDF report, a comparison of two files, and questions in Romanian. A "What I cleaned" report gives the reason for every row changed.</p>
         </div>
         <div class="fact-block">
           <h2>My role</h2>
-          <p>Product idea, UX, the cleaning rules, the question-answering logic and its safety net, and every product decision that shapes what a figure actually means (e.g. whether cancelled orders count); built in pair-programming with an AI assistant (Claude).</p>
+          <p>Product idea, UX, the cleaning rules, and the decisions about what a figure means (for example, whether cancelled orders count). The code was written with an AI assistant (Claude).</p>
         </div>
         <div class="fact-block">
-          <h2>Quality</h2>
-          <p>About 80 questions asked by hand during development, on realistic spreadsheets and the demo files, with each answer checked against figures calculated separately; dedicated tests for template-independence and real multi-sheet Excel files (two real bugs caught this way, both fixed), the original 10 automated tests re-verified after the migration and now <a href="https://github.com/AlexandraMoldovan95/claritate/actions/workflows/tests.yml" target="_blank" rel="noopener">run in CI on every push</a>, and manual verification live on production. Accessibility audit (Impeccable, desktop + mobile): taken from 15/20 to a clean score on the original build; the pivot, comparison and dark-mode additions since then were checked manually, not re-audited.</p>
+          <h2>Proof</h2>
+          <p>A messy 145-row file cleaned to 129 valid orders · 3 real bugs found by testing, below · <a href="https://github.com/AlexandraMoldovan95/claritate/actions/workflows/tests.yml" target="_blank" rel="noopener">10 automated tests</a> on every push.</p>
         </div>
         <div class="fact-block">
           <h2>Status</h2>
-          <p>Live on Vercel · MIT · source on GitHub. Storage: Upstash Redis.</p>
+          <p>Live on Vercel · MIT · source on GitHub. Uploaded files are kept for 90 days.</p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="prose">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Why this exists</h2>
-        <blockquote style="border-left:3px solid var(--accent); padding-left:16px; margin:0 0 20px; color:var(--text-muted); font-style:italic;">
-          A portfolio demo project - scoped, built, and tested like a live product delivered to a real client.
-        </blockquote>
-        <p>
-          Most real-world sales exports aren't clean: stray subtotal rows,
-          duplicates, mixed number formats (Romanian and English), the same
-          status spelled differently every time. Claritate starts from the
-          idea that a good dashboard doesn't ignore that - it shows the user
-          exactly what it found and what it corrected, instead of silently
-          computing numbers on top of a dirty file.
-        </p>
-        <p style="margin-top:16px; padding:14px 16px; border:1px solid var(--border); border-radius: var(--radius); background: var(--surface-2); font-size: 0.95rem;">
-          <strong>A note on language:</strong> Claritate was built as a project for the
-          "Vibe Coding" course at Step IT Academy, where the brief - and the
-          sample sales data used to design and test it - were specified in
-          Romanian. Rather than bolt an English interface onto a product that
-          was scoped, built, and user-tested end-to-end in Romanian, I kept it
-          faithful to the brief it was actually written for. This write-up is
-          in English so the engineering decisions are legible to any reviewer;
-          the application itself still speaks the language of the assignment
-          it answers.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="prose">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>The six dashboards</h2>
-        <p>All six start from the same cleaned file - nothing is calculated out of sight; every figure can be traced back to rows in the upload.</p>
-      </div>
-      <ul class="highlight-list">
-        <li><strong>General summary.</strong> Order count, total value per currency, mean and median, the largest order, and the breakdown by status.</li>
-        <li><strong>Delivered revenue.</strong> Only orders with a Delivered status, the month-by-month trend, and the top products.</li>
-        <li><strong>Lost revenue.</strong> Returns and cancellations, the split between them, and the customers with the biggest losses.</li>
-        <li><strong>Best / worst month.</strong> Calculated from delivered revenue; a month with orders but zero deliveries shows as 0 rather than disappearing from the chart, and the final month is explicitly flagged as "incomplete" if the data cuts off before month's end - otherwise it would look unfairly weak.</li>
-        <li><strong>Top customers and products.</strong> Ranked by delivered revenue, with each one's share of the total, and a separate warning for duplicate order IDs.</li>
-        <li><strong>Order health.</strong> Delivery, return, and cancellation rates, plus the money tied up in "In progress" orders - useful for cash flow, not just sales.</li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="prose">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Pivot table, a PDF report, and comparing two files</h2>
-        <p>Added after the first version, on top of the same cleaned data and the same "no invented numbers" rule.</p>
-      </div>
-      <ul class="highlight-list">
-        <li><strong>Pivot table (7th tab).</strong> Pick what goes on rows (customer, product, status, month…), on columns, and what gets summed (delivered value, value across all statuses, order count, delivered quantity) - with row, column and grand totals, no formulas, downloadable as CSV. Defaults to customer × month, delivered value: the pivot most people would build by hand from a sales export.</li>
-        <li><strong>One-click PDF report.</strong> Key figures, the monthly chart, top customers and products, the pivot as configured on screen, and lost revenue - for the whole file or a single month. Printed via the browser's own print dialog (an A4 print stylesheet), no PDF library and no server involved.</li>
-        <li><strong>Comparing two files.</strong> Upload a second file (two periods, or two branches) and get columns matched like a SQL join - first by name, then by overlapping values - then a full outer join per shared column: new / gone / up / down, with the difference and the percentage. You can also ask comparison questions ("how much did X grow", "which customers are new"), answered the same rule-based way as single-file questions.</li>
-      </ul>
     </div>
   </section>
 
@@ -150,27 +90,24 @@
       <div class="case-step">
         <h3>Adapt a business style for a data app</h3>
         <p>
-          I started from an existing "Corporate Trust" design system, written for a React and
-          Tailwind landing page, translated it into plain CSS and adapted it for a data app. I kept
-          the system's indigo-and-violet palette. The decoration (gradients, colored shadows) stays
-          mostly in the header and the upload area; the dashboards use calm white cards, large
-          numbers set in tabular figures so they don't jump when values change, and no animation
-          that pulls attention from the figures.
+          I started from an existing "Corporate Trust" design system, written for a landing page,
+          and adapted it for a data app. I kept its indigo-and-violet palette. The decoration
+          (gradients, colored shadows) stays mostly in the header and the upload area; the
+          dashboards use calm white cards, large numbers that don't jump when values change, and
+          no animation.
         </p>
         <p>
-          I added what the system didn't have: a color for negative values, and a darker green
-          (#047857) for text, for contrast. Color is never the only signal: changes also get an arrow
-          or a sign, and the chart colors were checked for contrast and for color blindness.
+          I added a color for negative values, which the system didn't have. Color is never the
+          only signal: changes also get an arrow or a sign.
         </p>
       </div>
 
       <div class="case-step">
         <h3>A dark theme that switches everything together</h3>
         <p>
-          Later I added a dark theme. Every hard-coded color moved into a variable, so the dashboards,
-          charts, pivot table, comparison and report all switch together without redrawing. It
-          follows the device setting by default, a small script that runs before the page is drawn
-          prevents a white flash, and printing or saving as PDF always uses the light theme.
+          Every hard-coded color moved into a variable, so dashboards, charts, pivot table,
+          comparison and report all switch together. It follows the device setting by default, and
+          printing or saving as PDF always uses the light theme.
         </p>
         <div class="case-pair">
           <figure class="case-figure">
@@ -188,18 +125,43 @@
       <div class="case-step">
         <h3>After the audit</h3>
         <p>
-          An automated accessibility audit (impeccable, at 1280 and 375 px) scored the first version
-          15 out of 20. I fixed tap targets under 44 px, text contrast below AA, a long file name
-          that wrapped badly on phones, and the heading order. After a review in November 2026, the
-          upload card also moved up on phones: it used to sit below the first screen, after three
-          feature bullets, and now comes right after the intro.
+          An automated accessibility audit scored the first version 15 out of 20. I fixed tap
+          targets under 44 px, low text contrast, a long file name that wrapped badly on phones,
+          and the heading order. After a review in November 2026, the upload card moved up on
+          phones, right after the intro, and I raised the contrast of control borders, muted text
+          and the dark-theme headline to AA.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-study">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Messy data: what it finds, and what it does</h2>
+        <p>
+          Most sales exports aren't clean. My main test file had 145 lines under the header: 3
+          blank, 7 "TOTAL" rows that would have doubled the sums, and 6 exact duplicates. That
+          leaves 129 valid orders, and the app lists what it removed.
         </p>
       </div>
 
       <div class="case-step">
-        <h3>What I haven't done yet</h3>
+        <h3>Three bugs that testing found</h3>
         <ul class="case-list">
-          <li>No usability testing with people using their own sales files.</li>
+          <li><strong>A total row it didn't remove.</strong> I tested with a real Excel file where the "TOTAL" label sat in the last column instead of the first. The first version only looked at the first cell, so that row stayed in and inflated the sums. It now checks every id and category column.</li>
+          <li><strong>Excel numbers read a thousand times too small.</strong> Converting a sheet to text the obvious way gives American formatting ("2,400" for 2400, "3/14/26" for a date), which the cleaning, written for Romanian formatting, misread: sums 1000 times too small, or days and months swapped. The app now reads the real cell values.</li>
+          <li><strong>A fix that broke an older one.</strong> When I re-ran the 10 automated tests on 15 November 2026, one failed: the total-row fix had replaced the "row starts with TOTAL" check instead of adding to it. Fixed and re-run.</li>
+        </ul>
+      </div>
+
+      <div class="case-step">
+        <h3>What it does instead of guessing</h3>
+        <ul class="case-list">
+          <li><strong>The same order ID with different content:</strong> both rows are kept and a warning is shown, because there's no way to know which is right.</li>
+          <li><strong>Spelling variants:</strong> "Delta Foods SA", "DELTA FOODS SA" and "delta foods sa " become one customer.</li>
+          <li><strong>Mixed formats:</strong> "1.841,86" (Romanian) and 1,841.86 (English) are read as the same value. RON and EUR are calculated separately, with no invented exchange rate.</li>
+          <li><strong>A header that isn't on the first row:</strong> if the file starts with a few lines of text, the app finds the real column names.</li>
         </ul>
       </div>
     </div>
@@ -207,92 +169,37 @@
 
   <section>
     <div class="wrap">
-      <div class="section-head"><h2>Highlights</h2></div>
-      <ul class="highlight-list">
-        <li><strong>Cleaning is visible, not hidden.</strong> Every row removed or adjusted shows up in a "What I cleaned" report, with the exact reason - blank rows, stray subtotal rows, exact duplicates, duplicate IDs with different contents (both rows are kept, with a warning).</li>
-        <li><strong>"Delivered revenue / lost revenue," never "profit."</strong> The files carry no cost data, so the app deliberately refuses to invent a profit figure it can't calculate correctly.</li>
-        <li><strong>Answers come from code, not AI - and the page says so.</strong> A rule-based planner turns the question into a strict JSON plan (metric, field, filters, grouping); the code validates that plan, runs the calculation, and writes the answer. Every answer shows the exact plan used and "plan chosen by: fixed rules, no AI," directly on the page.</li>
-        <li><strong>An AI planner is designed in, deliberately not switched on.</strong> The original Val Town build called a free, keyless model to choose the plan (never the figures) - a "tool use" / "LLM-as-planner" pattern. On Vercel there's no equivalent free access, and a paid key wasn't added, so every question goes through the rule-based planner instead; the validation layer that would catch a bad model plan (<code>guardPlan</code>) is still in the code, unused for now, ready if a model is reconnected.</li>
-        <li><strong>Refuses rather than guesses.</strong> If a question names a customer, city, month or column that isn't in the file, the answer says exactly what it couldn't find instead of quietly returning the company-wide total.</li>
-        <li><strong>Cancelled and returned orders never quietly inflate - or quietly disappear from - a total.</strong> By default, sums and rankings count delivered orders only, and the cancelled, returned, and in-progress amounts are listed right under the same answer rather than being silently folded in or silently dropped.</li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="prose">
-    <div class="wrap">
       <div class="section-head">
-        <h2>Messy data: what it finds, and what it does</h2>
+        <h2>How it's built</h2>
         <p>
-          A real example used in testing, <code>vanzari_2026.csv</code>: 145 rows
-          under the header, of which 129 were valid orders - the rest fell
-          into the categories below.
+          A TypeScript app on Vercel. It started on Val Town and moved when Val Town shut down;
+          the calculation code didn't need to change. Uploads are stored in Upstash Redis (a hosted
+          key-value store).
         </p>
       </div>
       <ul class="highlight-list">
-        <li><strong>The real header isn't on the first row.</strong> If the file has 2–3 lines of text before the table, the app finds the row that actually contains the column names on its own.</li>
-        <li><strong>Stray "PARTIAL TOTAL" / "GRAND TOTAL" rows are removed</strong> - checked against every id/category column, not just the first one, since the label's position depends on column order. (A real gap here, caught while testing a reordered Excel file: the first version only checked the first cell.)</li>
-        <li><strong>The same ID with different content is never resolved by guessing.</strong> If an order ID appears twice with different data, the app keeps both rows and shows an explicit warning, instead of deleting one "arbitrarily."</li>
-        <li><strong>Spelling variants of the same customer are merged.</strong> "Delta Foods SA," "DELTA FOODS SA," and "delta foods sa " (trailing space) become a single customer in the dashboards, not three.</li>
-        <li><strong>Mixed numbers and currencies, with no invented conversion.</strong> <code>"1.841,86"</code> (Romanian format) and <code>1,841.86</code> (English format) are both read correctly as the same value; RON and EUR are calculated separately, on their own figures - there is no invented exchange rate.</li>
-        <li><strong>An Excel file is read by its actual cell values, not its displayed text.</strong> Converting a spreadsheet to text the obvious way exports American-style formatting (<code>2,400</code> for 2400, <code>3/14/26</code> for a date) - which a cleaner written for Romanian formatting would misread as sums a thousand times too small, or days and months swapped. Reading the real cell value instead (the number, the Excel date serial) sidesteps that entirely - a bug this project actually hit and fixed, not a hypothetical one.</li>
-        <li><strong>An <code>.xlsx</code>/<code>.xls</code> file is recognized even renamed without the right extension</strong> - detected by its file signature, not just the filename. If a workbook has more than one sheet, the one that actually has data is picked automatically, not just the first.</li>
+        <li><strong>Answers come from code, not AI, and the page says so.</strong> A set of fixed rules turns a question into a plan (what to calculate, on which column, grouped how). The code checks the plan, does the arithmetic and writes the answer. Under every answer, the app shows the plan and "plan chosen by: fixed rules, no AI". If a question names something that isn't in the file, it says so instead of returning the company-wide total.</li>
+        <li><strong>An AI planner is built but switched off.</strong> The first version used a free AI model to choose the plan, never the figures. On Vercel there is no free equivalent and I didn't add a paid key. A safety check in the code (<code>guardPlan</code>) corrects a model plan that contradicts the question, and the tests include a bad model plan that must be rejected.</li>
+        <li><strong>"Delivered revenue" and "lost revenue", never "profit".</strong> The files have no cost data, so the app won't invent a profit figure. Cancelled and returned amounts are listed under the same answer, never silently counted or dropped.</li>
       </ul>
-    </div>
-  </section>
-
-  <section class="prose">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Known limits</h2>
-        <p>Stated as plainly in the app as the rest of the cleaning report - not buried in a FAQ.</p>
-      </div>
-      <ul class="highlight-list">
-        <li><strong>Files up to 5 MB / 50,000 rows</strong>, CSV or Excel. Beyond that, the app doesn't attempt a partial run - it refuses the file outright.</li>
-        <li><strong>Only one Excel sheet is read</strong> - whichever has the most data; a cover sheet or a second sheet is skipped automatically, never merged in.</li>
-        <li><strong>Currencies aren't converted.</strong> RON and EUR each get their own figures, calculated separately - no invented exchange rate.</li>
-        <li><strong>A dashboard's link is public to anyone who has it</strong> (there's no login) - the page explicitly says not to upload confidential data.</li>
-        <li><strong>The rule-based planner understands a tested set of phrasings</strong> (about 80 questions tried by hand during development, answers checked against figures calculated separately) - partial names, synonyms, date ranges, numeric filters, top-N, rates - but it isn't a language model: a phrasing genuinely outside that set gets a clear refusal, not a best-effort guess.</li>
-        <li><strong>Uploaded files expire after 90 days</strong> in storage; the built-in examples are unaffected since they're static, not stored.</li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="prose">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>How it was built</h2>
-        <p>
-          Originally built on Val Town (TypeScript, SQLite, a free connected AI
-          model for the Q&amp;A layer); migrated in full to Vercel when Val Town
-          shut down. The core logic - column detection, cleaning, the six
-          dashboards, the question planner - didn't need to change at all for
-          the migration, since it never depended on Val Town specifically. What
-          did change: a Node.js serverless function with the Hono router
-          (not Edge - a platform-level routing bug on multi-segment
-          <code>/api/...</code> paths forced that switch), Upstash Redis
-          replacing SQLite, and static files served straight from a CDN.
-          Excel support, the pivot table, the two-file comparison, and dark
-          mode were all added after the migration. The question flow stayed the
-          same shape throughout: question → rule-based plan (metric, field,
-          filters, grouping) → validation → calculation in code → answer, with
-          cancelled and returned orders always broken out separately rather
-          than silently folded in or dropped. Tested with the original 10
-          automated tests (re-verified after the migration, which caught a
-          real regression), dedicated scripts for template-independence and
-          real multi-sheet Excel files, and an Impeccable accessibility audit
-          on the original build (15/20 → a clean score; the features added
-          afterward were checked manually, not re-audited). Full migration
-          history, every bug hit along the way, and how each was fixed are
-          written up in the repo.
-        </p>
-      </div>
       <div class="stack-row">
         <span class="chip">TypeScript</span>
         <span class="chip">Vercel</span>
         <span class="chip">Upstash Redis</span>
         <span class="chip">SVG charts</span>
       </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head"><h2>What I haven't done yet</h2></div>
+      <ul class="case-list">
+        <li>No usability testing with people using their own sales files.</li>
+        <li>The accessibility audit ran once, on the first version. The pivot table, comparison and dark theme were checked by hand, not re-audited.</li>
+        <li>Anyone with a dashboard link can open it (there is no login), and the app says not to upload confidential data. Files are limited to 5 MB and 50,000 rows, and only one Excel sheet is read. Next step in the README: accounts, expiring links or browser-only analysis.</li>
+        <li>Questions only work in the phrasings I tested (about 80, checked by hand against separately calculated figures). Anything else gets a clear refusal. The optional AI planner is the obvious next step.</li>
+      </ul>
     </div>
   </section>
 

@@ -4,18 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document Embedding Studio - Alexandra Moldovan</title>
-<meta name="description" content="A local-first RAG pipeline: drop in documents, it chunks and embeds them locally, then you search or chat with them.">
+<meta name="description" content="Search your own documents by meaning and get answers that point to the passages they came from. Runs on your computer; 72 automated tests.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Alexandra Moldovan - Portfolio">
 <meta property="og:url" content="https://alexandra-moldovan.netlify.app/projects/document-embedding-studio.html">
 <meta property="og:title" content="Document Embedding Studio - Alexandra Moldovan">
-<meta property="og:description" content="A local-first RAG pipeline: drop in documents, it chunks and embeds them locally, then you search or chat with them.">
+<meta property="og:description" content="Search your own documents by meaning and get answers that point to the passages they came from. Runs on your computer; 72 automated tests.">
 <meta property="og:image" content="https://alexandra-moldovan.netlify.app/images/document-embedding-studio-og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Document Embedding Studio - Alexandra Moldovan">
-<meta name="twitter:description" content="A local-first RAG pipeline: drop in documents, it chunks and embeds them locally, then you search or chat with them.">
+<meta name="twitter:description" content="Search your own documents by meaning and get answers that point to the passages they came from. Runs on your computer; 72 automated tests.">
 <meta name="twitter:image" content="https://alexandra-moldovan.netlify.app/images/document-embedding-studio-og.jpg">
 <link rel="canonical" href="https://alexandra-moldovan.netlify.app/projects/document-embedding-studio.html">
 
@@ -41,12 +41,13 @@
   <section class="detail-hero">
     <div class="wrap">
       <a href="../index.html#portfolio" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to portfolio</a>
-      <div class="eyebrow">Docker · Python · Next.js</div>
+      <div class="eyebrow">AI app · Documents · Local-first</div>
       <h1>Document Embedding Studio</h1>
-      <p class="detail-pitch">Takes your own documents - PDFs, Word files, plain notes - and prepares them so an AI can search through them and answer questions grounded in what's actually in those files, instead of only what it already learned during training. In AI terms, this is the "ingestion" side of a RAG (Retrieval-Augmented Generation) pipeline - RAG is the standard pattern for getting an AI to answer from your own data instead of guessing from memory.</p>
+      <p class="detail-pitch">Search your own files by meaning, not just by exact words, and ask questions that are answered from what is in them, with the source passages listed. Everything runs on your computer; nothing leaves it unless you add your own key for the optional chat. The demo uses three invented sample documents: try a search, then ask a question.</p>
       <div class="detail-actions">
         <a href="https://document-embedding-studio-demo-88c9c6.netlify.app" class="btn btn-accent" target="_blank" rel="noopener">Live demo</a>
         <a href="https://github.com/AlexandraMoldovan95/document-embedding-studio" class="btn btn-ghost" target="_blank" rel="noopener">View on GitHub</a>
+        <a href="#how-it-works" class="btn btn-ghost">How it works</a>
       </div>
 
       <div class="detail-media">
@@ -111,70 +112,111 @@
       <div class="facts-grid">
         <div class="fact-block">
           <h2>What it does</h2>
-          <p>Drop in PDF, DOCX, Markdown, or plain-text files → the app extracts the text, splits it into overlapping chunks, embeds every chunk with a local AI model, and stores vectors in a persistent ChromaDB collection. From there: semantic search, or a BYOK chatbot that answers grounded in what's indexed. A live panel shows CPU/memory for the app's own Docker containers.</p>
+          <p>You drop in PDF, Word, Markdown or text files. The app reads them, splits them into small overlapping pieces and lets you search the pieces by meaning or ask questions about them.</p>
         </div>
         <div class="fact-block">
           <h2>My role</h2>
-          <p>Built the ingestion pipeline, then layered on BYOK chat and the live container-monitoring panel; built in pair-programming with an AI assistant (Claude).</p>
+          <p>The product: what the app does, how it handles files and keys, and what the tests must cover. The code was written with an AI assistant (Claude).</p>
         </div>
         <div class="fact-block">
-          <h2>Quality</h2>
-          <p>72 tests covering chunking, document loaders, and the full ingest/search/chat/monitor API. Chat and container-monitor tests mock the outbound LLM call and the Docker socket, so the full suite runs offline. The Docker setup publishes its ports on this computer only, and the live container panel refuses connections from other websites.</p>
+          <h2>Proof</h2>
+          <p>72 automated tests that run offline · a hole found and closed so other websites can't read the container panel, with tests for it.</p>
         </div>
         <div class="fact-block">
           <h2>Status</h2>
-          <p>MIT · source on GitHub. The real backend has no hosted demo - it needs a long-running Python process and direct Docker-socket access that managed hosting platforms don't expose, so it runs locally via Docker. The "Live demo" button above is a separate, self-contained walkthrough with sample data: same screens and flow, but search/chat there is scored by simple word overlap, not a real embedding model or LLM call.</p>
+          <p>MIT · source on GitHub. The real app runs on your computer with Docker; the live demo is a sample-data walkthrough.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="prose">
+  <section class="case-study" id="how-it-works">
     <div class="wrap">
       <div class="section-head">
-        <h2>Why this exists</h2>
+        <h2>How it works, and what I checked</h2>
         <p>
-          Most "RAG demo" projects stop at a single script calling an API. This
-          one is built like a real application: a proper pipeline with
-          validation at every step, a UI to actually use it, and no paid API key
-          required for the core loop - embedding and retrieval run entirely on
-          your own machine, using a local sentence-transformers model. The
-          optional chat layer is explicitly bring-your-own-key, so nothing is
-          sent anywhere unless you choose it.
+          An AI answering from memory can sound sure and be wrong. Here you can check each answer
+          against the passages it came from.
         </p>
+      </div>
+
+      <div class="case-step">
+        <h3>Search by meaning</h3>
+        <p>
+          A normal search finds the exact words you typed. Here, the app turns each piece of a
+          document into numbers that capture its meaning, using a small AI model that runs on your
+          own machine, so a question can find a passage that uses different words. No paid key is
+          needed for this part.
+        </p>
+      </div>
+
+      <div class="case-step">
+        <h3>Answers that show their sources</h3>
+        <p>
+          In the optional chat, the best-matching passages are sent to the AI provider you choose
+          (OpenAI, Anthropic or Gemini) with the instruction to answer only from them. The passages
+          are listed under the answer. You bring your own key; it stays in that browser tab and is
+          not written to disk.
+        </p>
+      </div>
+
+      <div class="case-step">
+        <h3>Decisions I made and why</h3>
+        <ul class="case-list">
+          <li><strong>Files are checked three ways before they are read:</strong> the extension, the declared file type and the first bytes of the file. A renamed .exe is refused even if it says it is a PDF.</li>
+          <li><strong>Pieces overlap, and cuts avoid the middle of a word.</strong> A cut moves back to a paragraph break, then a sentence end, so an idea is less likely to be split in two.</li>
+        </ul>
+      </div>
+
+      <div class="case-step">
+        <h3>What the tests cover: 72, counted</h3>
+        <p>
+          I counted 62 test functions in the repo's backend tests folder. Some run several times
+          with different inputs, which makes 72 test cases. Their coverage:
+        </p>
+        <ul class="case-list">
+          <li>Splitting text, including the edge case where the overlap is one character smaller than the piece, which must not loop forever.</li>
+          <li>Reading each file type, and refusing wrong, empty, damaged or renamed files.</li>
+          <li>Uploading, searching and collections, including that stored data survives a restart.</li>
+          <li>Chat with all three providers and a wrong key, and the container panel. The AI call and Docker are replaced by stand-ins, so the suite runs offline.</li>
+        </ul>
+        <p>
+          They last ran on 25 November 2026, all 72 passing. Nothing runs them automatically on every change yet.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-study" id="found">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What testing and reviews found</h2>
+      </div>
+      <div class="case-step">
+        <ul class="case-list">
+          <li><strong>Another website could read the container panel.</strong> The panel shows the app's own Docker containers over a WebSocket, and the browser's usual cross-site protection (CORS) doesn't cover WebSockets, so any site open in the same browser could have read that list. The server now refuses unknown origins (25 November 2026). Two tests cover it, and with the check removed on a scratch copy the refusal test fails, so it really guards the fix.</li>
+          <li><strong>The app was reachable from other devices on the network.</strong> The Docker setup now publishes its ports on this computer only.</li>
+          <li><strong>A wrong test count in my own docs.</strong> The README said 71. Counting the test functions and their repeated cases gave 70, and I corrected it everywhere. Two later tests brought it to 72.</li>
+        </ul>
       </div>
     </div>
   </section>
 
   <section>
     <div class="wrap">
-      <div class="section-head"><h2>Highlights</h2></div>
-      <ul class="highlight-list">
-        <li><strong>Everything runs on your own machine.</strong> Reading, splitting, and embedding your documents all happen locally - nothing leaves your computer unless you turn on the optional chat feature with your own API key.</li>
-        <li><strong>Natural-boundary chunking.</strong> When a character-window chunk would end mid-word, the cut is pulled back to the nearest paragraph break, then sentence ending, then line break, then whitespace - so chunks stay close to the configured size without cutting words in half.</li>
-        <li><strong>Multi-stage Docker builds.</strong> The frontend's Dockerfile builds in a Node stage and ships only the production output in a slim runtime stage, so dev dependencies never reach the final image.</li>
-        <li><strong>Named volumes for real persistence.</strong> Vectors and model weights survive <code>docker compose down</code> via named volumes (<code>chroma-data</code>, <code>hf-cache</code>), since a container's own filesystem is ephemeral by design.</li>
-        <li><strong>Containers found by label, not by name.</strong> The live container-monitor panel locates its own two containers via a <code>studio.monitor</code> label, so it works regardless of the folder or Compose project name.</li>
-        <li><strong>The Docker-socket trade-off is documented, not glossed over.</strong> Giving the backend read access to the Docker socket is a real privilege - anything with socket access can, in principle, control any container on the host. Stated plainly, with the reasoning for why it's acceptable for a local single-user setup.</li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="prose">
-    <div class="wrap">
       <div class="section-head">
-        <h2>How it was built</h2>
+        <h2>How it's built</h2>
         <p>
-          FastAPI backend with a strict separation of concerns - extraction,
-          chunking, embeddings, and vector storage are independent modules
-          composed by a single pipeline function. Embeddings run locally via
-          <code>sentence-transformers</code> (<code>all-MiniLM-L6-v2</code>, 384
-          dimensions, no API key), stored in ChromaDB. The frontend is Next.js
-          (App Router) with strict TypeScript. BYOK chat supports OpenAI,
-          Anthropic, or Gemini - the key is kept only in the browser tab's
-          session storage, never written to disk or logged server-side.
+          Two parts that talk to each other: a Python backend (FastAPI) that does the work, and a
+          web page (Next.js with TypeScript) you use in the browser. Both run in Docker, a way to
+          package an app so it runs the same on any computer.
         </p>
       </div>
+      <ul class="highlight-list">
+        <li><strong>The pipeline is separate steps.</strong> Reading, splitting, turning text into numbers ("embedding", done with a small local model) and storing them (in ChromaDB, a database made for this) are independent parts joined by one function. The diagram at the top of the page shows the flow.</li>
+        <li><strong>Data survives restarts.</strong> The stored numbers and the downloaded model live in named Docker volumes, because a container's own storage is thrown away when it stops.</li>
+        <li><strong>The privilege trade-off is written down.</strong> To show container stats, the backend gets read access to the Docker socket, which in principle can control any container on the machine. The README says so and why it is acceptable for a single-user setup on your own computer.</li>
+      </ul>
       <div class="stack-row">
         <span class="chip">FastAPI / Python</span>
         <span class="chip">Next.js / TypeScript</span>
@@ -182,6 +224,17 @@
         <span class="chip">sentence-transformers</span>
         <span class="chip">Docker Compose</span>
       </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head"><h2>What I haven't done yet</h2></div>
+      <ul class="case-list">
+        <li>The live demo is not the real app. It runs on sample data and scores matches by shared words, with no AI model. The real app needs a long-running Python process and Docker access that simple hosting doesn't give, so it only runs on your computer.</li>
+        <li>The chat tests use stand-ins for the AI providers. I haven't tested against the real services, and I haven't measured how good the search results are.</li>
+        <li>The backend container still runs as root. Scanned PDFs are refused, not read with OCR (text recognition from images). Uploading the same file twice creates a second copy.</li>
+      </ul>
     </div>
   </section>
 

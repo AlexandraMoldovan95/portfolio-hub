@@ -4,18 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Flashcards - Alexandra Moldovan</title>
-<meta name="description" content="A no-build spaced-repetition flashcards app with a real SM-2-style scheduler and optional AI card generation.">
+<meta name="description" content="A flashcards app that shows each card again just before you'd forget it. Three design passes, and 34 unit tests that found two bugs.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Alexandra Moldovan - Portfolio">
 <meta property="og:url" content="https://alexandra-moldovan.netlify.app/projects/flashcards.html">
 <meta property="og:title" content="Flashcards - Alexandra Moldovan">
-<meta property="og:description" content="A no-build spaced-repetition flashcards app with a real SM-2-style scheduler and optional AI card generation.">
+<meta property="og:description" content="A flashcards app that shows each card again just before you'd forget it. Three design passes, and 34 unit tests that found two bugs.">
 <meta property="og:image" content="https://flashcards-bedce5.netlify.app/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Flashcards - Alexandra Moldovan">
-<meta name="twitter:description" content="A no-build spaced-repetition flashcards app with a real SM-2-style scheduler and optional AI card generation.">
+<meta name="twitter:description" content="A flashcards app that shows each card again just before you'd forget it. Three design passes, and 34 unit tests that found two bugs.">
 <meta name="twitter:image" content="https://flashcards-bedce5.netlify.app/og-cover.jpg">
 <link rel="canonical" href="https://alexandra-moldovan.netlify.app/projects/flashcards.html">
 
@@ -41,54 +41,37 @@
   <section class="detail-hero">
     <div class="wrap">
       <a href="../index.html#portfolio" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to portfolio</a>
-      <div class="eyebrow">No-build app · Vanilla JS</div>
+      <div class="eyebrow">Web app · Design-led · Unit-tested</div>
       <h1>Flashcards</h1>
-      <p class="detail-pitch">A spaced-repetition flashcards app built with plain HTML, CSS, and JavaScript - plain static files, no frameworks, no build step, no backend.</p>
+      <p class="detail-pitch">A flashcard app for students that shows each card again just before you'd forget it. You grade yourself Hard, Ok or Easy, and the app decides when the card comes back. It went through three design passes, and 34 unit tests found two bugs in it. Everything stays in your browser: no account. To try it, open the live demo and load the sample deck.</p>
       <div class="detail-actions">
         <a href="https://flashcards-bedce5.netlify.app/" class="btn btn-accent" target="_blank" rel="noopener">Live demo</a>
         <a href="https://github.com/AlexandraMoldovan95/flashcards" class="btn btn-ghost" target="_blank" rel="noopener">View on GitHub</a>
+        <a href="#case-study" class="btn btn-ghost">Design case study</a>
       </div>
 
       <div class="detail-media">
-        <img class="shot-light" src="../images/flashcards.png" width="900" height="700" loading="lazy" alt="Flashcards app screenshot">
-        <img class="shot-dark" src="../images/flashcards-dark.png" width="900" height="700" loading="lazy" alt="Flashcards app screenshot">
+        <img class="shot-light" src="../images/flashcards.png" width="900" height="700" loading="lazy" alt="Flashcards by day: 6 cards due today, the Cards tab with the form to add a card, a search box and a Geography card on warm paper">
+        <img class="shot-dark" src="../images/flashcards-dark.png" width="900" height="700" loading="lazy" alt="Flashcards at night: the same Cards tab, form and Geography card on a dark brown background">
       </div>
 
       <div class="facts-grid">
         <div class="fact-block">
           <h2>What it does</h2>
-          <p>A spaced-repetition flashcard app with a simplified SM-2–style scheduler, categories and search, optional images per card, two quiz modes, a coins-and-hints system, stats, and optional AI-assisted card generation (bring your own API key). Everything stays in the browser's local storage - no server, no account.</p>
+          <p>Cards with categories and search, two quiz modes, hints you buy with coins you earn, and stats. It can also draft cards from text you paste, using your own AI key.</p>
         </div>
         <div class="fact-block">
           <h2>My role</h2>
-          <p>Product idea, UX, and the scheduling/data-model design; built in pair-programming with an AI assistant (Claude).</p>
+          <p>Product idea, UX, the rules for when a card comes back, and the testing below. The code was written with an AI assistant (Claude).</p>
         </div>
         <div class="fact-block">
-          <h2>Quality</h2>
-          <p>Color system verified against WCAG AA contrast by calculation, not by eye, in both light and dark mode. <a href="https://github.com/AlexandraMoldovan95/flashcards/tree/main/tests" target="_blank" rel="noopener">34 unit tests</a> for the scheduler, hints, card validation and reading the AI's reply run on every push; writing them found two real bugs, both fixed.</p>
+          <h2>Proof</h2>
+          <p>Colors checked against the WCAG AA contrast rule by calculation, in light and dark mode · <a href="https://github.com/AlexandraMoldovan95/flashcards/tree/main/tests" target="_blank" rel="noopener">34 unit tests</a> on every push · a hostile import file tested before and after a fix.</p>
         </div>
         <div class="fact-block">
           <h2>Status</h2>
-          <p>Live · stable, plain static files · MIT · source on GitHub.</p>
+          <p>Live · MIT · source on GitHub.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="prose">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Why this exists</h2>
-        <p>
-          Most flashcard apps either lock data behind an account or are
-          over-engineered for what's fundamentally a simple problem: show a
-          question, hide the answer, let the learner grade their own recall, and
-          use that grade to decide when to show the card again. This was an
-          exercise in building that loop well - a real spaced-repetition
-          scheduler, a thoughtful visual design, and a few small ideas
-          (hint-buying with earned coins, AI-assisted card generation) layered on
-          top without compromising the core mechanic.
-        </p>
       </div>
     </div>
   </section>
@@ -98,27 +81,24 @@
       <div class="section-head">
         <h2>Design case study: three passes to a calm study tool</h2>
         <p>
-          A flashcards app lives or dies on one loop: see a question, try to recall the answer,
-          grade yourself honestly. For students revising for exams, the interface has two jobs that
-          pull against each other: make that loop inviting enough to come back to every day, and
-          stay quiet enough that the card itself is the only thing that matters.
+          The interface has two jobs that pull against each other: be inviting enough to come back
+          to every day, and stay quiet enough that the card is the only thing that matters.
         </p>
       </div>
 
       <div class="case-step">
         <h3>Pass 1: remove the default look</h3>
         <p>
-          The first version used indigo (#4f46e5): the color nearly every AI-generated interface
-          starts with. A UI audit flagged it, and I chose a direction that looks like studying rather
-          than software: a warm paper background and one dark teal "ink" accent. For type I compared
-          three options and picked the one with no cost at all: Georgia for headings and the system
-          font for everything else, instead of an embedded font or Google Fonts.
+          The first version used indigo (#4f46e5), the color nearly every AI-generated interface
+          starts with. A UI audit flagged it. I chose a look that feels like studying, not
+          software: a warm paper background and one dark teal "ink" accent, with Georgia for
+          headings and the system font for the rest.
         </p>
         <p>
-          The audit also found a real accessibility bug: white text on the Ok and Easy buttons was
-          under the WCAG AA minimum, some of it under 2:1. The cause was one color doing two jobs,
-          text and button background. I split them into two sets of variables and checked every pair
-          by calculation, not by eye.
+          The audit also found an accessibility bug: white text on the Ok and Easy buttons failed
+          the WCAG AA contrast minimum, some of it under 2:1. One color was doing two jobs, text and
+          button background. I split it into two sets of variables and checked every pair by
+          calculation, not by eye.
         </p>
         <figure class="case-figure">
           <img src="../images/flashcards-case/1-paper-and-ink.webp" width="440" height="296" loading="lazy"
@@ -130,41 +110,28 @@
       <div class="case-step">
         <h3>Pass 2: "too monotone", so color gets a job</h3>
         <p>
-          In use, the single accent fixed the "AI look" but felt flat, with nothing inviting and
-          nothing to tell subjects apart at a glance. So color got a job: a 7-color "highlighter"
-          palette, one color per category. The color comes from a hash of the category name, so the
-          same subject always gets the same color and nothing extra is stored in the data. Badges use
-          soft tints with normal text on top (6.7 to 13.7:1 contrast); the vivid colors appear only
-          as decoration, never behind text.
-        </p>
-        <p>
-          I also tried a "student notebook" theme: ruled paper drawn in CSS, washi tape, rotated
-          sticky-note chips and a handwriting font. I compared three handwriting fonts by size and
-          chose Kalam (11.3 KB embedded) over Patrick Hand (18.6 KB) and Caveat (65 KB).
+          The single accent fixed the "AI look" but felt flat, with nothing to tell subjects apart
+          at a glance. So color got a job: a 7-color "highlighter" palette, one color per category.
+          Badges use soft tints with normal text on top; the vivid colors are decoration only,
+          never behind text. I also tried a "student notebook" theme: ruled paper, washi tape,
+          rotated sticky notes and a handwriting font.
         </p>
         <figure class="case-figure">
           <img src="../images/flashcards-case/2-notebook-theme.webp" width="990" height="395" loading="lazy"
                alt="The notebook experiment: ruled paper, a strip of washi tape, rotated sticky notes for subjects, handwriting font">
-          <figcaption>Pass 2: the skeuomorphic notebook experiment (labels translated from Romanian).</figcaption>
+          <figcaption>Pass 2: the notebook experiment (labels translated from Romanian).</figcaption>
         </figure>
       </div>
 
       <div class="case-step">
         <h3>Pass 3: keep the system, cut the costume</h3>
         <p>
-          Before publishing it, I asked for an audit from an employer's point of view, and it was
-          clear: the notebook theme read as a student demo, not a product. I kept everything that
-          carried meaning: the category palette, paper and ink, the type pairing, the radius and
-          shadow scales. I removed everything that was only costume: the textures, the tape, the
-          margin line, the rotations, the "Do your best!" decorations and the handwriting font
-          (11.3 KB lighter). Emoji became one consistent set of 12 line icons, and motion stayed
-          small and purposeful: the answer fades in, tabs fade, buttons give press feedback, and a
-          progress bar shows where you are in the quiz.
-        </p>
-        <p>
-          One idea I deliberately rejected: a "pulse, then move to the next card" animation on the
-          grade buttons. It would have put a timer into the grading step that drives the
-          spaced-repetition schedule, and that risk wasn't worth the polish.
+          Before publishing, I asked for an audit from an employer's point of view. It was clear:
+          the notebook theme read as a student demo, not a product. I kept what carried meaning
+          (category colors, paper and ink, the type pairing) and removed what was only costume: the
+          textures, the tape, the rotations and the handwriting font. I also rejected a "pulse, then
+          next card" animation on the grade buttons: it would have put a timer into the step that
+          decides when the card comes back.
         </p>
         <div class="case-pair">
           <figure class="case-figure">
@@ -182,59 +149,88 @@
       <div class="case-step">
         <h3>Design iteration (November 2026)</h3>
         <p>
-          A design review of the whole portfolio pointed at three things, all fixed: the first screen
-          was an empty form, so the empty state now offers a one-click sample deck under a one-line
-          subtitle; two inputs cut off their placeholders ("Category (default: G…"), so the inputs
-          now sit two per row; and the headings skipped a level for screen readers.
+          A design review found three problems, all fixed: the first screen was an empty form, so it
+          now offers a one-click sample deck; two inputs cut off their placeholders ("Category
+          (default: G…"), so they now sit two per row; and the headings skipped a level.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-study" id="testing">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>How I tested it</h2>
+        <p>
+          The 34 unit tests check the app's logic: when a card comes back, the hints, imported decks
+          and reading the AI's reply. GitHub runs them on every push. To check the tests
+          themselves, I broke two scheduling rules in a copy of the code, and 3 tests failed.
         </p>
       </div>
 
       <div class="case-step">
-        <h3>What I haven't done yet</h3>
+        <h3>Two bugs the tests found</h3>
         <ul class="case-list">
-          <li>No usability testing with other people. Every decision above came from my own use, audits and reviews. The next step is to watch two or three students use it for a week.</li>
-          <li>The app doesn't yet respect the system "reduce motion" setting.</li>
+          <li><strong>A crash after grading Easy about 15 times in a row.</strong> It can happen in "All cards" practice. The wait grew until the next date passed the largest date JavaScript can hold, and grading failed with "Invalid time value". The wait is now capped at 365 days.</li>
+          <li><strong>Hints that gave the whole answer away.</strong> A hint should never show the full answer, but one- and two-letter answers were fully visible in the level-2 hint. One letter now always stays hidden.</li>
         </ul>
+      </div>
+
+      <div class="case-step">
+        <h3>A deck file that could run code</h3>
+        <p>
+          You can import a deck from a file. An automated security review pointed out that text
+          inside such a file could run as code in the page (an attack known as XSS). I tested it
+          with a hostile deck: the old version ran all three injected pieces. The fix escapes
+          quotes, accepts only real images and only dates that look like dates. The same deck now
+          runs nothing and shows its text as plain text.
+        </p>
+      </div>
+
+      <div class="case-step">
+        <h3>A reply that got cut off</h3>
+        <p>
+          For a long document, the AI's reply could hit its size limit before the card list was
+          finished, because the model's thinking counts toward the limit. You saw only "could not
+          parse the response". The limit is now higher and a cut-off reply says so.
+        </p>
       </div>
     </div>
   </section>
 
   <section>
     <div class="wrap">
-      <div class="section-head"><h2>Highlights</h2></div>
-      <ul class="highlight-list">
-        <li><strong>Deterministic category colors.</strong> Each category's color is derived from a hash of its name at render time - never stored - so the data model never needs a "color" field and two devices always render categories identically.</li>
-        <li><strong>The answer isn't in the DOM until you ask for it.</strong> Clicking "Show Answer" is what writes the answer into the page, rather than just unhiding it with CSS - a deliberate choice so the quiz can't be "cheated" by inspecting the page early.</li>
-        <li><strong>An anti-farming rule in free-practice mode.</strong> "All cards" mode intentionally doesn't touch the spaced-repetition schedule, and a card only earns coins once per calendar day there - otherwise the same card could be regraded in a loop for infinite coins.</li>
-        <li><strong>AI card generation stays optional and reviewed.</strong> Paste text or drop a file, and Claude drafts question/answer pairs - but nothing is added to the deck until each card is reviewed and confirmed.</li>
-        <li><strong>Client-side image compression.</strong> Images attached to cards are resized and compressed before saving, so a handful of photos don't blow through the browser's local storage quota.</li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="prose">
-    <div class="wrap">
       <div class="section-head">
-        <h2>How it was built</h2>
+        <h2>How it's built</h2>
         <p>
-          HTML5, CSS3, and vanilla JavaScript (ES6+) - no framework, no bundler.
-          Building the scheduling algorithm, the data model, and the UI state
-          management by hand was the point of the exercise, not a constraint I
-          hit by accident. LocalStorage is the only persistence layer; the
-          optional AI generation feature calls the Anthropic API directly from
-          the browser (model: Claude Sonnet 5), using a key the visitor provides
-          themselves. That key is stored in the browser's localStorage, scoped
-          to this site only - it stays on the visitor's own device until they
-          remove it or clear their browser data, and it's never sent anywhere
-          except directly to Anthropic's API.
+          Plain HTML, CSS and JavaScript: no framework, no build step, no backend. Cards live in the
+          browser's local storage. The optional AI feature calls the Anthropic API straight from
+          your browser with a key you provide; the key stays on your device.
         </p>
       </div>
+      <ul class="highlight-list">
+        <li><strong>Category colors aren't stored.</strong> Each color is worked out from the category's name, so two devices always show the same colors.</li>
+        <li><strong>The answer isn't in the page until you ask.</strong> "Show Answer" is what puts it there, so you can't peek by inspecting the page.</li>
+        <li><strong>No coin farming.</strong> In "All cards" practice a card earns coins only once a day, so you can't regrade one card in a loop for endless coins.</li>
+        <li><strong>AI cards are reviewed.</strong> Claude drafts question and answer pairs, but nothing joins the deck until you confirm each one.</li>
+      </ul>
       <div class="stack-row">
         <span class="chip">HTML5 / CSS3</span>
         <span class="chip">Vanilla JavaScript</span>
         <span class="chip">LocalStorage</span>
         <span class="chip">Anthropic API (BYOK)</span>
       </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head"><h2>What I haven't done yet</h2></div>
+      <ul class="case-list">
+        <li>No usability testing with other people. The design decisions came from my own use, audits and reviews. Next step: watch two or three students use it for a week.</li>
+        <li>The unit tests cover the logic, not the screens. I checked the AI feature with the requests answered locally, so the real service wasn't called.</li>
+        <li>Only the Back to top button follows the system "reduce motion" setting; the other animations (the tab fade, the answer reveal) still play.</li>
+      </ul>
     </div>
   </section>
 

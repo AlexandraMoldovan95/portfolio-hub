@@ -4,18 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Video Editor - Alexandra Moldovan</title>
-<meta name="description" content="A local Python app that turns raw clips into an AI-edited vertical video - AI plans the edit, code renders it with ffmpeg.">
+<meta name="description" content="An app where an AI plans a video edit and my code checks the plan before anything is rendered. 65 automated tests run on every push.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Alexandra Moldovan - Portfolio">
 <meta property="og:url" content="https://alexandra-moldovan.netlify.app/projects/video-editor.html">
 <meta property="og:title" content="Video Editor - Alexandra Moldovan">
-<meta property="og:description" content="A local Python app that turns raw clips into an AI-edited vertical video - AI plans the edit, code renders it with ffmpeg.">
+<meta property="og:description" content="An app where an AI plans a video edit and my code checks the plan before anything is rendered. 65 automated tests run on every push.">
 <meta property="og:image" content="https://video-editor-ai-concept.vercel.app/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Video Editor - Alexandra Moldovan">
-<meta name="twitter:description" content="A local Python app that turns raw clips into an AI-edited vertical video - AI plans the edit, code renders it with ffmpeg.">
+<meta name="twitter:description" content="An app where an AI plans a video edit and my code checks the plan before anything is rendered. 65 automated tests run on every push.">
 <meta name="twitter:image" content="https://video-editor-ai-concept.vercel.app/og-cover.jpg">
 <link rel="canonical" href="https://alexandra-moldovan.netlify.app/projects/video-editor.html">
 
@@ -41,12 +41,13 @@
   <section class="detail-hero">
     <div class="wrap">
       <a href="../index.html#portfolio" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to portfolio</a>
-      <div class="eyebrow">Python · FastAPI · ffmpeg · local desktop app</div>
+      <div class="eyebrow">AI engineering · Video app</div>
       <h1>Video Editor</h1>
-      <p class="detail-pitch">Turns raw footage - clips, photos, a song - into a finished vertical (9:16) video for social media. An AI (Claude) proposes the cut, the color and the on-screen text; you can change or lock anything before it renders. The AI never touches ffmpeg directly - it returns a plan the code validates first.</p>
+      <p class="detail-pitch">Drop in raw clips, photos and a song and get a first draft of a vertical video in about two minutes, instead of an hour of hand-editing. An AI (Claude) plans the cuts, color and text; you can change or lock anything. The AI never runs a video command: it only proposes a plan, and my code checks it first. Try the interface in the browser demo; the full app runs on your own computer.</p>
       <div class="detail-actions">
         <a href="https://video-editor-ai-concept.vercel.app" class="btn btn-accent" target="_blank" rel="noopener">Live demo</a>
         <a href="https://github.com/AlexandraMoldovan95/video-editor" class="btn btn-ghost" target="_blank" rel="noopener">View on GitHub</a>
+        <a href="#how-it-works" class="btn btn-ghost">How it works</a>
       </div>
 
       <div class="detail-media">
@@ -57,73 +58,119 @@
       <div class="facts-grid">
         <div class="fact-block">
           <h2>What it does</h2>
-          <p>Takes raw clips, photos, and an optional song, and produces a short vertical video: ordering, cuts, color correction, and on-screen text, with optional picture-in-picture/split-screen overlays, J/L-cut audio, and beat-synced zoom punches. A full manual editing toolkit - drag-trim, split, per-clip speed, multi-select - kicks in once the AI draft lands, for anything you'd rather finish by hand.</p>
+          <p>Turns clips, photos and an optional song into a short vertical video: order, cuts, color, on-screen text. Lock what you like and regenerate the rest, or finish by hand.</p>
         </div>
         <div class="fact-block">
           <h2>My role</h2>
-          <p>Product idea, UX, and the "AI decides, code executes" boundary - the plan Claude returns is validated against a strict schema before any ffmpeg command runs. Built in pair-programming with an AI coding agent (Claude).</p>
+          <p>Product idea, UX, the rule that the AI proposes and the code decides, and the testing. Code written with an AI assistant (Claude).</p>
         </div>
         <div class="fact-block">
-          <h2>Quality</h2>
-          <p>Every stage tested by hand: the render pipeline, the AI planner, the server and UI. Harder features (overlay compositing, audio timing, beat sync) were checked against purpose-built test clips with exact pixel and frequency checks, not just "it ran." A dedicated robustness pass found and fixed four real crash/data-loss bugs. The code that validates the AI's edit plan has <a href="https://github.com/AlexandraMoldovan95/video-editor/blob/main/tests/test_edl.py" target="_blank" rel="noopener">27 automated tests</a>, and the loop that talks to the AI has <a href="https://github.com/AlexandraMoldovan95/video-editor/blob/main/tests/test_planner_loop.py" target="_blank" rel="noopener">16 more</a> (cut-off, refused or invalid replies, two tool calls in one reply, with a fake AI client), plus 8 on the missing-API-key check and 14 on projects (names, output formats, and what removing a file does to the plan); all 65 run on every push.</p>
+          <h2>Proof</h2>
+          <p><a href="https://github.com/AlexandraMoldovan95/video-editor/blob/main/tests/test_edl.py" target="_blank" rel="noopener">27 tests</a> on the code that checks the AI's plan · 65 automated tests in all, on every push · 4 crash and data-loss bugs found and fixed in an audit.</p>
         </div>
         <div class="fact-block">
           <h2>Status</h2>
-          <p>Source on GitHub, MIT. Personal/portfolio project, all planned features implemented. The full app needs ffmpeg and your own Anthropic API key, so it only runs on your own machine - a static demo of the interface and sample edit plans is hosted on Vercel.</p>
+          <p>All planned features done · MIT · source on GitHub. The full app needs ffmpeg and your own Anthropic API key; the demo is a static copy with sample plans.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="prose">
+  <section class="case-study" id="how-it-works">
     <div class="wrap">
       <div class="section-head">
-        <h2>Why this exists</h2>
-        <blockquote style="border-left:3px solid var(--accent); padding-left:16px; margin:0 0 20px; color:var(--text-muted); font-style:italic;">
-          Hand-editing a 30-second reel - picking the best seconds, cutting to a beat, adding text - easily takes an hour. I wanted a tool that gets a solid first draft in about two minutes.
-        </blockquote>
+        <h2>How it works: the AI never touches the video tools</h2>
         <p>
-          You drop in your clips and photos, pick a style, and the AI plans the
-          edit - order, cuts, color, text. You stay in control: adjust
-          anything, lock the cuts and texts that already work, and regenerate
-          only what's left. The interesting part wasn't getting an AI to
-          suggest an edit; it was drawing a hard line between what the AI is
-          allowed to decide and what the code enforces regardless of what the
-          AI proposes - the AI never writes a single ffmpeg command.
+          The AI only fills in a plan. Ordinary code decides whether the plan is good enough.
         </p>
+      </div>
+
+      <div class="case-step">
+        <h3>1. The AI proposes a plan</h3>
+        <p>
+          It looks at 4 frames of each clip and returns an edit plan as structured data: which
+          clips, in what order, where to cut, what color, what text. Never a video command.
+        </p>
+      </div>
+
+      <div class="case-step">
+        <h3>2. My code checks it</h3>
+        <p>
+          Cuts must fall inside the clip and last at least 0.5 seconds. The same footage can't
+          overlap itself. File names must be files of the project, never a path outside it.
+          Transitions and texts must fit the timeline.
+        </p>
+      </div>
+
+      <div class="case-step">
+        <h3>3. A bad plan gets one retry, then the video is made</h3>
+        <p>
+          A failed check sends the error back to the AI once. A second failure stops there and
+          nothing is rendered. A cut-off or refused reply is reported at once and doesn't use up
+          the retry. Only a checked plan reaches the renderer.
+        </p>
+      </div>
+
+      <div class="case-step">
+        <h3>How I tested it without calling the AI</h3>
+        <p>
+          27 tests feed the checker the bad plans a model could send: paths outside the project
+          (including <code>../</code> and <code>.env</code>), cuts past the end of a clip,
+          overlapping footage. 16 more run the retry loop against a fake AI with prepared replies:
+          cut off, refused, plain text, an invalid plan. To check the tests catch real mistakes,
+          I broke two rules on purpose in a copy of the checker: 5 tests failed.
+        </p>
+        <p>
+          One bug in the retry step: when the AI answered with two calls in one reply, the
+          correction answered only the first, and the AI service rejects that. The fix answers
+          every call. Two new tests fail on the old code and pass on the new.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-study" id="found">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What testing and reviews found</h2>
+      </div>
+
+      <div class="case-step">
+        <h3>A robustness audit: four real bugs</h3>
+        <ul class="case-list">
+          <li><strong>One corrupt file took down the whole project.</strong> An interrupted upload made almost every page fail. Now an unreadable file is skipped and logged.</li>
+          <li><strong>One bad file failed a whole upload.</strong> The good files in the batch were lost too. Now each file is handled alone and the bad ones are named.</li>
+          <li><strong>A crash could ruin a project.</strong> The save file was written in place, so a crash mid-write could leave it half-written. Now it is written aside and swapped in.</li>
+          <li><strong>Memory that only grew.</strong> Every plan, render and preview left an entry until the server stopped. Finished ones older than an hour are now removed.</li>
+        </ul>
+      </div>
+
+      <div class="case-step">
+        <h3>Other things found</h3>
+        <ul class="case-list">
+          <li><strong>Two usability tests, with someone who makes Reels and isn't technical.</strong> Editing jargon ("Lock rules", "B-roll / PIP") got in the way, so labels are now plain words, and removing a file asks first and names the clips that use it.</li>
+          <li><strong>A missing API key was reported too late.</strong> The app extracted every frame first and only then said so, tens of seconds later. It now checks the key first.</li>
+          <li><strong>Subtitles failed on a fresh install.</strong> A new version of an audio library broke transcription. I pinned the older version and re-tested: 31 of 31 words right in a 13-second clip.</li>
+        </ul>
       </div>
     </div>
   </section>
 
   <section>
     <div class="wrap">
-      <div class="section-head"><h2>Highlights</h2></div>
-      <ul class="highlight-list">
-        <li><strong>"AI decides, code executes."</strong> Claude never touches ffmpeg - it returns a JSON edit plan validated against a strict schema (Pydantic) before any video command runs, so a bad or unexpected response gets rejected and retried once instead of executing anything unvalidated.</li>
-        <li><strong>Lock and regenerate, not start over.</strong> Lock any cut or text that already works and hit Regenerate - only the unlocked parts get reworked. Standing lock rules ("keep the opening 3s", "never touch this file") apply automatically on every pass instead of re-locking by hand each time.</li>
-        <li><strong>Beat tracking from scratch.</strong> Custom beat detection in plain numpy, no external library, finds the BPM and beat grid, so cuts and zoom punches can snap to the music while the original clip audio ducks automatically underneath.</li>
-        <li><strong>A robustness pass that actually tried to break it.</strong> A dedicated audit looked for what could crash the server or corrupt a project. One bad upload used to take the whole project down - fixed that and three other real bugs, each verified with an end-to-end test, not just "it ran."</li>
-        <li><strong>A full manual toolkit once the AI draft lands.</strong> Drag-trim, a split tool, per-clip speed, a waveform display, multi-select, free-drag text, and B-roll/picture-in-picture overlays - none of it calls the API, all of it is plain timeline editing.</li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="prose">
-    <div class="wrap">
       <div class="section-head">
-        <h2>How it was built</h2>
+        <h2>How it's built</h2>
         <p>
-          The AI never writes ffmpeg directly: the planner calls Claude, which
-          returns a plan, and that plan is validated - schema, overlaps,
-          transitions - before the renderer runs anything; an invalid plan
-          gets one retry with the validation error attached. Rendering itself
-          is ffmpeg orchestration in Python - normalize every clip, composite
-          overlays, apply transitions and on-screen text, then mix audio with
-          ducking. The full technical write-up - every architectural decision,
-          explained - lives in the repo's <code>CLAUDE.md</code>, the same
-          file used as working context while building it.
+          A Python server and one web page on your own computer, ffmpeg (the standard free tool
+          that cuts and joins video) for rendering, and Claude for the editing decisions. The plan
+          checks are in <code>app/edl.py</code>, the retry loop in <code>app/planner.py</code>; design decisions are in the repo's <code>CLAUDE.md</code>.
         </p>
       </div>
+      <ul class="highlight-list">
+        <li><strong>The plan has a fixed shape.</strong> Clips, cuts, transitions and texts only. Anything outside that shape is rejected before the checks above run.</li>
+        <li><strong>Lock and regenerate.</strong> Lock any cut or text that works and only the rest is reworked.</li>
+        <li><strong>Beat tracking from scratch.</strong> A short numpy routine, no music library, finds the tempo so cuts can land on the beat.</li>
+      </ul>
       <div class="stack-row">
         <span class="chip">Python</span>
         <span class="chip">FastAPI</span>
@@ -132,6 +179,18 @@
         <span class="chip">Pydantic</span>
         <span class="chip">numpy (beat tracking)</span>
       </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head"><h2>What I haven't done yet</h2></div>
+      <ul class="case-list">
+        <li>Rendering, audio and the interface are tested by hand; no automated tests cover them.</li>
+        <li>The AI sees only 4 frames per clip, so it can miss the right moment in fast action.</li>
+        <li>The DaVinci export has never been opened in DaVinci or Final Cut.</li>
+        <li>Subtitles were tested with a computer voice only. Real voices, noise and Romanian are untested.</li>
+      </ul>
     </div>
   </section>
 

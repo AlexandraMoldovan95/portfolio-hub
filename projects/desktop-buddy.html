@@ -4,18 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Desktop Buddy - Alexandra Moldovan</title>
-<meta name="description" content="A Windows companion that records only the app you're testing, turning each run into short MP4 clips.">
+<meta name="description" content="A Windows app that records only the app being tested and cuts the run into MP4 clips, tested with 72 written test cases and a log of 27 bugs.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Alexandra Moldovan - Portfolio">
 <meta property="og:url" content="https://alexandra-moldovan.netlify.app/projects/desktop-buddy.html">
 <meta property="og:title" content="Desktop Buddy - Alexandra Moldovan">
-<meta property="og:description" content="A Windows companion that records only the app you're testing, turning each run into short MP4 clips.">
+<meta property="og:description" content="A Windows app that records only the app being tested and cuts the run into MP4 clips, tested with 72 written test cases and a log of 27 bugs.">
 <meta property="og:image" content="https://desktop-buddy-demo.netlify.app/media/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Desktop Buddy - Alexandra Moldovan">
-<meta name="twitter:description" content="A Windows companion that records only the app you're testing, turning each run into short MP4 clips.">
+<meta name="twitter:description" content="A Windows app that records only the app being tested and cuts the run into MP4 clips, tested with 72 written test cases and a log of 27 bugs.">
 <meta name="twitter:image" content="https://desktop-buddy-demo.netlify.app/media/og-cover.jpg">
 <link rel="canonical" href="https://alexandra-moldovan.netlify.app/projects/desktop-buddy.html">
 
@@ -41,30 +41,31 @@
   <section class="detail-hero">
     <div class="wrap">
       <a href="../index.html#portfolio" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to portfolio</a>
-      <div class="eyebrow">Desktop app · Electron</div>
+      <div class="eyebrow">Windows app · Electron · QA</div>
       <h1>Desktop Buddy</h1>
-      <p class="detail-pitch">A Windows companion that records only the app you are testing, starts and stops by itself, and turns the run into short MP4 clips.</p>
+      <p class="detail-pitch">A Windows app that records only the app you are testing, starts and stops by itself, and turns the run into short MP4 clips. I built it to film AI-agent test runs of my own apps, and I tested it like a QA project: 72 written test cases, all passed, and a log of 27 bugs with steps to reproduce. Try the playable demo in your browser.</p>
       <div class="detail-actions">
         <a href="https://desktop-buddy-demo.netlify.app/" class="btn btn-accent" target="_blank" rel="noopener">Live demo</a>
         <a href="https://github.com/AlexandraMoldovan95/desktop-buddy" class="btn btn-ghost" target="_blank" rel="noopener">View on GitHub</a>
+        <a href="#testing" class="btn btn-ghost">How I tested it</a>
       </div>
 
       <div class="detail-media">
-        <img src="../images/desktop-buddy.png" alt="Desktop Buddy app screenshot - the buddy companion and the live statistics panel">
+        <img src="../images/desktop-buddy.png" alt="Desktop Buddy's buddy: a smiling purple round face with a red recording dot at its lower right, on a blue background">
       </div>
 
       <div class="facts-grid">
         <div class="fact-block">
           <h2>What it does</h2>
-          <p>Desktop app (Electron, vanilla JS) with an animated buddy that grows with your focus time. It records one app window by its title, joins relaunches into one file, lets you mark good moments with one click, and cuts clips or a short movie without ffmpeg. Also: a focus timer with statistics, notes with reminders, a clipboard history that never saves secrets, and screenshots you can draw on. Works offline. Playable in the browser.</p>
+          <p>An animated buddy that grows with your focus time. It records one app window by its title, joins relaunches into one file, lets you mark good moments with one click, and cuts clips or a short movie from them. Also a focus timer with statistics, notes with reminders, a clipboard history that never saves secrets, and screenshots you can draw on. Works offline.</p>
         </div>
         <div class="fact-block">
           <h2>My role</h2>
-          <p>Product idea, UX and visual design, feature specs, QA (72 test cases, a defect log), and three audit rounds. The code was written in pair-programming with an AI assistant (Claude).</p>
+          <p>Product idea, UX and visual design, feature specs, the test plan and the bug log, and three audit rounds. The code was written in pair-programming with an AI assistant (Claude).</p>
         </div>
         <div class="fact-block">
-          <h2>Quality</h2>
-          <p>295 unit tests · ESLint + CI on Windows · 72 test cases passed (48 run by hand on Windows, 24 automated), with a defect log · ~145 audit findings fixed.</p>
+          <h2>Proof</h2>
+          <p>72 of 72 written test cases passed · 27 bugs logged · 295 unit tests, run on Windows on every push.</p>
         </div>
         <div class="fact-block">
           <h2>Status</h2>
@@ -74,17 +75,59 @@
     </div>
   </section>
 
-  <section class="prose">
+  <section class="case-study" id="testing">
     <div class="wrap">
       <div class="section-head">
-        <h2>Why this exists</h2>
+        <h2>How I tested it</h2>
         <p>
-          I needed a way to capture clean recordings while testing an app - without
-          manually starting and stopping a recorder, and without ending up with
-          one giant unusable video per session. The buddy itself (an on-screen
-          companion that reacts to focus time) came out of wanting the tool to be
-          something I'd actually enjoy keeping open all day, not just a background
-          utility.
+          A desktop app that records other windows, saves your notes and touches files can lose data
+          in ways a quick click-through never shows. So I wrote the test cases down, ran them, and
+          logged every bug with steps to reproduce it.
+        </p>
+      </div>
+
+      <div class="case-step">
+        <h3>Three layers of checks</h3>
+        <p>
+          The 72 test cases are in
+          <a href="https://github.com/AlexandraMoldovan95/desktop-buddy/blob/main/docs/qa/Desktop-Buddy-Test-Cases.xlsx" target="_blank" rel="noopener">a workbook</a>
+          in standard QA format: preconditions, steps, expected and actual result, priority, type.
+          They were written and run on 4 and 5 October 2026.
+        </p>
+        <div class="table-wrap">
+          <table class="check-table">
+            <thead>
+              <tr><th scope="col">Layer</th><th scope="col">How it ran</th><th scope="col">Tests</th><th scope="col">Result</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Written test cases</td><td>By hand, on Windows</td><td>48</td><td>all passed</td></tr>
+              <tr><td>Written test cases</td><td>Automated (14 full-app runs, 10 script runs)</td><td>24</td><td>all passed</td></tr>
+              <tr><td>Unit tests</td><td>On every push, on a Windows machine at GitHub</td><td>295</td><td>all passed there</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="case-step">
+        <h3>Bugs I logged, and how each was found</h3>
+        <p>
+          The log has 27 bugs. 20 came from audit rounds, where AI reviewers examined the app for
+          data loss, security, speed on a weak PC and beginner confusion, and I turned each finding
+          into a reproducible bug. The other 7 came from my own use on Windows. Most fixes came with a
+          test. Three examples:
+        </p>
+        <ul class="case-list">
+          <li><strong>Data loss (BUG-002).</strong> Found by an audit. When antivirus or OneDrive locked the notes file, the app treated it as empty and overwrote it when you quit: 1 note before, 0 after. The app now never overwrites a file it couldn't read.</li>
+          <li><strong>The heart eyes disappeared (BUG-020).</strong> Found by me after a release. Choosing "Hearts" for the eyes showed only white dots. A new petting heart used the same style name as the eyes and hid them. I renamed it and added a test that fails if the page ever restyles anything the face is drawn with.</li>
+          <li><strong>A shortcut that didn't work (BUG-021).</strong> Found by me while taking screenshots: Ctrl+Shift+F9 marked nothing on my laptop, and a shortcut that works everywhere can steal keys from the app being tested. My decision was to remove it. A small flag next to the buddy now marks the moment with one click.</li>
+        </ul>
+      </div>
+
+      <div class="case-step">
+        <h3>Three audit rounds</h3>
+        <p>
+          Round 1 found about 100 issues and round 2 about 40. Round 3, a confirmation round, found 7
+          low-severity issues and nothing critical, high or medium. The cheap ones were fixed in 1.16.1.
         </p>
       </div>
     </div>
@@ -92,33 +135,19 @@
 
   <section>
     <div class="wrap">
-      <div class="section-head"><h2>Highlights</h2></div>
-      <ul class="highlight-list">
-        <li><strong>Window-targeted recording.</strong> Captures a single app window by its title and joins relaunches of the same app into one continuous file, instead of leaving you with a folder of fragments.</li>
-        <li><strong>A clipboard history that's deliberately safe.</strong> Keeps recent clipboard entries for convenience, with logic in place to never save anything that looks like a secret.</li>
-        <li><strong>Clip cutting without a separate video editor.</strong> Flag a good moment during a recording, then cut clips or a short highlight movie afterward - using the browser's own built-in media tools (MediaRecorder + canvas) instead of bundling an external video-encoding program (ffmpeg).</li>
-        <li><strong>Testable by design.</strong> The app's decision-making logic is kept separate from the on-screen app itself, in plain, framework-free modules, so each piece can be checked automatically - 295 unit tests - instead of only by clicking around by hand.</li>
-        <li><strong>Locked down, not just functional.</strong> Each window runs in a restricted sandbox that can't reach your files directly, messages between app parts are checked before being trusted, and stored secrets are encrypted - what engineers call sandboxing, a Content Security Policy (CSP), and verified IPC (inter-process communication) channels. Security review was part of all three audit rounds, not an afterthought.</li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="prose">
-    <div class="wrap">
       <div class="section-head">
-        <h2>How it was built</h2>
+        <h2>How it's built</h2>
         <p>
-          Electron on top of vanilla JavaScript - no UI framework. The app logic
-          (scheduling, clip-cutting rules, the buddy's state machine) is written as
-          pure, side-effect-free modules so it can be unit tested without spinning
-          up Electron itself; the Electron layer is a thin shell around it. Media
-          capture uses the browser's native <strong>MediaRecorder</strong> and
-          <strong>canvas</strong> APIs rather than a bundled ffmpeg binary, which
-          keeps the install small. Quality was treated as a first-class part of
-          the build: a written test plan, a defect log, and three full audit
-          passes before calling any version done.
+          Electron (a toolkit for building desktop apps from web technology) with plain JavaScript:
+          no UI framework, no build step.
         </p>
       </div>
+      <ul class="highlight-list">
+        <li><strong>Easy to test.</strong> The decision-making logic lives in small modules that don't need the app window, so the 295 unit tests run in seconds.</li>
+        <li><strong>No video program bundled.</strong> Clips are cut by replaying the video and recording it again with the browser's own tools. It takes as long as the clip, but the installer stays small.</li>
+        <li><strong>Private by default.</strong> The only network use is sending an email you ask for. A test fails if any other part of the code touches the network, and saved passwords are encrypted with your Windows account.</li>
+        <li><strong>A demo from the same code.</strong> The live demo runs the app's real pages in the browser, with a stand-in for the parts only a desktop app has. A test fails if the demo falls out of step with the app.</li>
+      </ul>
       <div class="stack-row">
         <span class="chip">Electron</span>
         <span class="chip">Vanilla JavaScript</span>
@@ -126,6 +155,18 @@
         <span class="chip">ESLint</span>
         <span class="chip">GitHub Actions (Windows CI)</span>
       </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head"><h2>What I haven't done yet</h2></div>
+      <ul class="case-list">
+        <li>The audits were done by AI reviewers and me, not by independent testers.</li>
+        <li>The manual test cases were last run on 4 and 5 October 2026, before 1.16.2. That release updated two libraries for security alerts and gave the picture window a light theme.</li>
+        <li>It is Windows only in practice. The macOS code has never been tested, and the installer isn't code-signed, so Windows SmartScreen warns once.</li>
+        <li>No sound in recordings, because Windows doesn't expose sound per window.</li>
+      </ul>
     </div>
   </section>
 

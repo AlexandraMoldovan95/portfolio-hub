@@ -4,18 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Halvorsen &amp; Reyes Builders - Alexandra Moldovan</title>
-<meta name="description" content="A one-page site for a fictional construction company, with a real Supabase backend: a lead form and a scoped AI chatbot.">
+<meta name="description" content="A website for a fictional construction company: a design that looks precise, not trendy, plus a quote form and an AI chatbot made safe for strangers.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Alexandra Moldovan - Portfolio">
 <meta property="og:url" content="https://alexandra-moldovan.netlify.app/projects/halvorsen-reyes-builders.html">
 <meta property="og:title" content="Halvorsen &amp; Reyes Builders - Alexandra Moldovan">
-<meta property="og:description" content="A one-page site for a fictional construction company, with a real Supabase backend: a lead form and a scoped AI chatbot.">
+<meta property="og:description" content="A website for a fictional construction company: a design that looks precise, not trendy, plus a quote form and an AI chatbot made safe for strangers.">
 <meta property="og:image" content="https://halvorsen-reyes-builders-655f70.netlify.app/images/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Halvorsen &amp; Reyes Builders - Alexandra Moldovan">
-<meta name="twitter:description" content="A one-page site for a fictional construction company, with a real Supabase backend: a lead form and a scoped AI chatbot.">
+<meta name="twitter:description" content="A website for a fictional construction company: a design that looks precise, not trendy, plus a quote form and an AI chatbot made safe for strangers.">
 <meta name="twitter:image" content="https://halvorsen-reyes-builders-655f70.netlify.app/images/og-cover.jpg">
 <link rel="canonical" href="https://alexandra-moldovan.netlify.app/projects/halvorsen-reyes-builders.html">
 
@@ -41,57 +41,38 @@
   <section class="detail-hero">
     <div class="wrap">
       <a href="../index.html#portfolio" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to portfolio</a>
-      <div class="eyebrow">Client site · Supabase · AI chatbot</div>
+      <div class="eyebrow">Client site · UI design · AI chatbot</div>
       <h1>Halvorsen &amp; Reyes Builders</h1>
-      <p class="detail-pitch">A one-page marketing site for <strong>Halvorsen &amp; Reyes Builders</strong> - a fictional Denver construction company, used as a case study for building a small business site the way a real client would need it: fast, accessible, and with a lead form and chatbot that are actually safe to put in front of strangers on the internet.</p>
+      <p class="detail-pitch">A one-page website for a fictional Denver builder. I designed it to look precise and trustworthy, not trendy, and made its two public features, a quote form and an AI chatbot, safe to put in front of strangers. Try the live site, and "Admin demo" for the owners' side.</p>
       <div class="detail-actions">
         <a href="https://halvorsen-reyes-builders-655f70.netlify.app/" class="btn btn-accent" target="_blank" rel="noopener">Live demo</a>
         <a href="https://halvorsen-reyes-builders-655f70.netlify.app/admin.html" class="btn btn-ghost" target="_blank" rel="noopener">Admin demo →</a>
         <a href="https://github.com/AlexandraMoldovan95/halvorsen-reyes-builders" class="btn btn-ghost" target="_blank" rel="noopener">View on GitHub</a>
+        <a href="#case-study" class="btn btn-ghost">Design case study</a>
       </div>
 
       <div class="detail-media">
-        <img class="shot-light" src="../images/halvorsen-reyes-builders.webp" width="960" height="656" loading="lazy" alt="Halvorsen & Reyes Builders site screenshot">
-        <img class="shot-dark" src="../images/halvorsen-reyes-builders-dark.webp" width="960" height="656" loading="lazy" alt="Halvorsen & Reyes Builders site screenshot">
+        <img class="shot-light" src="../images/halvorsen-reyes-builders.webp" width="960" height="656" loading="lazy" alt="The site's first screen by day: a serif headline, Turnkey homes, built to last, over a photo of a living room with a brick wall, and a Request a quote button">
+        <img class="shot-dark" src="../images/halvorsen-reyes-builders-dark.webp" width="960" height="656" loading="lazy" alt="The site's first screen in the dark theme: the same headline over the same photo, with a near-black header and a light Request a quote button">
       </div>
 
       <div class="facts-grid">
         <div class="fact-block">
           <h2>What it does</h2>
-          <p>Hero, services, a 5-project portfolio carousel, team section, and a "Request a quote" form - plus a chatbot that answers questions about the company and politely redirects anything else to the form instead of making things up.</p>
+          <p>Services, 5 portfolio projects, a quote form, and a chatbot that answers questions about the company and sends everything else to the form.</p>
         </div>
         <div class="fact-block">
           <h2>My role</h2>
-          <p>Product decisions, content, the design system, and the security/architecture choices below; the code was written in pair-programming with an AI assistant (Claude).</p>
+          <p>Product decisions, content, design, and the safety rules. The code was written with an AI assistant (Claude).</p>
         </div>
         <div class="fact-block">
-          <h2>Quality</h2>
-          <p>Audited with Lighthouse and an automated accessibility/design checker, fixed to a clean score across five review passes. Security-reviewed: no secret keys in client code, verified directly from View Source and Network. <a href="https://github.com/AlexandraMoldovan95/halvorsen-reyes-builders/blob/main/tests/logic.test.js" target="_blank" rel="noopener">21 unit tests</a> cover the quote form's checks, what gets sent to the database, the chatbot's fallback never quoting a price, the photo viewer, the theme choice and when "Back to top" shows; they run on every push.</p>
+          <h2>Proof</h2>
+          <p>Design review 14 to 20 out of 20 · phone first paint 3.8 s to 2.0 s · <a href="https://github.com/AlexandraMoldovan95/halvorsen-reyes-builders/blob/main/tests/logic.test.js" target="_blank" rel="noopener">21 unit tests</a> on every push.</p>
         </div>
         <div class="fact-block">
           <h2>Status</h2>
-          <p>Live on Netlify · MIT · fictional client, used as a case study · source on GitHub. The quote form is live; the AI chatbot is switched on for live demos, to keep running costs at zero, and a scripted fallback answers in between.</p>
+          <p>Live · MIT · fictional client. The quote form is live. The AI chatbot is on only for live demos, to keep costs at zero; between demos a short scripted answer replies, and the page says so.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="prose">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Why it exists</h2>
-        <blockquote style="border-left:3px solid var(--accent); padding-left:16px; margin:0 0 20px; color:var(--text-muted); font-style:italic;">
-          A small business site is a good test of restraint: no framework, no backend you don't need, and every "smart" feature has to earn the risk it adds.
-        </blockquote>
-        <p>
-          The brief was a typical small-business ask: a fast one-page site, a way
-          for visitors to request a quote, and a chatbot that can answer basic
-          questions without a human on call 24/7. The interesting part isn't the
-          page itself - it's making the two features that touch the outside
-          world (a public form and a public chatbot) safe to actually ship:
-          rate-limited, unable to leak a key, and unable to be used for anything
-          other than what it's there for.
-        </p>
       </div>
     </div>
   </section>
@@ -101,108 +82,130 @@
       <div class="section-head">
         <h2>Design case study: a builder's site that looks precise, not trendy</h2>
         <p>
-          The client is a fictional construction company in Denver, in business since 2011. Its site
-          has to make a small company look serious and trustworthy to people planning a renovation
-          or a new home, and stay fast and accessible on a phone.
+          The client is a fictional Denver builder, in business since 2011. Its site has to look
+          serious and trustworthy to people planning a renovation or a new home.
         </p>
       </div>
 
       <div class="case-step">
         <h3>Pick a direction that fits a builder</h3>
         <p>
-          I started from an existing editorial "Newsprint" style direction and adapted it into what I
-          called Blueprint Editorial: a grid with visible borders and square corners everywhere, black
-          and white with a single red used sparingly, a warm off-white background like paper, and
-          typography carrying the hierarchy (Playfair Display, Lora and Inter). The grid and square
-          corners suggest blueprints and job-site precision; the serif headlines give it the
-          authority of a serious company without looking like a media agency. The project photos
-          stay in full color, because they sell the craftsmanship.
+          I adapted a newspaper-style direction into what I called Blueprint Editorial: a grid with
+          visible borders, square corners, black and white with one red used sparingly, and serif
+          headlines. The grid suggests blueprints and job-site precision. The project photos stay
+          in full color, because they sell the craftsmanship.
         </p>
         <figure class="case-figure">
           <img class="shot-light" src="../images/halvorsen-case/hero.webp" width="1440" height="820" loading="lazy"
                alt="The site's first screen: a large white serif headline, Turnkey homes, built to last, over a photo of a renovated living room, with two square buttons">
           <img class="shot-dark" src="../images/halvorsen-case/hero-dark.webp" width="1440" height="820" loading="lazy"
                alt="The site's first screen in the dark theme: a large white serif headline, Turnkey homes, built to last, over a photo of a renovated living room, with two square buttons">
-          <figcaption>The first screen: serif headline, square buttons, the photo in full color.</figcaption>
+          <figcaption>The first screen: serif headline, square buttons.</figcaption>
         </figure>
       </div>
 
       <div class="case-step">
         <h3>Cut what didn't serve a construction company</h3>
         <p>
-          The source style came with newspaper features: a scrolling marquee ticker, a "Vol. 1
-          Edition" label and drop caps everywhere. I removed them, because they made the site look
-          like a design experiment instead of a professional business. I also changed the portfolio
-          from a horizontal scroll to an arrow carousel, so nothing on the page takes over the
-          visitor's scrolling.
+          The source style came with a scrolling ticker, a "Vol. 1 Edition" label and drop caps.
+          I removed them: they made the site look like an experiment, not a business. The
+          portfolio became an arrow carousel, so nothing takes over the scrolling.
         </p>
         <figure class="case-figure">
           <img class="shot-light" src="../images/halvorsen-case/portfolio.webp" width="1440" height="1100" loading="lazy"
                alt="The portfolio section: one project at a time in a bordered box, a large color photo with thumbnails, a red outlined tag, and arrow buttons on both sides">
           <img class="shot-dark" src="../images/halvorsen-case/portfolio-dark.webp" width="1440" height="1100" loading="lazy"
                alt="The portfolio section in the dark theme: one project at a time in a bordered box, a large color photo with thumbnails, a red outlined tag, and arrow buttons on both sides">
-          <figcaption>The portfolio as an arrow carousel: one project at a time, the single red as a tag.</figcaption>
+          <figcaption>The portfolio: one project at a time, the red as a tag.</figcaption>
         </figure>
       </div>
 
       <div class="case-step">
-        <h3>Review passes</h3>
+        <h3>A dark theme that keeps the red readable</h3>
         <p>
-          I ran automated design and accessibility reviews (the frontend-design and impeccable
-          plugins) against my written design spec, and fixed what they found over five rounds at
-          1440 and 375 px; the impeccable score went from 14 to 20 out of 20. Among the findings:
-          form focus that was practically invisible (#F0F0F0 on #F9F9F7, about 1.05:1), a skip link
-          that never appeared, tap targets under 44 px, and a round chat avatar that broke the
-          "square corners everywhere" rule.
-        </p>
-        <p>
-          Speed was part of the design too. Self-hosting only the font weights in use cut the fonts
-          from about 296 KB to 145 KB and brought first paint on mobile from 3.8 s to 2.0 s
-          (Lighthouse); giving the headline a width that doesn't depend on the font took the desktop
-          layout shift from 0.32 to 0.002.
+          On 27 November 2026 I added a dark theme, switched with a sun/moon button. The red
+          couldn't just carry over: #CC0000 on near-black fails the WCAG AA contrast rule, so the
+          dark theme uses a lighter red (6.0:1).
         </p>
       </div>
 
       <div class="case-step">
-        <h3>What I haven't done yet</h3>
+        <h3>What the reviews found</h3>
+        <p>
+          Automated design and accessibility reviews (the frontend-design and impeccable plugins)
+          checked the site against my design spec, over five rounds. I checked each finding by hand.
+        </p>
         <ul class="case-list">
-          <li>No feedback from real clients or visitors: the company is fictional, and the reviews above are automated tools plus my own checks.</li>
-          <li>I didn't keep the earlier versions, so there are no before images here.</li>
+          <li><strong>You couldn't see which form field was focused.</strong> The outline was #F0F0F0 on #F9F9F7, about 1.05:1. Fixed.</li>
+          <li><strong>A skip link that never appeared</strong>, and tap targets under 44 px.</li>
+          <li><strong>A caption that claimed too much.</strong> It named the founders under a stock photo of three unidentified men. The review flagged it as my decision, not a code bug. I rewrote it so it doesn't claim identities.</li>
         </ul>
+        <p>
+          Speed was part of the design too. On a phone, first paint went from 3.8 s to 2.0 s after I
+          hosted only the font weights in use (Lighthouse, on a test deploy). The headline also
+          jumped from 3 lines to 2 when its font loaded; fixing its width removed the jump.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-study" id="chatbot">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>The AI chatbot and the quote form: safe for strangers</h2>
+        <p>
+          A form anyone can fill in, and a chatbot that costs money every time it answers. The
+          risks: a runaway AI bill, spam, strangers reading requests, and a bot pushed off-topic.
+        </p>
+      </div>
+
+      <div class="case-step">
+        <h3>Limits that are checked before any money is spent</h3>
+        <p>
+          The chatbot allows 20 messages per hour per visitor and 300 per day in total. The count
+          is checked before the paid model is called. Past the limit, the visitor gets a normal
+          reply pointing to the form, and the AI is never called. If the check can't run, the
+          chatbot refuses. The form allows 3 requests per day per email address. Visitors are
+          counted by a scrambled fingerprint of their IP address, deleted after 2 days.
+        </p>
+      </div>
+
+      <div class="case-step">
+        <h3>It stays on topic, and nobody can read the requests</h3>
+        <p>
+          On the live site on 24 September 2026 I asked for a poem (it declined) and for the price
+          of a 150 sqm house (no price, it pointed to the form). The public key can only add
+          requests: reading them back with it returned 0 rows. The scripted answer never quotes a
+          price either; a unit test checks that.
+        </p>
+      </div>
+
+      <div class="case-step">
+        <h3>A security scan, and what I did with it</h3>
+        <p>
+          A security plugin checked the code against about 25 dangerous patterns, found no secret key, and flagged 3 things. Two were
+          real and I fixed them: outside scripts with no integrity check, and the hero title built
+          with <code>innerHTML</code>. The third, in the admin panel, I checked by hand: every
+          field is escaped first, so it was a false alarm.
+        </p>
       </div>
     </div>
   </section>
 
   <section>
     <div class="wrap">
-      <div class="section-head"><h2>Highlights</h2></div>
-      <ul class="highlight-list">
-        <li><strong>The Anthropic API key never reaches the browser.</strong> The chatbot calls a small piece of server-side code (a Supabase "Edge Function") that holds the key as a secret and talks to the model from there, instead of the browser ever seeing it - confirmed empty in View Source and the Network tab, not just assumed.</li>
-        <li><strong>The chatbot knows what it doesn't know.</strong> Ask it to write a poem or quote a price and it declines and points to the form instead of improvising - the system prompt is scoped to company facts only. No retrieval layer (no vector database, no document search) is needed, because the entire company knowledge base is small enough to fit directly in that system prompt - well within what the model can read at once, so there's nothing to "look up."</li>
-        <li><strong>Visitors can submit the quote form, but nothing on the public site can read anyone's submissions back - the database enforces that, not just the app's code.</strong> In Postgres terms this is Row Level Security (RLS): the public <code>anon</code> key can only <em>insert</em> into the leads table, never read it back - the same pattern used in Job Tracker.</li>
-        <li><strong>Neither public endpoint can be hammered to run up the AI bill or spam the form.</strong> Both the chatbot and the lead form are rate-limited: the chatbot caps out at 20 messages/hour per visitor (fingerprinted by a hashed IP, not the raw IP, deleted after 2 days) and 300/day total; the lead form caps at 30 requests/hour and 3/day per email.</li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="prose">
-    <div class="wrap">
       <div class="section-head">
-        <h2>How it was built</h2>
+        <h2>How it's built</h2>
         <p>
-          Static frontend (vanilla HTML/CSS/JS, no build step) hosted on Netlify,
-          with GSAP + ScrollTrigger for the scroll animations. Backend is
-          Supabase: a <code>leads</code> table behind RLS, and a Deno Edge
-          Function for the chatbot that calls Claude Haiku 4.5 - deliberately
-          the smallest/cheapest Claude model, chosen because a single-page
-          company FAQ doesn't need anything larger. Images are WebP, capped at 1600px, with
-          separate thumbnail variants for the portfolio carousel so a photo
-          shown at 150px doesn't pull down a 1600px file. Design is a custom
-          black/white/editorial-red system - straight corners throughout, no
-          generic gradients - built in local fonts rather than pulling several
-          files from Google Fonts at runtime.
+          Plain HTML, CSS and JavaScript on Netlify, plus Supabase (a hosted database that can
+          also run small server programs) for the form and chatbot.
         </p>
       </div>
+      <ul class="highlight-list">
+        <li><strong>The AI key never reaches the browser.</strong> A small server program holds it. I confirmed it's absent in View Source and the Network tab.</li>
+        <li><strong>No search layer needed.</strong> The company's facts are small enough to send with every question to the model (Claude Haiku 4.5).</li>
+        <li><strong>The database decides who can read.</strong> This is Row Level Security: rules inside the database, as in Job Tracker.</li>
+      </ul>
       <div class="stack-row">
         <span class="chip">HTML/CSS/JS</span>
         <span class="chip">Supabase</span>
@@ -211,6 +214,17 @@
         <span class="chip">GSAP</span>
         <span class="chip">Netlify</span>
       </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head"><h2>What I haven't done yet</h2></div>
+      <ul class="case-list">
+        <li>No feedback from real clients or visitors: the company is fictional, and the reviews are automated tools plus my own checks. No before images: I didn't keep earlier versions.</li>
+        <li>The chatbot has no memory of earlier questions, and its only guard against going off-topic is its instructions.</li>
+        <li>No spending cap is set on the AI account itself; the limit in my code is the only cost protection.</li>
+      </ul>
     </div>
   </section>
 

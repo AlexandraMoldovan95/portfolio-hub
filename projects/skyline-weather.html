@@ -4,18 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Skyline Weather - Alexandra Moldovan</title>
-<meta name="description" content="A BYOK weather app - every visitor uses their own free OpenWeatherMap key, no shared backend key.">
+<meta name="description" content="A weather app with a glass-and-sky design, where I measured text contrast on the real pixels and fixed it at the cause. Each visitor uses their own free key, so there is no shared key.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Alexandra Moldovan - Portfolio">
 <meta property="og:url" content="https://alexandra-moldovan.netlify.app/projects/skyline-weather.html">
 <meta property="og:title" content="Skyline Weather - Alexandra Moldovan">
-<meta property="og:description" content="A BYOK weather app - every visitor uses their own free OpenWeatherMap key, no shared backend key.">
+<meta property="og:description" content="A weather app with a glass-and-sky design, where I measured text contrast on the real pixels and fixed it at the cause. Each visitor uses their own free key, so there is no shared key.">
 <meta property="og:image" content="https://skyline-weatherapp-c67411.netlify.app/og-preview.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Skyline Weather - Alexandra Moldovan">
-<meta name="twitter:description" content="A BYOK weather app - every visitor uses their own free OpenWeatherMap key, no shared backend key.">
+<meta name="twitter:description" content="A weather app with a glass-and-sky design, where I measured text contrast on the real pixels and fixed it at the cause. Each visitor uses their own free key, so there is no shared key.">
 <meta name="twitter:image" content="https://skyline-weatherapp-c67411.netlify.app/og-preview.png">
 <link rel="canonical" href="https://alexandra-moldovan.netlify.app/projects/skyline-weather.html">
 
@@ -41,31 +41,32 @@
   <section class="detail-hero">
     <div class="wrap">
       <a href="../index.html#portfolio" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to portfolio</a>
-      <div class="eyebrow">No-build app · Vanilla JS</div>
+      <div class="eyebrow">Weather app · Design · Day and night</div>
       <h1>Skyline Weather</h1>
-      <p class="detail-pitch">Type in a city and get live weather - temperature, feels-like, humidity, wind, pressure - straight from OpenWeatherMap. Instead of the app holding one shared API key for every visitor, each person pastes in their own free key, which never leaves their own browser - no account, no backend server in between. Developers call that pattern BYOK (Bring Your Own Key).</p>
+      <p class="detail-pitch">Type in a city and see its current weather over an animated sky, by day or by night. The design is the point: the cards are frosted glass, so what shows through changes how readable the text is, and I measured that on the real screen and fixed every text that was too faint. Try it without a key: "Try the demo" shows sample data, clearly labelled.</p>
       <div class="detail-actions">
         <a href="https://skyline-weatherapp-c67411.netlify.app/" class="btn btn-accent" target="_blank" rel="noopener">Live demo</a>
         <a href="https://github.com/AlexandraMoldovan95/skyline-weather" class="btn btn-ghost" target="_blank" rel="noopener">View on GitHub</a>
+        <a href="#case-study" class="btn btn-ghost">Design case study</a>
       </div>
 
       <div class="detail-media">
-        <img class="shot-light" src="../images/skyline-weather.webp" width="1440" height="984" loading="lazy" alt="Skyline Weather app screenshot">
-        <img class="shot-dark" src="../images/skyline-weather-dark.webp" width="1440" height="984" loading="lazy" alt="Skyline Weather app screenshot">
+        <img class="shot-light" src="../images/skyline-weather.webp" width="1440" height="984" loading="lazy" alt="Skyline Weather by day, in demo mode: a search form for city and country, and a weather card with temperature, feels-like, humidity, wind and pressure over a blue-to-peach sky">
+        <img class="shot-dark" src="../images/skyline-weather-dark.webp" width="1440" height="984" loading="lazy" alt="Skyline Weather at night, in demo mode: the same search form and weather card in dark glass over a navy-to-purple sky, with a pale moon glow">
       </div>
 
       <div class="facts-grid">
         <div class="fact-block">
           <h2>What it does</h2>
-          <p>A BYOK login screen over an animated CSS sky, a search form (city + optional country), and a weather card with current conditions, feels-like, humidity, wind, and pressure - with error handling split explicitly by failure case (network, invalid key, city not found, other). A separate demo mode (no key required) shows the same app with clearly-labelled sample data, for anyone who'd rather not create an OpenWeatherMap key just to look around.</p>
+          <p>Shows the current weather for a city: temperature, feels-like, humidity, wind and pressure. A day and a night theme, and a demo mode that needs no key.</p>
         </div>
         <div class="fact-block">
           <h2>My role</h2>
-          <p>Product idea, UX, and the BYOK security model; built in pair-programming with an AI assistant (Claude).</p>
+          <p>Product idea, UX, the design and the contrast checks. The code was written with an AI assistant (Claude).</p>
         </div>
         <div class="fact-block">
-          <h2>Quality</h2>
-          <p>Error states handled per failure case rather than one generic message; entrance animation respects <code>prefers-reduced-motion</code>; double-click can't fire duplicate requests.</p>
+          <h2>Proof</h2>
+          <p>Text contrast measured on real pixels, lowest 5.64:1 at night · <a href="https://github.com/AlexandraMoldovan95/skyline-weather/blob/main/tests/logic.test.js" target="_blank" rel="noopener">19 unit tests</a> on every push.</p>
         </div>
         <div class="fact-block">
           <h2>Status</h2>
@@ -75,28 +76,11 @@
     </div>
   </section>
 
-  <section class="prose">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Why this exists</h2>
-        <p>
-          A weather app is a well-worn exercise, so the interesting part here is
-          the access model: instead of embedding a shared API key - which either
-          leaks or hits rate limits fast - each visitor enters their own free
-          OpenWeatherMap key, stored only in their own browser. There's no server
-          in between and no key ever shared across users, a trade-off stated
-          plainly in the app rather than glossed over.
-        </p>
-      </div>
-    </div>
-  </section>
-
   <section class="case-study" id="case-study">
     <div class="wrap">
       <div class="section-head">
         <h2>Design case study: a sky you can read</h2>
         <p>
-          Skyline's first screen asks a visitor for their own API key before they've seen anything.
           The look is a sky: frosted-glass cards over an animated CSS sky with a sun and drifting
           clouds, and a sunset orange used sparingly for the one main action. The catch with glass is
           that the CSS alone doesn't tell you the contrast: what shows through the card changes it.
@@ -106,7 +90,8 @@
       <div class="case-step">
         <h3>Design iteration (November 2026)</h3>
         <p>
-          Two problems: a visitor without a key met a form first, and several texts were too faint on
+          Two problems: the first screen asks for the visitor's own weather key before they've seen
+          anything, so someone without a key met a form first, and several texts were too faint on
           the glass. I measured contrast on the real pixels of the screen, not from the CSS values,
           then fixed it at the cause:
         </p>
@@ -127,48 +112,68 @@
       </div>
 
       <div class="case-step">
-        <h3>What I haven't done yet</h3>
-        <ul class="case-list">
-          <li>No usability testing with other people.</li>
-          <li>The sky is animated, so contrast was measured on screenshots, not on every moment of the animation.</li>
-        </ul>
+        <h3>A night theme, checked the same way</h3>
+        <p>
+          A button on both screens switches to a night sky: deep navy to dusk purple, the sun turned
+          into a pale moon glow, dark glass and light text. The orange buttons keep their dark text.
+          On a first visit the system's dark or light setting decides, and the choice is saved in
+          that browser. I measured the text on the real pixels again, with the error message and the
+          demo card showing, on desktop and phone: every text passes WCAG AA contrast, and the
+          lowest at night is 5.64:1.
+        </p>
       </div>
     </div>
   </section>
 
   <section>
     <div class="wrap">
-      <div class="section-head"><h2>Highlights</h2></div>
-      <ul class="highlight-list">
-        <li><strong>A debugging habit worth keeping.</strong> A weather icon that looked like a broken image turned out to be OpenWeatherMap's genuine minimalist "clear sky" icon - caught by checking the actual network request in DevTools instead of assuming a bug.</li>
-        <li><strong>A dedicated Open Graph image</strong>, built in the same visual language as the app, with full OG and Twitter Card meta tags so the link looks intentional when shared.</li>
-        <li><strong>Errors split explicitly by case.</strong> A network failure, an invalid key (401), a city not found (404), and anything else each get their own message and, where relevant, their own recovery action - instead of one generic failure state.</li>
-        <li><strong>The storage trade-off is named, not hidden.</strong> Each visitor's key is remembered right in their own browser so they don't have to re-enter it or create an account - but that also means anyone with DevTools access to that specific device could read the key back out. That plain-text browser storage is called localStorage, and the trade-off is stated as an accepted limitation for a personal project, with the real fix (a small backend proxy) named for what a production app would need.</li>
+      <div class="section-head">
+        <h2>What I checked, and what it found</h2>
+        <p>
+          Besides the contrast measurements, the logic has automated tests and I checked the screens in a browser.
+        </p>
+      </div>
+      <ul class="case-list">
+        <li><strong>A "broken" weather icon that wasn't.</strong> A plain orange circle looked like a broken image. The real network request, in the browser's developer tools, showed it was the weather service's own minimalist "clear sky" icon. Lesson: check the real request before assuming a bug.</li>
+        <li><strong>A city name typed as code.</strong> The city name was shown on the page as typed, so markup in it could have run. It is now escaped and shown as text, and a test covers it. Whatever is typed as the city also can't add extra settings to the request.</li>
+        <li><strong>Tests that can fail.</strong> When the logic moved into its own file, I broke it on purpose in 8 ways, and each time at least one test failed. A test that never fails proves nothing.</li>
       </ul>
     </div>
   </section>
 
-  <section class="prose">
+  <section>
     <div class="wrap">
       <div class="section-head">
-        <h2>How it was built</h2>
+        <h2>How it's built</h2>
         <p>
-          Plain files - markup, styles, and script - with no bundler and no
-          dependencies to install. Keeping the styles and script out of the
-          page lets a strict Content-Security-Policy block any code injected
-          into it, and the logic with no page behind it has
-          <a href="https://github.com/AlexandraMoldovan95/skyline-weather/blob/main/tests/logic.test.js" target="_blank" rel="noopener">19 unit tests</a>
-          that run on every push. A glassmorphism login card sits over a pure-CSS animated sky; a
-          <code>&lt;select&gt;</code> of ISO country codes was chosen deliberately
-          over free text, to avoid inconsistent input breaking the API request.
+          Plain HTML, CSS and JavaScript files, with no framework, no build step and nothing to
+          install. It calls the OpenWeatherMap weather service directly from the visitor's browser.
         </p>
       </div>
+      <ul class="highlight-list">
+        <li><strong>Each visitor brings their own key.</strong> The app doesn't hold one shared key that could leak or hit usage limits. Each person pastes in their own free OpenWeatherMap key; there's no account and no server in between. Developers call this pattern BYOK (bring your own key).</li>
+        <li><strong>The trade-off is stated, not hidden.</strong> The key is remembered in the browser (localStorage) so nobody has to re-enter it, which means anyone with access to that device's developer tools could read it. That is accepted for a personal project. A real product would route requests through a small server instead.</li>
+        <li><strong>Rules from the server against injected code.</strong> The page's styles and scripts live in their own files, so a Content-Security-Policy (a list of what the page may run and load) can block any code injected into it.</li>
+        <li><strong>Logic kept apart from the page.</strong> The parts with no page behind them (wind direction, error messages, demo data, the theme choice) are in their own file, with unit tests that run on every push.</li>
+      </ul>
       <div class="stack-row">
         <span class="chip">HTML5 / CSS3</span>
         <span class="chip">Vanilla JavaScript</span>
         <span class="chip">OpenWeatherMap API (BYOK)</span>
         <span class="chip">Netlify</span>
       </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head"><h2>What I haven't done yet</h2></div>
+      <ul class="case-list">
+        <li>No usability testing with other people.</li>
+        <li>The sky is animated, so contrast was measured on screenshots, not on every moment of the animation.</li>
+        <li>The tests cover the logic only. The screens (login, search, the card) were checked by hand in a browser, with no automated test.</li>
+        <li>The key is stored in plain text in the browser. Next step for a real product: a small server that holds it.</li>
+      </ul>
     </div>
   </section>
 
